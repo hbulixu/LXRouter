@@ -1,0 +1,544 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		37BC22D4200C5CAC00AAFB5A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC22D3200C5CAC00AAFB5A /* main.m */; };
+		37BC22D7200C5CAC00AAFB5A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC22D6200C5CAC00AAFB5A /* AppDelegate.m */; };
+		37BC22DA200C5CAC00AAFB5A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC22D9200C5CAC00AAFB5A /* ViewController.m */; };
+		37BC22DF200C5CAC00AAFB5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37BC22DE200C5CAC00AAFB5A /* Assets.xcassets */; };
+		37BC22E2200C5CAC00AAFB5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37BC22E0200C5CAC00AAFB5A /* LaunchScreen.storyboard */; };
+		37BC22ED200C5CAC00AAFB5A /* LXRouterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC22EC200C5CAC00AAFB5A /* LXRouterTests.m */; };
+		37BC22F8200C5CAC00AAFB5A /* LXRouterUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC22F7200C5CAC00AAFB5A /* LXRouterUITests.m */; };
+		37BC230A200C7C0500AAFB5A /* LXRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC2309200C7C0500AAFB5A /* LXRouter.m */; };
+		37BC230D200C7E7E00AAFB5A /* LXRouterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC230C200C7E7E00AAFB5A /* LXRouterInfo.m */; };
+		37BC2310200DE14400AAFB5A /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC230F200DE14400AAFB5A /* TextViewController.m */; };
+		37BC2313200DE53100AAFB5A /* PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC2312200DE53100AAFB5A /* PresentViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		37BC22E9200C5CAC00AAFB5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37BC22C7200C5CAC00AAFB5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 37BC22CE200C5CAC00AAFB5A;
+			remoteInfo = LXRouter;
+		};
+		37BC22F4200C5CAC00AAFB5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37BC22C7200C5CAC00AAFB5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 37BC22CE200C5CAC00AAFB5A;
+			remoteInfo = LXRouter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		37BC22CF200C5CAC00AAFB5A /* LXRouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LXRouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37BC22D3200C5CAC00AAFB5A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		37BC22D5200C5CAC00AAFB5A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		37BC22D6200C5CAC00AAFB5A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		37BC22D8200C5CAC00AAFB5A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		37BC22D9200C5CAC00AAFB5A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		37BC22DE200C5CAC00AAFB5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		37BC22E1200C5CAC00AAFB5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		37BC22E3200C5CAC00AAFB5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37BC22E8200C5CAC00AAFB5A /* LXRouterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LXRouterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37BC22EC200C5CAC00AAFB5A /* LXRouterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterTests.m; sourceTree = "<group>"; };
+		37BC22EE200C5CAC00AAFB5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37BC22F3200C5CAC00AAFB5A /* LXRouterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LXRouterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37BC22F7200C5CAC00AAFB5A /* LXRouterUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterUITests.m; sourceTree = "<group>"; };
+		37BC22F9200C5CAC00AAFB5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37BC2308200C7C0500AAFB5A /* LXRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXRouter.h; sourceTree = "<group>"; };
+		37BC2309200C7C0500AAFB5A /* LXRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXRouter.m; sourceTree = "<group>"; };
+		37BC230B200C7E7E00AAFB5A /* LXRouterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXRouterInfo.h; sourceTree = "<group>"; };
+		37BC230C200C7E7E00AAFB5A /* LXRouterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXRouterInfo.m; sourceTree = "<group>"; };
+		37BC230E200DE14400AAFB5A /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
+		37BC230F200DE14400AAFB5A /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
+		37BC2311200DE53100AAFB5A /* PresentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentViewController.h; sourceTree = "<group>"; };
+		37BC2312200DE53100AAFB5A /* PresentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		37BC22CC200C5CAC00AAFB5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37BC22E5200C5CAC00AAFB5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37BC22F0200C5CAC00AAFB5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		37BC22C6200C5CAC00AAFB5A = {
+			isa = PBXGroup;
+			children = (
+				37BC22D1200C5CAC00AAFB5A /* LXRouter */,
+				37BC22EB200C5CAC00AAFB5A /* LXRouterTests */,
+				37BC22F6200C5CAC00AAFB5A /* LXRouterUITests */,
+				37BC22D0200C5CAC00AAFB5A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		37BC22D0200C5CAC00AAFB5A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				37BC22CF200C5CAC00AAFB5A /* LXRouter.app */,
+				37BC22E8200C5CAC00AAFB5A /* LXRouterTests.xctest */,
+				37BC22F3200C5CAC00AAFB5A /* LXRouterUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		37BC22D1200C5CAC00AAFB5A /* LXRouter */ = {
+			isa = PBXGroup;
+			children = (
+				37BC22D5200C5CAC00AAFB5A /* AppDelegate.h */,
+				37BC22D6200C5CAC00AAFB5A /* AppDelegate.m */,
+				37BC22D8200C5CAC00AAFB5A /* ViewController.h */,
+				37BC22D9200C5CAC00AAFB5A /* ViewController.m */,
+				37BC22DE200C5CAC00AAFB5A /* Assets.xcassets */,
+				37BC22E0200C5CAC00AAFB5A /* LaunchScreen.storyboard */,
+				37BC22E3200C5CAC00AAFB5A /* Info.plist */,
+				37BC22D2200C5CAC00AAFB5A /* Supporting Files */,
+				37BC2308200C7C0500AAFB5A /* LXRouter.h */,
+				37BC2309200C7C0500AAFB5A /* LXRouter.m */,
+				37BC230E200DE14400AAFB5A /* TextViewController.h */,
+				37BC230F200DE14400AAFB5A /* TextViewController.m */,
+				37BC2311200DE53100AAFB5A /* PresentViewController.h */,
+				37BC2312200DE53100AAFB5A /* PresentViewController.m */,
+			);
+			path = LXRouter;
+			sourceTree = "<group>";
+		};
+		37BC22D2200C5CAC00AAFB5A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				37BC22D3200C5CAC00AAFB5A /* main.m */,
+				37BC230B200C7E7E00AAFB5A /* LXRouterInfo.h */,
+				37BC230C200C7E7E00AAFB5A /* LXRouterInfo.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		37BC22EB200C5CAC00AAFB5A /* LXRouterTests */ = {
+			isa = PBXGroup;
+			children = (
+				37BC22EC200C5CAC00AAFB5A /* LXRouterTests.m */,
+				37BC22EE200C5CAC00AAFB5A /* Info.plist */,
+			);
+			path = LXRouterTests;
+			sourceTree = "<group>";
+		};
+		37BC22F6200C5CAC00AAFB5A /* LXRouterUITests */ = {
+			isa = PBXGroup;
+			children = (
+				37BC22F7200C5CAC00AAFB5A /* LXRouterUITests.m */,
+				37BC22F9200C5CAC00AAFB5A /* Info.plist */,
+			);
+			path = LXRouterUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		37BC22CE200C5CAC00AAFB5A /* LXRouter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37BC22FC200C5CAC00AAFB5A /* Build configuration list for PBXNativeTarget "LXRouter" */;
+			buildPhases = (
+				37BC22CB200C5CAC00AAFB5A /* Sources */,
+				37BC22CC200C5CAC00AAFB5A /* Frameworks */,
+				37BC22CD200C5CAC00AAFB5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LXRouter;
+			productName = LXRouter;
+			productReference = 37BC22CF200C5CAC00AAFB5A /* LXRouter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		37BC22E7200C5CAC00AAFB5A /* LXRouterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37BC22FF200C5CAC00AAFB5A /* Build configuration list for PBXNativeTarget "LXRouterTests" */;
+			buildPhases = (
+				37BC22E4200C5CAC00AAFB5A /* Sources */,
+				37BC22E5200C5CAC00AAFB5A /* Frameworks */,
+				37BC22E6200C5CAC00AAFB5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37BC22EA200C5CAC00AAFB5A /* PBXTargetDependency */,
+			);
+			name = LXRouterTests;
+			productName = LXRouterTests;
+			productReference = 37BC22E8200C5CAC00AAFB5A /* LXRouterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		37BC22F2200C5CAC00AAFB5A /* LXRouterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37BC2302200C5CAC00AAFB5A /* Build configuration list for PBXNativeTarget "LXRouterUITests" */;
+			buildPhases = (
+				37BC22EF200C5CAC00AAFB5A /* Sources */,
+				37BC22F0200C5CAC00AAFB5A /* Frameworks */,
+				37BC22F1200C5CAC00AAFB5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37BC22F5200C5CAC00AAFB5A /* PBXTargetDependency */,
+			);
+			name = LXRouterUITests;
+			productName = LXRouterUITests;
+			productReference = 37BC22F3200C5CAC00AAFB5A /* LXRouterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		37BC22C7200C5CAC00AAFB5A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = LX;
+				TargetAttributes = {
+					37BC22CE200C5CAC00AAFB5A = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					37BC22E7200C5CAC00AAFB5A = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 37BC22CE200C5CAC00AAFB5A;
+					};
+					37BC22F2200C5CAC00AAFB5A = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 37BC22CE200C5CAC00AAFB5A;
+					};
+				};
+			};
+			buildConfigurationList = 37BC22CA200C5CAC00AAFB5A /* Build configuration list for PBXProject "LXRouter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 37BC22C6200C5CAC00AAFB5A;
+			productRefGroup = 37BC22D0200C5CAC00AAFB5A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				37BC22CE200C5CAC00AAFB5A /* LXRouter */,
+				37BC22E7200C5CAC00AAFB5A /* LXRouterTests */,
+				37BC22F2200C5CAC00AAFB5A /* LXRouterUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		37BC22CD200C5CAC00AAFB5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37BC22E2200C5CAC00AAFB5A /* LaunchScreen.storyboard in Resources */,
+				37BC22DF200C5CAC00AAFB5A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37BC22E6200C5CAC00AAFB5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37BC22F1200C5CAC00AAFB5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		37BC22CB200C5CAC00AAFB5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37BC230D200C7E7E00AAFB5A /* LXRouterInfo.m in Sources */,
+				37BC22DA200C5CAC00AAFB5A /* ViewController.m in Sources */,
+				37BC22D7200C5CAC00AAFB5A /* AppDelegate.m in Sources */,
+				37BC2310200DE14400AAFB5A /* TextViewController.m in Sources */,
+				37BC2313200DE53100AAFB5A /* PresentViewController.m in Sources */,
+				37BC22D4200C5CAC00AAFB5A /* main.m in Sources */,
+				37BC230A200C7C0500AAFB5A /* LXRouter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37BC22E4200C5CAC00AAFB5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37BC22ED200C5CAC00AAFB5A /* LXRouterTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37BC22EF200C5CAC00AAFB5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37BC22F8200C5CAC00AAFB5A /* LXRouterUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		37BC22EA200C5CAC00AAFB5A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 37BC22CE200C5CAC00AAFB5A /* LXRouter */;
+			targetProxy = 37BC22E9200C5CAC00AAFB5A /* PBXContainerItemProxy */;
+		};
+		37BC22F5200C5CAC00AAFB5A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 37BC22CE200C5CAC00AAFB5A /* LXRouter */;
+			targetProxy = 37BC22F4200C5CAC00AAFB5A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		37BC22E0200C5CAC00AAFB5A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				37BC22E1200C5CAC00AAFB5A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		37BC22FA200C5CAC00AAFB5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		37BC22FB200C5CAC00AAFB5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		37BC22FD200C5CAC00AAFB5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LXRouter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = LX.com.cn.LXRouter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		37BC22FE200C5CAC00AAFB5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LXRouter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = LX.com.cn.LXRouter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		37BC2300200C5CAC00AAFB5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LXRouterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = LX.com.cn.LXRouterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LXRouter.app/LXRouter";
+			};
+			name = Debug;
+		};
+		37BC2301200C5CAC00AAFB5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LXRouterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = LX.com.cn.LXRouterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LXRouter.app/LXRouter";
+			};
+			name = Release;
+		};
+		37BC2303200C5CAC00AAFB5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LXRouterUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = LX.com.cn.LXRouterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LXRouter;
+			};
+			name = Debug;
+		};
+		37BC2304200C5CAC00AAFB5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LXRouterUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = LX.com.cn.LXRouterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LXRouter;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		37BC22CA200C5CAC00AAFB5A /* Build configuration list for PBXProject "LXRouter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37BC22FA200C5CAC00AAFB5A /* Debug */,
+				37BC22FB200C5CAC00AAFB5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37BC22FC200C5CAC00AAFB5A /* Build configuration list for PBXNativeTarget "LXRouter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37BC22FD200C5CAC00AAFB5A /* Debug */,
+				37BC22FE200C5CAC00AAFB5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		37BC22FF200C5CAC00AAFB5A /* Build configuration list for PBXNativeTarget "LXRouterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37BC2300200C5CAC00AAFB5A /* Debug */,
+				37BC2301200C5CAC00AAFB5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		37BC2302200C5CAC00AAFB5A /* Build configuration list for PBXNativeTarget "LXRouterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37BC2303200C5CAC00AAFB5A /* Debug */,
+				37BC2304200C5CAC00AAFB5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 37BC22C7200C5CAC00AAFB5A /* Project object */;
+}
