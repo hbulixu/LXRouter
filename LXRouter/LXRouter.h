@@ -13,11 +13,12 @@ typedef void (^LXRouterHandler)(LXRouterInfo *routerInfo);
 
 @interface LXRouter : NSObject
 
-//注册一个方法路由
-+(void)registerIdentify:(NSString *)identify toHandler:(LXRouterHandler)handler;
+//注册一个方法路由,inputParams 是路由的所有参数
+//调用时会对参数校验
++(void)registerIdentify:(NSString *)identify inputJson:(id) json toHandler:(LXRouterHandler)handler;
 
 //执行一个路由
-+ (void)openIdentify:(NSString *)identify withUserInfo:(NSDictionary *)userInfo completion:(void (^)(id result))completion;
++(void)openIdentify:(NSString *)identify withJson:(id)json completion:(void (^)(id result,NSError *error))completion;
 
 
 @end

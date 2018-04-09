@@ -17,11 +17,10 @@
 +(void)load
 {
  
-    [LXRouter registerIdentify:@"test1" toHandler:^(LXRouterInfo *routerInfo) {
+    [LXRouter registerIdentify:@"test1" inputJson:@{@"title":[NSString class]} toHandler:^(LXRouterInfo *routerInfo) {
         
         TextViewController * vc = [TextViewController new];
-        NSDictionary * info = routerInfo.info;
-        vc.title = [info objectForKey:@"title"];
+        vc.title = [routerInfo.jsonInfo objectForKey:@"title"];
         [routerInfo.topNavigationController pushViewController:vc animated:YES];
     }];
 }

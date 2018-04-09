@@ -17,11 +17,11 @@
 
 +(void)load
 {
-    [LXRouter registerIdentify:@"test2" toHandler:^(LXRouterInfo *routerInfo) {
-        
-        PresentViewController * vc = [PresentViewController new];
-        [routerInfo.topViewController presentViewController:vc animated:YES completion:nil];
-    }];
+//    [LXRouter registerIdentify:@"test2" toHandler:^(LXRouterInfo *routerInfo) {
+//        
+//        PresentViewController * vc = [PresentViewController new];
+//        [routerInfo.topViewController presentViewController:vc animated:YES completion:nil];
+//    }];
    
     
 }

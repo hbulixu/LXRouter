@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-typedef void (^LXCompletionBlock) ( id data);
+typedef void (^LXCompletionBlock) ( id data ,NSError *error);
 
 @interface LXRouterInfo : NSObject
 
 //自定义信息
-@property (nonatomic,retain)NSDictionary * info;
+@property (nonatomic,retain)id  jsonInfo;
 
 //回调函数
 @property (nonatomic,copy)LXCompletionBlock  completionBlock;
