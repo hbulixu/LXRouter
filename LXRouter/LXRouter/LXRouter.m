@@ -60,7 +60,6 @@ static NSString * errorDomain = @"lx.router.error";
 +(void)openIdentify:(NSString *)identify withJson:(id)json completion:(void (^)(id result,NSError *error))completion
 {
     
-    
     LXRouterInfo * routerInfo = [LXRouterInfo new];
     routerInfo.jsonInfo = json;
     routerInfo.completionBlock = completion;

@@ -8,6 +8,8 @@
 
 #import "TextViewController.h"
 #import "LXRouter.h"
+#import "TestObj.h"
+#import <objc/runtime.h>
 @interface TextViewController ()
 
 @end
@@ -17,7 +19,7 @@
 +(void)load
 {
  
-    [LXRouter registerIdentify:@"test1" inputJson:@{@"title":[NSString class]} toHandler:^(LXRouterInfo *routerInfo) {
+    [LXRouter registerIdentify:@"test" inputJson:@{@"title":[NSString class]} toHandler:^(LXRouterInfo *routerInfo) {
         
         TextViewController * vc = [TextViewController new];
         vc.title = [routerInfo.jsonInfo objectForKey:@"title"];
@@ -28,6 +30,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    Class clz = [TestObj class];
+    unsigned int methodCount = 0;
+    objc_property_t *propertys = class_copyPropertyList(clz, &methodCount);
+    
+    for (unsigned int i = 0; i < methodCount; i++) {
+        objc_property_t propety = propertys[i];
+        
+        NSString *name = [NSString stringWithCString:property_getName(propety) encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",name);
+    }
+    free(propertys);
 }
 
 - (void)didReceiveMemoryWarning {

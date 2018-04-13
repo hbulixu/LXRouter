@@ -21,7 +21,7 @@
 //        
 //    }];
     
-    [LXRouter openIdentify:@"test2" withJson:@{@"title":@"测试"} completion:^(id result,NSError *error) {
+    [LXRouter openIdentify:@"test" withJson:@{@"title":@"测试"} completion:^(id result,NSError *error) {
         NSLog(@"%@",error);
     }];
     
