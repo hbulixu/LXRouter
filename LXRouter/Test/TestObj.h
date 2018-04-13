@@ -8,14 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "TypeAnnotation.h"
+#import "Test2Obj.h"
 @interface TestObj : NSObject
 
 @paramRequired
-@property (nonatomic,retain)NSString * test;
+@property (nonatomic,weak)NSString * test;
 
 @paramRequired
 @property (nonatomic,retain)NSString * test2;
 
 @paramRequired
+@property (nonatomic,assign)BOOL isTest;
+
+@property (nonatomic,retain)Test2Obj * hhh;
 
 @end

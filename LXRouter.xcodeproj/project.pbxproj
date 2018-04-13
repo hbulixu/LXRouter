@@ -25,6 +25,7 @@
 		37DD76F020807B6500A7ECCA /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 37DD76ED20807B6400A7ECCA /* YYClassInfo.m */; };
 		37DD76F52080821800A7ECCA /* TypeAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 37DD76F42080821800A7ECCA /* TypeAnnotation.m */; };
 		37DD76FB208082D000A7ECCA /* TestObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 37DD76FA208082D000A7ECCA /* TestObj.m */; };
+		37DD76FE20809A1700A7ECCA /* Test2Obj.m in Sources */ = {isa = PBXBuildFile; fileRef = 37DD76FD20809A1700A7ECCA /* Test2Obj.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		37DD76F42080821800A7ECCA /* TypeAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypeAnnotation.m; sourceTree = "<group>"; };
 		37DD76F9208082D000A7ECCA /* TestObj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestObj.h; sourceTree = "<group>"; };
 		37DD76FA208082D000A7ECCA /* TestObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestObj.m; sourceTree = "<group>"; };
+		37DD76FC20809A1700A7ECCA /* Test2Obj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test2Obj.h; sourceTree = "<group>"; };
+		37DD76FD20809A1700A7ECCA /* Test2Obj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test2Obj.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +213,8 @@
 				37BC2312200DE53100AAFB5A /* PresentViewController.m */,
 				37DD76F9208082D000A7ECCA /* TestObj.h */,
 				37DD76FA208082D000A7ECCA /* TestObj.m */,
+				37DD76FC20809A1700A7ECCA /* Test2Obj.h */,
+				37DD76FD20809A1700A7ECCA /* Test2Obj.m */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -351,6 +356,7 @@
 				37DD76EF20807B6500A7ECCA /* NSObject+YYModel.m in Sources */,
 				37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */,
 				37BC230D200C7E7E00AAFB5A /* LXRouterInfo.m in Sources */,
+				37DD76FE20809A1700A7ECCA /* Test2Obj.m in Sources */,
 				37DD76FB208082D000A7ECCA /* TestObj.m in Sources */,
 				37BC22DA200C5CAC00AAFB5A /* ViewController.m in Sources */,
 				37DD76F52080821800A7ECCA /* TypeAnnotation.m in Sources */,

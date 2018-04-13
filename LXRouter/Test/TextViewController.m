@@ -10,6 +10,7 @@
 #import "LXRouter.h"
 #import "TestObj.h"
 #import <objc/runtime.h>
+#import "YYModel.h"
 @interface TextViewController ()
 
 @end
@@ -29,7 +30,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    TestObj * obj = [TestObj new];
+//    obj.test = @"111";
+//    id  dic = [obj yy_modelDescription];
+//
+//    NSLog(@"%@",dic);
+
+    NSDictionary * dic = @{@"test":@1234,
+                           @"test2":[NSNull null],
+                           @"isTest": @"12345",
+                           @"hhh" : @{@"aaaa":@"11111",@"number":@3}
+                           };
     
+   TestObj * obj = [TestObj yy_modelWithJSON:dic];
+    
+    NSLog(@"%@",obj.yy_modelToJSONObject);
     
     Class clz = [TestObj class];
     unsigned int methodCount = 0;
