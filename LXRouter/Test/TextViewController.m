@@ -44,6 +44,9 @@
     NSDictionary * dic = @{@"hhh" : @{@"aaaa":@"11111",@"number":@"2222"},
                            @"test":@"1234",
                            @"test2":@"",
+                           @"isTest":@"1",
+                           @"urls":@[@{@"aaaa":@"11111",@"number":@"2222"}],
+                           @"array":@[@{@"aaaa":@"11111",@"number":@"2222"}]
                            };
     
    TestObj * obj = [TestObj lx_modelWithJSON:dic];

@@ -70,7 +70,7 @@ static NSSet *foundationClasses_;
                 
                 TypeAnnotation * annotation = (TypeAnnotation *)format;
                 if (annotation.required && (!value || [value isKindOfClass:[NSNull class]])) {
-                    error = [NSError errorWithDomain:[NSString stringWithFormat:@"need key [%@]",key] code:-2 userInfo:nil];
+                    error = [NSError errorWithDomain:[NSString stringWithFormat:@"need value for key [%@]",key] code:-2 userInfo:nil];
                     return error;
                 }
             }
@@ -107,7 +107,7 @@ static NSSet *foundationClasses_;
         }
         TypeAnnotation * annotation = (TypeAnnotation *)validateObject;
         if (annotation.required && (!json || [json isKindOfClass:[NSNull class]])) {
-            error = [NSError errorWithDomain:[NSString stringWithFormat:@"need key [%@]",annotation.keyName] code:-2 userInfo:nil];
+            error = [NSError errorWithDomain:[NSString stringWithFormat:@"need value for key [%@]",annotation.keyName] code:-2 userInfo:nil];
         }
         return error;
     }

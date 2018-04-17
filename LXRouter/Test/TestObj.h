@@ -26,7 +26,8 @@
 @DSProtocol(Test2Obj)
 @property (nonatomic,retain)NSArray <Test2Obj *>* array;
 
-@ParamRequired
+
+@DSProtocol(Test2Obj)
 @property (nonatomic,retain)NSArray * urls;
 
 @end
