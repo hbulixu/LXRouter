@@ -9,8 +9,8 @@
 #import "TextViewController.h"
 #import "LXRouter.h"
 #import "TestObj.h"
-#import <objc/runtime.h>
-#import "YYModel.h"
+#import "LXJsonValidateTools.h"
+#import "NSObject+LXJsonModel.h"
 @interface TextViewController ()
 
 @end
@@ -30,49 +30,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    TestObj * obj = [TestObj new];
-//    obj.test = @"111";
-//    id  dic = [obj yy_modelDescription];
-//
-//    NSLog(@"%@",dic);
+//    TestObj * obj1 = [TestObj new];
+//    obj1.test = @"111";
+//    id  dic1 = [obj1 yy_modelDescription];
+//   
+//    NSLog(@"%@", obj1.yy_modelToJSONObject);
 
-    NSDictionary * dic = @{@"test":@1234,
-                           @"test2":[NSNull null],
-                           @"isTest": @"12345",
-                           @"hhh" : @{@"aaaa":@"11111",@"number":@3}
+//    NSDictionary * dic = @{@"test":@1234,
+//                           @"test2":@"",
+//                           @"isTest": @"12345",
+//                           @"hhh" : @{@"aaaa":@"11111",@"number":@"2222"}
+//                           };
+    NSDictionary * dic = @{@"hhh" : @{@"aaaa":@"11111",@"number":@"2222"},
+                           @"test":@"1234",
+                           @"test2":@"",
                            };
     
-   TestObj * obj = [TestObj yy_modelWithJSON:dic];
-    
-    NSLog(@"%@",obj.yy_modelToJSONObject);
-    
-    Class clz = [TestObj class];
-    unsigned int methodCount = 0;
-    objc_property_t *propertys = class_copyPropertyList(clz, &methodCount);
-    
-    for (unsigned int i = 0; i < methodCount; i++) {
-        objc_property_t propety = propertys[i];
-        
-        NSString *name = [NSString stringWithCString:property_getName(propety) encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",name);
-    }
-    free(propertys);
+   TestObj * obj = [TestObj lx_modelWithJSON:dic];
+    NSLog(@"%@",obj.lx_modelToJSONObject);
+   NSError * error = [LXJsonValidateTools validateJson:obj.lx_modelToJSONObject WithClass:[TestObj class]];
+    NSLog(@"%@",error);
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 -(void)dealloc
 {
     

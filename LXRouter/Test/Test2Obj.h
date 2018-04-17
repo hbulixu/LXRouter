@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TypeAnnotation.h"
 
 @interface Test2Obj : NSObject
 @property (nonatomic,retain)NSString * aaaa;
+//@ParamRequired
 @property (nonatomic,retain)NSNumber * number;
 @end

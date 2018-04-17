@@ -148,6 +148,7 @@ YYEncodingType YYEncodingGetType(const char *typeEncoding) {
 
 @end
 
+
 @implementation YYClassPropertyInfo
 
 - (instancetype)initWithProperty:(objc_property_t)property {

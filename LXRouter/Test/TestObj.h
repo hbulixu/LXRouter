@@ -11,15 +11,22 @@
 #import "Test2Obj.h"
 @interface TestObj : NSObject
 
-@paramRequired
+
 @property (nonatomic,weak)NSString * test;
 
-@paramRequired
+
 @property (nonatomic,retain)NSString * test2;
 
-@paramRequired
+@ParamRequired
 @property (nonatomic,assign)BOOL isTest;
 
 @property (nonatomic,retain)Test2Obj * hhh;
+
+
+@DSProtocol(Test2Obj)
+@property (nonatomic,retain)NSArray <Test2Obj *>* array;
+
+@ParamRequired
+@property (nonatomic,retain)NSArray * urls;
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37135AC72084A1B80019ADA1 /* NSObject+LXJsonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AC62084A1B80019ADA1 /* NSObject+LXJsonModel.m */; };
+		37135ACB2085E1B40019ADA1 /* LXJsonValidateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135ACA2085E1B40019ADA1 /* LXJsonValidateTools.m */; };
 		37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 37385862207B52C4001D34F4 /* LXRouterTools.m */; };
 		37385867207B6314001D34F4 /* sjt_app.js in Resources */ = {isa = PBXBuildFile; fileRef = 37385866207B6314001D34F4 /* sjt_app.js */; };
 		37385869207B88CE001D34F4 /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 37385868207B88CE001D34F4 /* ExampleApp.html */; };
@@ -46,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37135AC52084A1B80019ADA1 /* NSObject+LXJsonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LXJsonModel.h"; sourceTree = "<group>"; };
+		37135AC62084A1B80019ADA1 /* NSObject+LXJsonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LXJsonModel.m"; sourceTree = "<group>"; };
+		37135AC92085E1B40019ADA1 /* LXJsonValidateTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXJsonValidateTools.h; sourceTree = "<group>"; };
+		37135ACA2085E1B40019ADA1 /* LXJsonValidateTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXJsonValidateTools.m; sourceTree = "<group>"; };
 		37385861207B52C4001D34F4 /* LXRouterTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXRouterTools.h; sourceTree = "<group>"; };
 		37385862207B52C4001D34F4 /* LXRouterTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterTools.m; sourceTree = "<group>"; };
 		37385866207B6314001D34F4 /* sjt_app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_app.js; sourceTree = "<group>"; };
@@ -111,6 +117,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37135AC82085E14B0019ADA1 /* LXJSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				37DD76F32080821800A7ECCA /* TypeAnnotation.h */,
+				37DD76F42080821800A7ECCA /* TypeAnnotation.m */,
+				37135AC52084A1B80019ADA1 /* NSObject+LXJsonModel.h */,
+				37135AC62084A1B80019ADA1 /* NSObject+LXJsonModel.m */,
+				37135AC92085E1B40019ADA1 /* LXJsonValidateTools.h */,
+				37135ACA2085E1B40019ADA1 /* LXJsonValidateTools.m */,
+			);
+			path = LXJSONModel;
+			sourceTree = "<group>";
+		};
 		37BC22C6200C5CAC00AAFB5A = {
 			isa = PBXGroup;
 			children = (
@@ -192,14 +211,13 @@
 		37DD76F72080825E00A7ECCA /* LXRouter */ = {
 			isa = PBXGroup;
 			children = (
+				37135AC82085E14B0019ADA1 /* LXJSONModel */,
 				37BC230B200C7E7E00AAFB5A /* LXRouterInfo.h */,
 				37BC230C200C7E7E00AAFB5A /* LXRouterInfo.m */,
 				37BC2308200C7C0500AAFB5A /* LXRouter.h */,
 				37BC2309200C7C0500AAFB5A /* LXRouter.m */,
 				37385861207B52C4001D34F4 /* LXRouterTools.h */,
 				37385862207B52C4001D34F4 /* LXRouterTools.m */,
-				37DD76F32080821800A7ECCA /* TypeAnnotation.h */,
-				37DD76F42080821800A7ECCA /* TypeAnnotation.m */,
 			);
 			path = LXRouter;
 			sourceTree = "<group>";
@@ -359,7 +377,9 @@
 				37DD76FE20809A1700A7ECCA /* Test2Obj.m in Sources */,
 				37DD76FB208082D000A7ECCA /* TestObj.m in Sources */,
 				37BC22DA200C5CAC00AAFB5A /* ViewController.m in Sources */,
+				37135ACB2085E1B40019ADA1 /* LXJsonValidateTools.m in Sources */,
 				37DD76F52080821800A7ECCA /* TypeAnnotation.m in Sources */,
+				37135AC72084A1B80019ADA1 /* NSObject+LXJsonModel.m in Sources */,
 				37BC22D7200C5CAC00AAFB5A /* AppDelegate.m in Sources */,
 				37BC2310200DE14400AAFB5A /* TextViewController.m in Sources */,
 				37BC2313200DE53100AAFB5A /* PresentViewController.m in Sources */,
