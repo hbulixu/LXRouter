@@ -20,8 +20,14 @@
 //    [LXRouter openIdentify:@"test1" withUserInfo:@{@"title":@"测试"} completion:^(id result) {
 //        
 //    }];
+        NSDictionary * dic = @{@"hhh" : @{@"aaaa":@"11111",@"number":@"2222"},
+                               @"test2":@"",
+                               @"isTest":@"1",
+                               //@"urls":@[@{@"aaaa":@"11111",@"number":@"2222"}],
+                               @"array":@[@{@"aaaa":@"11111",@"number":@"2222"}]
+                               };
     
-    [LXRouter openIdentify:@"test" withJson:@{@"title":@"测试"} completion:^(id result,NSError *error) {
+    [LXRouter openIdentify:@"test" withJson:dic completion:^(id result,NSError *error) {
         NSLog(@"%@",error);
     }];
     

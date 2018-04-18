@@ -11,7 +11,7 @@
 #import "Test2Obj.h"
 @interface TestObj : NSObject
 
-
+@ParamRequired
 @property (nonatomic,weak)NSString * test;
 
 

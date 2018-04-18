@@ -8,6 +8,7 @@
 
 #import "LXRouter.h"
 #import "LXRouterTools.h"
+#import "NSObject+LXJsonModel.h"
 static NSString * errorDomain = @"lx.router.error";
 @interface LXRouter()
 
@@ -48,7 +49,7 @@ static NSString * errorDomain = @"lx.router.error";
                 [router.routeHandle setObject:[handler copy] forKey:identify];
             }
             if (clz) {
-                [router.routeInputClass setObject:NSStringFromClass([clz class]) forKey:identify];
+                [router.routeInputClass setObject:clz forKey:identify];
             }
         }
     }
@@ -93,14 +94,14 @@ static NSString * errorDomain = @"lx.router.error";
 //            return;
 //        };
 //    }
-    id clz = [[LXRouter sharedInstance].routeInputClass objectForKey:identify];
+    Class clz = [[LXRouter sharedInstance].routeInputClass objectForKey:identify];
     if (clz) {
         NSError * error = [LXRouterTools validateJson:json WithClass:clz];
         if (error) {
             completion(nil,error);
             return;
         }
-        routerInfo.inputModel = 
+        routerInfo.inputModel = [clz lx_modelWithJSON:json];
     }
     if (handler) {
         handler(routerInfo);

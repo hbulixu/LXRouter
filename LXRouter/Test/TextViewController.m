@@ -9,8 +9,7 @@
 #import "TextViewController.h"
 #import "LXRouter.h"
 #import "TestObj.h"
-#import "LXJsonValidateTools.h"
-#import "NSObject+LXJsonModel.h"
+#import "LXRouterTools.h"
 @interface TextViewController ()
 
 @end
@@ -28,7 +27,7 @@
 //    }];
     
     [LXRouter registerIdentify:@"test" inputClass:[TestObj class] toHandler:^(LXRouterInfo *routerInfo) {
-        
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
     }];
 }
 
@@ -44,19 +43,19 @@
 //                           @"test2":@"",
 //                           @"isTest": @"12345",
 //                           @"hhh" : @{@"aaaa":@"11111",@"number":@"2222"}
+////                           };
+//    NSDictionary * dic = @{@"hhh" : @{@"aaaa":@"11111",@"number":@"2222"},
+//                           @"test":@"1234",
+//                           @"test2":@"",
+//                           @"isTest":@"1",
+//                           @"urls":@[@{@"aaaa":@"11111",@"number":@"2222"}],
+//                           @"array":@[@{@"aaaa":@"11111",@"number":@"2222"}]
 //                           };
-    NSDictionary * dic = @{@"hhh" : @{@"aaaa":@"11111",@"number":@"2222"},
-                           @"test":@"1234",
-                           @"test2":@"",
-                           @"isTest":@"1",
-                           @"urls":@[@{@"aaaa":@"11111",@"number":@"2222"}],
-                           @"array":@[@{@"aaaa":@"11111",@"number":@"2222"}]
-                           };
-    
-   TestObj * obj = [TestObj lx_modelWithJSON:dic];
-    NSLog(@"%@",obj.lx_modelToJSONObject);
-   NSError * error = [LXJsonValidateTools validateJson:obj.lx_modelToJSONObject WithClass:[TestObj class]];
-    NSLog(@"%@",error);
+//    
+//   TestObj * obj = [TestObj lx_modelWithJSON:dic];
+//   // NSLog(@"%@",obj.lx_modelToJSONObject);
+//   NSError * error = [LXRouterTools validateJson:obj.lx_modelToJSONObject WithClass:[TestObj class]];
+//   // NSLog(@"%@",error);
 }
 
 

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "NSObject+LXJsonModel.h"
 @interface LXRouterTools : NSObject
 
 +(void)genScriptBridgeWithRouteHandles:(NSDictionary *)routeHandles RouteJsons:(NSDictionary *)routeJsons;
