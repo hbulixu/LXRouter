@@ -23,7 +23,7 @@
 //    [LXRouter openIdentify:@"test1" withUserInfo:@{@"title":@"测试"} completion:^(id result) {
 //        
 //    }];
-        NSDictionary * dic = @{@"hhh" : @{@"aaaa":@"11111",@"number":@"2222"},
+        NSDictionary * dic = @{//@"hhh" : @{@"aaaa":@"11111",@"number":@"2222"},
                                @"test2":@"",
                                @"test" :@"",
                                @"isTest":@"1",

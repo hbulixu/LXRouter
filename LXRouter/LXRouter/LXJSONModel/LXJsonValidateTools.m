@@ -230,7 +230,7 @@ static id classToJsonRecursive(Class clz)
 + (NSError *)newValidateJson:(id)json WithClass:(Class)clz
 {
 
-    id validateObject = [ LXJsonValidateTools genValidateObjectWithClass:clz];
+    id validateObject = [ LXJsonValidateTools newGenValidateObjectWithClass:clz];
     NSLog(@"%@",validateObject);
     return [LXJsonValidateTools newValidateJson:json WithValidateObject:validateObject];
 }
@@ -250,7 +250,10 @@ static id classToJsonRecursive(Class clz)
             if ( [format isKindOfClass:[TypeAnnotation class]] && ([format.child isKindOfClass:[NSDictionary class]] || [format.child isKindOfClass:[NSArray class]])) {
                 
                 if (format.required && (!value || [value isKindOfClass:[NSNull class]])) {
-                    error = [NSError errorWithDomain:[NSString stringWithFormat:@"need value for key [%@]",format.keyName] code:-2 userInfo:nil];
+                    error = [NSError errorWithDomain:[NSString stringWithFormat:@"need value for key [%@ %@]",format.fatherKey?:@"",format.keyName] code:-2 userInfo:nil];
+                    if (error) {
+                        break;
+                    }
                 }
                 error = [self newValidateJson:value WithValidateObject:format.child];
                 if (error) {
@@ -296,7 +299,7 @@ static id classToJsonRecursive(Class clz)
         }
         TypeAnnotation * annotation = (TypeAnnotation *)validateObject;
         if (annotation.required && (!json || [json isKindOfClass:[NSNull class]])) {
-            error = [NSError errorWithDomain:[NSString stringWithFormat:@"need value for key [%@]",annotation.keyName] code:-2 userInfo:nil];
+            error = [NSError errorWithDomain:[NSString stringWithFormat:@"need value for key [%@ %@]",annotation.fatherKey?:@"", annotation.keyName] code:-2 userInfo:nil];
         }
         return error;
     }
