@@ -105,6 +105,11 @@
    return  [LXJsonValidateTools validateJson:json WithClass:clz];
 }
 
++ (NSError *)newValidateJson:(id)json WithClass:(Class)clz
+{
+    return  [LXJsonValidateTools newValidateJson:json WithClass:clz];
+}
+
 //最外层参数超过三个传对象
 // 要生成脚本的样式
 //标明参数。
