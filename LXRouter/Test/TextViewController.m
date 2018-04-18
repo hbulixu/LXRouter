@@ -20,11 +20,15 @@
 +(void)load
 {
  
-    [LXRouter registerIdentify:@"test" inputJson:@{@"title":[NSString class]} toHandler:^(LXRouterInfo *routerInfo) {
+//    [LXRouter registerIdentify:@"test" inputJson:@{@"title":[NSString class]} toHandler:^(LXRouterInfo *routerInfo) {
+//
+//        TextViewController * vc = [TextViewController new];
+//        vc.title = [routerInfo.jsonInfo objectForKey:@"title"];
+//        [routerInfo.topNavigationController pushViewController:vc animated:YES];
+//    }];
+    
+    [LXRouter registerIdentify:@"test" inputClass:[TestObj class] toHandler:^(LXRouterInfo *routerInfo) {
         
-        TextViewController * vc = [TextViewController new];
-        vc.title = [routerInfo.jsonInfo objectForKey:@"title"];
-        [routerInfo.topNavigationController pushViewController:vc animated:YES];
     }];
 }
 

@@ -17,6 +17,7 @@ typedef void (^LXCompletionBlock) ( id data ,NSError *error);
 //自定义信息
 @property (nonatomic,retain)id  jsonInfo;
 
+@property (nonatomic,retain)id inputModel;
 //回调函数
 @property (nonatomic,copy)LXCompletionBlock  completionBlock;
 

@@ -17,6 +17,7 @@ typedef void (^LXRouterHandler)(LXRouterInfo *routerInfo);
 //调用时会对参数校验
 +(void)registerIdentify:(NSString *)identify inputJson:(id) json toHandler:(LXRouterHandler)handler;
 
++(void)registerIdentify:(NSString *)identify inputClass:(Class) clz toHandler:(LXRouterHandler) handler;
 //执行一个路由
 +(void)openIdentify:(NSString *)identify withJson:(id)json completion:(void (^)(id result,NSError *error))completion;
 

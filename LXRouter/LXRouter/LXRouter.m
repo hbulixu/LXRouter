@@ -7,7 +7,7 @@
 //
 
 #import "LXRouter.h"
-
+#import "LXRouterTools.h"
 static NSString * errorDomain = @"lx.router.error";
 @interface LXRouter()
 
@@ -16,6 +16,8 @@ static NSString * errorDomain = @"lx.router.error";
  */
 @property (nonatomic,retain) NSMutableDictionary *routeHandle;
 @property (nonatomic,retain) NSMutableDictionary *routeJson;
+@property (nonatomic,retain) NSMutableDictionary *routeInputClass;
+
 @end
 
 @implementation LXRouter
@@ -36,6 +38,21 @@ static NSString * errorDomain = @"lx.router.error";
     return [LXRouter sharedInstance];
 }
 
++(void)registerIdentify:(NSString *)identify inputClass:(Class) clz toHandler:(LXRouterHandler) handler
+{
+    LXRouter * router =  [LXRouter sharedInstance];
+    if (identify && handler) {
+        
+        @synchronized (router) {
+            if (handler) {
+                [router.routeHandle setObject:[handler copy] forKey:identify];
+            }
+            if (clz) {
+                [router.routeInputClass setObject:NSStringFromClass([clz class]) forKey:identify];
+            }
+        }
+    }
+}
 
 //注册一个路由
 +(void)registerIdentify:(NSString *)identify inputJson:(id) json toHandler:(LXRouterHandler)handler
@@ -67,7 +84,7 @@ static NSString * errorDomain = @"lx.router.error";
     
     LXRouterHandler handler = [[LXRouter sharedInstance].routeHandle objectForKey:identify];
     
-    id formJson = [[LXRouter sharedInstance].routeJson objectForKey:identify];
+//    id formJson = [[LXRouter sharedInstance].routeJson objectForKey:identify];
     
 //    if (formJson) {
 //        if (![LXRouter validateJSON:json withValidator:formJson]) {
@@ -76,6 +93,15 @@ static NSString * errorDomain = @"lx.router.error";
 //            return;
 //        };
 //    }
+    id clz = [[LXRouter sharedInstance].routeInputClass objectForKey:identify];
+    if (clz) {
+        NSError * error = [LXRouterTools validateJson:json WithClass:clz];
+        if (error) {
+            completion(nil,error);
+            return;
+        }
+        routerInfo.inputModel = 
+    }
     if (handler) {
         handler(routerInfo);
     }else
@@ -103,5 +129,13 @@ static NSString * errorDomain = @"lx.router.error";
         _routeHandle = [[NSMutableDictionary alloc] init];
     }
     return _routeHandle;
+}
+
+-(NSMutableDictionary *)routeInputClass
+{
+    if (!_routeInputClass) {
+        _routeInputClass = [NSMutableDictionary dictionary];
+    }
+    return _routeInputClass;
 }
 @end

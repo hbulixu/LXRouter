@@ -7,10 +7,15 @@
 //
 
 #import "LXRouterTools.h"
-
+#import "LXJsonValidateTools.h"
 @implementation LXRouterTools
 +(void)genScriptBridgeWithRouteHandles:(NSDictionary *)routeHandles RouteJsons:(NSDictionary *)routeJsons
 {
     
+}
+
++ (NSError *)validateJson:(id)json WithClass:(Class)clz
+{
+   return  [LXJsonValidateTools validateJson:json WithClass:clz];
 }
 @end
