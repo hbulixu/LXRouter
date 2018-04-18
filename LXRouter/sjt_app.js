@@ -12,7 +12,7 @@ var sjtApp={
         doc.documentElement.appendChild(messagingIframe);
     },
 
-    _callNative:function(function, params, responseCallback) {
+    _callNative:function(action, params, responseCallback) {
         _doSend({
             function: action,
             params: params

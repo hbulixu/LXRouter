@@ -18,6 +18,14 @@
 
 #define DSProtocol(class) property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(propertyProtocol_##class##_,__COUNTER__);
 
+//注释宏
+#if DEBUG
+#define PRComments(comment) property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(PRComments_##comment##_,__COUNTER__);
+
+#else
+#define PRComments(comment)
+#endif
+
 @interface TypeAnnotation : NSObject
 
 @property (nonatomic,assign)BOOL required;
@@ -27,6 +35,15 @@
 @property (nonatomic,copy)NSString * keyName;
 /**当前属性的类别*/
 @property (nonatomic,copy)NSString * typeName;
+/**注释*/
+@property (nonatomic,copy)NSString * comments;
+/**当前层数*/
+@property (nonatomic,assign)NSInteger level;
+/**父亲key*/
+@property (nonatomic,copy)NSString * fatherKey;
+/**为了给中间节点加上自己的属性，设置子节点来存放json中的值*/
+@property (nonatomic,retain) id child;
+
 -(NSDictionary *)dic;
 
 @end

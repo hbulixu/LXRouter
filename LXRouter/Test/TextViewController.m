@@ -10,6 +10,7 @@
 #import "LXRouter.h"
 #import "TestObj.h"
 #import "LXRouterTools.h"
+#import "LXJsonValidateTools.h"
 @interface TextViewController ()
 
 @end
@@ -56,6 +57,8 @@
 //   // NSLog(@"%@",obj.lx_modelToJSONObject);
 //   NSError * error = [LXRouterTools validateJson:obj.lx_modelToJSONObject WithClass:[TestObj class]];
 //   // NSLog(@"%@",error);
+    
+  
 }
 
 

@@ -16,7 +16,7 @@
 
 
 @property (nonatomic,retain)NSString * test2;
-
+@PRComments(是否测试)
 @ParamRequired
 @property (nonatomic,assign)BOOL isTest;
 
