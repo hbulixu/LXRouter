@@ -10,6 +10,15 @@
 #import <objc/runtime.h>
 @implementation TypeAnnotation
 
+-(instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+        _typeName = NSStringFromClass([NSNumber class]);
+    }
+    return self;
+}
 -(NSString *)description
 {
     //声明一个字典

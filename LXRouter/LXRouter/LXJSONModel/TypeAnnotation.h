@@ -23,9 +23,10 @@
 @property (nonatomic,assign)BOOL required;
 /**存放数组等集合数据中的数据类型*/
 @property (nonatomic,retain)Class protocolClass;
-
+/**当前属性的key*/
 @property (nonatomic,copy)NSString * keyName;
-
+/**当前属性的类别*/
+@property (nonatomic,copy)NSString * typeName;
 -(NSDictionary *)dic;
 
 @end

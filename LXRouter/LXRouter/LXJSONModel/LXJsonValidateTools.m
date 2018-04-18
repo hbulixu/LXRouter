@@ -120,6 +120,7 @@ static id classToJsonRecursive(Class clz)
     objc_property_t *propertys = class_copyPropertyList(clz, &methodCount);
     
     TypeAnnotation * annotation = [TypeAnnotation new];
+    
     for (unsigned int i = 0; i < methodCount; i++) {
         objc_property_t propety = propertys[i];
         
@@ -132,8 +133,10 @@ static id classToJsonRecursive(Class clz)
             range.location += 2;
             range.length -= 3;
             NSString *typeName = [propAttrs substringWithRange:range];
+            //排除基本类
             if (![LXJsonValidateTools isClassFromFoundation:NSClassFromString(typeName)]) {
                 
+                //注解类
                 if ([typeName isEqualToString:@"TypeAnnotation"]) {
                     
                     NSRange paramRange =[name rangeOfString:@"paramRequired_"];
@@ -165,15 +168,21 @@ static id classToJsonRecursive(Class clz)
                     }
                 }
                 
-            }else if(([typeName isEqualToString:NSStringFromClass([NSArray class])] || [typeName isEqualToString:NSStringFromClass([NSMutableArray class])]) && annotation.protocolClass)
+            }else//系统Foundation类
             {
-                id value = classToJsonRecursive(annotation.protocolClass);
-                if (value) {
-                    NSArray * array = [NSArray arrayWithObjects:value, nil];
-                    [result setObject:array forKey:name];
-                    annotation = [TypeAnnotation new];
-                    continue;
+                //array 要特殊处理一下
+                if(([typeName isEqualToString:NSStringFromClass([NSArray class])] || [typeName isEqualToString:NSStringFromClass([NSMutableArray class])]) && annotation.protocolClass)
+                {
+                    id value = classToJsonRecursive(annotation.protocolClass);
+                    if (value) {
+                        NSArray * array = [NSArray arrayWithObjects:value, nil];
+                        [result setObject:array forKey:name];
+                        annotation = [TypeAnnotation new];
+                        continue;
+                    }
                 }
+                annotation.typeName = typeName;
+                
             }
         }
         annotation.keyName = name;
