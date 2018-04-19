@@ -45,7 +45,7 @@
         Class clz = routeInputClass[identify];
         if (clz) {
             NSDictionary * dic = [LXJsonValidateTools genValidateObjectWithClass:clz];
-            NSLog(@"%@",dic.lx_modelToJSONObject);
+           // NSLog(@"%@",dic.lx_modelToJSONObject);
             //注释字符串
             NSMutableString * commentsStr = [NSMutableString string];
             //函数入参字符串
@@ -58,12 +58,12 @@
                 BOOL params2More = dic.allKeys.count > 4;
                 if (params2More) {
                     //*@param {Object    }  inputParams
-                    [commentsStr appendFormat:@"%@@param {%-10s}  %@",star,Object.UTF8String,funcParamsKey];
+                    [commentsStr appendFormat:@"%@@param {%@}  %@",star,Object,funcParamsKey];
                     [commentsStr appendString:@"\n"];
                     //*inputParams = {
                     [commentsStr appendFormat:@"%@%@ = { \n",star,funcParamsKey];
                     //函数参数增加 inputParams
-                    [funcParamsStr appendFormat:@"%@,%@",funcParamsKey,callBack];
+                    [funcParamsStr appendFormat:@"%@",funcParamsKey];
                 }
                 
                 [LXRouterTools setStrRecursiveWithValidateObject:dic params2More:params2More commentsStr:commentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
@@ -74,9 +74,15 @@
                     NSString * varBegin =    [NSString stringWithFormat:@"var %@=%@ %@\n",innerParams,funcParamsKey,lBrace];
                     paramsAnalyzeStr = [NSMutableString stringWithFormat:@"%@%@\n%@",varBegin,paramsAnalyzeStr,rBrace];
                 }
+                
                 if (params2More) {
-                    [commentsStr appendFormat:@"%@ }",star];
+                    [commentsStr appendFormat:@"%@ }\n",star];
                 }
+                [commentsStr appendFormat:@"%@@param %-10s callBack -回调函数",star,@"{func}".UTF8String];
+                if (funcParamsStr.length) {
+                    [funcParamsStr appendString:@","];
+                }
+                [funcParamsStr appendString:callBack];
             }
             NSLog(@"commentsStr :\n%@ \n funcParamsStr:\n%@ \n paramsAnalyzeStr:\n%@  ",commentsStr,funcParamsStr,paramsAnalyzeStr);
         }
@@ -121,6 +127,7 @@
             NSDictionary * dic = [self mapDic];
             //自定义类型
             NSString * jsType;
+            NSString * blockJSType;
             if (![LXJsonValidateTools isClassFromFoundation:NSClassFromString(annotation.typeName)]) {
                 jsType = @"Object";
             }else
@@ -130,16 +137,24 @@
                    jsType = @"Undefine";
                 }
             }
+            blockJSType = [NSString stringWithFormat:@"{%@}",jsType];
             //第一级
             if (annotation.level == 1) {
                 //参数过多，只传一个model，不需要拼写参数了
                 if (!params2More) {
-                    [funcParamsStr appendString:[NSString stringWithFormat:@",%@",annotation.keyName]];
+                    
+                    if (funcParamsStr.length) {
+                        [funcParamsStr appendFormat:@",%@",annotation.keyName];
+                    }else //第一个参数不需要 ,
+                    {
+                        [funcParamsStr appendFormat:@"%@",annotation.keyName];
+                    }
+                    
 
-                    [commentsStr appendFormat:@"%@@param {%-10s} %@ \n",star,jsType.UTF8String,annotation.keyName];
+                    [commentsStr appendFormat:@"%@@param %-10s %@ \n",star,blockJSType.UTF8String,annotation.keyName];
                     
                     //isTest: isTest
-                    [paramsAnalyzeStr appendString:[NSString stringWithFormat:@"%@: %@",annotation.keyName,annotation.keyName]];
+                    [paramsAnalyzeStr appendString:[NSString stringWithFormat:@"%@%@:  %@\n",tab,annotation.keyName,annotation.keyName]];
                     
                 }else//如果最外层是个对象
                 {
@@ -188,9 +203,6 @@
             }
             
         }
-        
-
-
         return YES;
     }
 }

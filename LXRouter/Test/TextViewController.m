@@ -11,6 +11,7 @@
 #import "TestObj.h"
 #import "LXRouterTools.h"
 #import "LXJsonValidateTools.h"
+
 @interface TextViewController ()
 
 @end
@@ -27,6 +28,9 @@
 //        [routerInfo.topNavigationController pushViewController:vc animated:YES];
 //    }];
     
+    [LXRouter registerIdentify:@"test2" inputClass:[Test2Obj class] toHandler:^(LXRouterInfo *routerInfo) {
+        
+    }];
     [LXRouter registerIdentify:@"test" inputClass:[TestObj class] toHandler:^(LXRouterInfo *routerInfo) {
         NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
     }];

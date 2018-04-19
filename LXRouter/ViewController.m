@@ -13,15 +13,25 @@
 #import "TestObj.h"
 #import "LXRouterTools.h"
 @interface ViewController ()
-
+@property (nonatomic,retain)UIWebView * webView;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view addSubview:self.webView];
     
-    [LXRouterTools genScriptBridgeWithRouteHandles:[LXRouter sharedInstance].routeHandle RouteInputClass:[LXRouter sharedInstance].routeInputClass];
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
+    NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@"ExampleApp"
+                                                          ofType:@"html"];
+    NSString * htmlCont = [NSString stringWithContentsOfFile:htmlPath
+                                                    encoding:NSUTF8StringEncoding
+                                                       error:nil];
+    [self.webView loadHTMLString:htmlCont baseURL:baseURL];
+    
+   // [LXRouterTools genScriptBridgeWithRouteHandles:[LXRouter sharedInstance].routeHandle RouteInputClass:[LXRouter sharedInstance].routeInputClass];
     
 //    [LXRouter openIdentify:@"test1" withUserInfo:@{@"title":@"测试"} completion:^(id result) {
 //        
@@ -65,11 +75,54 @@
 
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSString *urlString = request.URL.absoluteString;
+    NSArray *urlCompnents = [urlString componentsSeparatedByString:@"wbbpchannel://"];
+    BOOL needProcess = urlCompnents.count >= 2 ? YES : NO;
+    if (!needProcess) {
+        return YES;
+    }
+    
+    NSString *component = [urlCompnents lastObject];
+    NSString *strAction = [component stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSData *strData = [strAction dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *strDic = [NSJSONSerialization JSONObjectWithData:strData options:NSJSONReadingMutableContainers error:NULL];
+    NSString *funcName = [NSString stringWithFormat:@"%@:", strDic[@"function"]];
+    NSDictionary *paramDic = strDic[@"params"];
+    NSString * callBackId = strDic[@"callbackId"];
+    if (callBackId) {
+        NSDictionary * callBackJson = @{@"responseId":callBackId};
+       NSString  * jsonString = [ViewController dictionaryToJson:callBackJson];
+        NSString * callBack =  [NSString stringWithFormat:@"sjtApp._dispatchMessageFromNative('%@')",jsonString];
+        [webView stringByEvaluatingJavaScriptFromString:callBack];
+    }
+    NSLog(@"%@",strDic);
+    return NO;
 }
 
+-(UIWebView *)webView
+{
+    if (!_webView) {
+        _webView = [[UIWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        _webView.delegate = self;
+    }
+    return _webView;
+}
+
++ (NSString*)dictionaryToJson:(NSDictionary *)dic
+
+{
+    if (!dic) {
+        return @"";
+    }
+    NSError *parseError = nil;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:0 error:&parseError];
+    NSString * jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    return [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];;
+    
+}
 
 @end
