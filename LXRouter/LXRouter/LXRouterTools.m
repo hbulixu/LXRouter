@@ -52,16 +52,21 @@
             NSMutableString * funcParamsStr = [NSMutableString string];
             //内部函数入参解析字符串
             NSMutableString * paramsAnalyzeStr = [NSMutableString string];
+            //函数体
+            NSMutableString * funcBody = [NSMutableString string];
             if (dic && [dic isKindOfClass:[NSDictionary class]]) {
             
+                //  /**
+                [commentsStr appendFormat:@"%@/**\n",tab];
+                
                 //最外层key值大于4个
                 BOOL params2More = dic.allKeys.count > 4;
                 if (params2More) {
                     //*@param {Object    }  inputParams
-                    [commentsStr appendFormat:@"%@@param {%@}  %@",star,Object,funcParamsKey];
+                    [commentsStr appendFormat:@"%@%@ @param {%@}  %@",tab,star,Object,funcParamsKey];
                     [commentsStr appendString:@"\n"];
                     //*inputParams = {
-                    [commentsStr appendFormat:@"%@%@ = { \n",star,funcParamsKey];
+                    [commentsStr appendFormat:@"%@%@ %@ = { \n",tab,star,funcParamsKey];
                     //函数参数增加 inputParams
                     [funcParamsStr appendFormat:@"%@",funcParamsKey];
                 }
@@ -70,21 +75,31 @@
                 
                 //参数解析
                 if (paramsAnalyzeStr.length) {
-                    // var params = inputParams
-                    NSString * varBegin =    [NSString stringWithFormat:@"var %@=%@ %@\n",innerParams,funcParamsKey,lBrace];
-                    paramsAnalyzeStr = [NSMutableString stringWithFormat:@"%@%@\n%@",varBegin,paramsAnalyzeStr,rBrace];
+                    // var params = {
+                    NSString * varBegin =    [NSString stringWithFormat:@"\n%@%@var %@= %@\n",tab,tab,innerParams,lBrace];
+                    paramsAnalyzeStr = [NSMutableString stringWithFormat:@"%@%@%@%@%@\n\n",varBegin,paramsAnalyzeStr,tab,tab,rBrace];
                 }
                 
                 if (params2More) {
-                    [commentsStr appendFormat:@"%@ }\n",star];
+                    [commentsStr appendFormat:@"%@%@ }\n",tab,star];
                 }
-                [commentsStr appendFormat:@"%@@param %-10s callBack -回调函数",star,@"{func}".UTF8String];
+                [commentsStr appendFormat:@"%@%@ @param %-10s callBack -回调函数\n",tab,star,@"{func}".UTF8String];
+                [commentsStr appendFormat:@"%@*/",tab];
                 if (funcParamsStr.length) {
                     [funcParamsStr appendString:@","];
                 }
                 [funcParamsStr appendString:callBack];
+                funcParamsStr = [NSMutableString stringWithFormat:@"%@%@:function (%@)",tab,identify,funcParamsStr];
+                
+
+                [funcBody appendFormat:@"  {\n"];
+                [funcBody appendString:paramsAnalyzeStr];
+                [funcBody appendFormat:@"%@%@this._callNative(\"%@\",params,callBack);\n",tab,tab,identify];
+                [funcBody appendFormat:@"%@}",tab];
+
             }
-            NSLog(@"commentsStr :\n%@ \n funcParamsStr:\n%@ \n paramsAnalyzeStr:\n%@  ",commentsStr,funcParamsStr,paramsAnalyzeStr);
+            NSLog(@" \n%@ \n \n%@%@  ",commentsStr,funcParamsStr,funcBody);
+
         }
     }
 }
@@ -151,19 +166,19 @@
                     }
                     
 
-                    [commentsStr appendFormat:@"%@@param %-10s %@ \n",star,blockJSType.UTF8String,annotation.keyName];
+                    [commentsStr appendFormat:@"%@%@ @param %-10s %@ \n",tab,star,blockJSType.UTF8String,annotation.keyName];
                     
                     //isTest: isTest
-                    [paramsAnalyzeStr appendString:[NSString stringWithFormat:@"%@%@:  %@\n",tab,annotation.keyName,annotation.keyName]];
+                    [paramsAnalyzeStr appendFormat:@"%@%@%@%@:  %@\n",tab,tab,tab,annotation.keyName,annotation.keyName];
                     
                 }else//如果最外层是个对象
                 {
                     
                     // *    isTest:  //NSNumber -是否测试
-                    [commentsStr appendFormat:@"%@%@%@:  //%@ -%@ \n",star,tab,annotation.keyName, jsType,annotation.comments?:@""];
+                    [commentsStr appendFormat:@"%@%@%@%@:  //%@ -%@ \n",tab,star,tab,annotation.keyName, jsType,annotation.comments?:@""];
                     
                     //isTest: isTest
-                    [paramsAnalyzeStr appendString:[NSString stringWithFormat:@"%@%@: %@,\n",tab,annotation.keyName,annotation.keyName]];
+                    [paramsAnalyzeStr appendString:[NSString stringWithFormat:@"%@%@%@%@: %@.%@,\n",tab,tab,tab,annotation.keyName,funcParamsKey,annotation.keyName]];
                     
                 }
  
@@ -176,7 +191,7 @@
                     level --;
                 }
                 // *    isTest:  //NSNumber -是否测试
-                [commentsStr appendFormat:@"%@%@%@:  //%@ -%@ \n",star,mtab,annotation.keyName,jsType,annotation.comments?:@""];
+                [commentsStr appendFormat:@"%@%@%@%@:  //%@ -%@ \n",tab,star,mtab,annotation.keyName,jsType,annotation.comments?:@""];
             }
             //如果当前节点有子节点
             if (annotation.child) {
@@ -184,20 +199,20 @@
                 //opts = [{
                 if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {
                     
-                    [commentsStr appendFormat:@"%@%@%@ = %@%@\n",star,tab,annotation.keyName,lSquareBracket,lBrace];
+                    [commentsStr appendFormat:@"%@%@%@%@ = %@%@\n",tab,star,tab,annotation.keyName,lSquareBracket,lBrace];
                 }else//opts = {
                 {
-                    [commentsStr appendFormat:@"%@%@%@ = %@\n",star,tab,annotation.keyName,lBrace];
+                    [commentsStr appendFormat:@"%@%@%@%@ = %@\n",tab,star,tab,annotation.keyName,lBrace];
                 }
 
                 [self setStrRecursiveWithValidateObject:annotation.child params2More:params2More commentsStr:commentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
                 //结尾 }]
                 if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {
                     
-                    [commentsStr appendFormat:@"%@%@%@%@\n",star,tab,rBrace,rSquareBracket];
+                    [commentsStr appendFormat:@"%@%@%@%@%@\n",tab,star,tab,rBrace,rSquareBracket];
                 }else //结尾 }
                 {
-                    [commentsStr appendFormat:@"%@%@%@\n",star,tab,rBrace];
+                    [commentsStr appendFormat:@"%@%@%@%@\n",tab,star,tab,rBrace];
                 }
                 
             }
