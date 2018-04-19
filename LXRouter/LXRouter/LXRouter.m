@@ -12,12 +12,7 @@
 static NSString * errorDomain = @"lx.router.error";
 @interface LXRouter()
 
-/**
- *  保存了所有已注册的 Identify
- */
-@property (nonatomic,retain) NSMutableDictionary *routeHandle;
-@property (nonatomic,retain) NSMutableDictionary *routeJson;
-@property (nonatomic,retain) NSMutableDictionary *routeInputClass;
+
 
 @end
 
@@ -96,7 +91,7 @@ static NSString * errorDomain = @"lx.router.error";
 //    }
     Class clz = [[LXRouter sharedInstance].routeInputClass objectForKey:identify];
     if (clz) {
-        NSError * error = [LXRouterTools newValidateJson:json WithClass:clz];
+        NSError * error = [LXRouterTools validateJson:json WithClass:clz];
         if (error) {
             completion(nil,error);
             return;

@@ -13,6 +13,4 @@
 +(void)genScriptBridgeWithRouteHandles:(NSDictionary *)routeHandles RouteInputClass:(NSDictionary *)routeInputClass;
 
 + (NSError *)validateJson:(id)json WithClass:(Class)clz;
-
-+ (NSError *)newValidateJson:(id)json WithClass:(Class)clz;
 @end

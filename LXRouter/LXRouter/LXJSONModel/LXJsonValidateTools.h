@@ -11,8 +11,6 @@
 @interface LXJsonValidateTools : NSObject
 
 + (NSError *)validateJson:(id)json WithClass:(Class)clz;
-+ (nullable id)genValidateObjectWithClass:(Class) clz;
-
-+ (NSError *)newValidateJson:(id)json WithClass:(Class)clz;
-+ (nullable id)newGenValidateObjectWithClass:(Class) clz;
++ ( id)genValidateObjectWithClass:(Class) clz;
++ (BOOL)isClassFromFoundation:(Class)c;
 @end

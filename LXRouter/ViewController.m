@@ -11,6 +11,7 @@
 #import "NSObject+LXJsonModel.h"
 #import "LXJsonValidateTools.h"
 #import "TestObj.h"
+#import "LXRouterTools.h"
 @interface ViewController ()
 
 @end
@@ -20,20 +21,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [LXRouterTools genScriptBridgeWithRouteHandles:[LXRouter sharedInstance].routeHandle RouteInputClass:[LXRouter sharedInstance].routeInputClass];
+    
 //    [LXRouter openIdentify:@"test1" withUserInfo:@{@"title":@"测试"} completion:^(id result) {
 //        
 //    }];
-        NSDictionary * dic = @{//@"hhh" : @{@"aaaa":@"11111",@"number":@"2222"},
-                               @"test2":@"",
-                               @"test" :@"",
-                               @"isTest":@"1",
-                               @"urls":@[@{@"aaaa":@"11111",@"number":@"2222"}],
-                               @"array":@[@{@"aaaa":@"11111",@"number":@"2222"}]
-                               };
-    
-    [LXRouter openIdentify:@"test" withJson:dic completion:^(id result,NSError *error) {
-        NSLog(@"%@",error);
-    }];
+//        NSDictionary * dic = @{@"hhh" : @{@"aaaa":@"11111",@"number":@"2222"},
+//                               @"test2":@"",
+//                               @"test" :@"",
+//                               @"isTest":@"1",
+//                               @"urls":@[@{@"aaaa":@"11111",@"number":@"2222"}],
+//                               @"array":@[]
+//                               //@"array":@[@{@"aaaa":@"11111",@"number":@"2222"}]
+//                               };
+//
+//    [LXRouter openIdentify:@"test" withJson:dic completion:^(id result,NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
     
 
 //    NSDictionary * dic = [LXJsonValidateTools newGenValidateObjectWithClass:[TestObj class]];

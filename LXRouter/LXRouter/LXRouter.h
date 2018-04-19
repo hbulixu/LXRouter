@@ -22,4 +22,12 @@ typedef void (^LXRouterHandler)(LXRouterInfo *routerInfo);
 +(void)openIdentify:(NSString *)identify withJson:(id)json completion:(void (^)(id result,NSError *error))completion;
 
 
++ (instancetype)sharedInstance;
+/**
+ *  保存了所有已注册的 Identify
+ */
+@property (nonatomic,retain) NSMutableDictionary *routeHandle;
+@property (nonatomic,retain) NSMutableDictionary *routeJson;
+@property (nonatomic,retain) NSMutableDictionary *routeInputClass;
+
 @end
