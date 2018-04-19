@@ -40,6 +40,8 @@
 {
     NSEnumerator *  enumerator = [routeInputClass keyEnumerator];
     NSString * identify;
+    NSString * filePath = @"/Users/a58/Desktop/LXRouter/LXRouter/sjt_appBridge.js";
+    NSFileHandle * fileHandel = [NSFileHandle fileHandleForWritingAtPath:filePath];
     while ((identify = [enumerator nextObject]) !=nil) {
         
         Class clz = routeInputClass[identify];
@@ -98,8 +100,8 @@
                 [funcBody appendFormat:@"%@}",tab];
 
             }
-            NSLog(@" \n%@ \n \n%@%@  ",commentsStr,funcParamsStr,funcBody);
-
+            NSString * functionStr = [NSString stringWithFormat:@" \n%@ \n \n%@%@  ",commentsStr,funcParamsStr,funcBody ];
+            [fileHandel writeData:[functionStr dataUsingEncoding:NSUTF8StringEncoding]];
         }
     }
 }

@@ -1,3 +1,4 @@
+//商家通app js调用native脚本
 var sjtApp= {
     messagingIframe : "",
     CUSTOM_PROTOCOL_SCHEME : 'wbbpchannel',
@@ -9,14 +10,14 @@ var sjtApp= {
         this.messagingIframe.style.display = 'none';
         doc.documentElement.appendChild(this.messagingIframe);
     },
-
+    //内部函数不要使用
     _callNative:function(action, params, responseCallback) {
         this._doSend({
             function: action,
             params: params
         }, responseCallback);
     },
-
+    //内部函数不要使用
     _doSend:function (message, responseCallback) {
         if (responseCallback) {
             var callbackId = 'hy_' + (this.uniqueId++) + '_' + new Date().getTime();
@@ -26,8 +27,7 @@ var sjtApp= {
         var messageQueueString = JSON.stringify(message);
         this.messagingIframe.src = this.CUSTOM_PROTOCOL_SCHEME + '://' + encodeURIComponent(messageQueueString);
     },
-
-
+    //内部函数不要使用
     _dispatchMessageFromNative:function (messageJSON) {
         (function(that){setTimeout(function() {
             var message = JSON.parse(messageJSON);
@@ -44,35 +44,11 @@ var sjtApp= {
         })})(this);
     },
     
-    test2:function(aaaa,date,data,number,callBack)
-    {
-        var params= {
-        aaaa:  aaaa,
-        date:  date,
-        data:  data,
-        number:  number
-        }
-        this._callNative("test2",params,callBack);
-    },
-
-    test:function(inputParams,callBack )
-    {
-        var params ={
-        isTest: inputParams.isTest,
-        urls: inputParams.urls,
-        hhh: inputParams.hhh,
-        array: inputParams.array,
-        test: inputParams.test,
-        test2: inputParams.test2,
-        }
-        this._callNative("test",params,callBack);
-    }
+    //供外部调用的函数从此开始
+    /**************begin*****************/
+    
+    /**************end*******************/
 }
-
     var doc = document;
     sjtApp._createQueueReadyIframe(doc);
-
-function hello(){
-    sjtApp._dispatchMessageFromNative(null);
-}
 

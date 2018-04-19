@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		37135AC72084A1B80019ADA1 /* NSObject+LXJsonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AC62084A1B80019ADA1 /* NSObject+LXJsonModel.m */; };
 		37135ACB2085E1B40019ADA1 /* LXJsonValidateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135ACA2085E1B40019ADA1 /* LXJsonValidateTools.m */; };
+		37135ACD2088C01C0019ADA1 /* sjt_appBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 37135ACC2088C01C0019ADA1 /* sjt_appBridge.js */; };
 		37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 37385862207B52C4001D34F4 /* LXRouterTools.m */; };
 		37385867207B6314001D34F4 /* sjt_app.js in Resources */ = {isa = PBXBuildFile; fileRef = 37385866207B6314001D34F4 /* sjt_app.js */; };
 		37385869207B88CE001D34F4 /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 37385868207B88CE001D34F4 /* ExampleApp.html */; };
@@ -52,6 +53,7 @@
 		37135AC62084A1B80019ADA1 /* NSObject+LXJsonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LXJsonModel.m"; sourceTree = "<group>"; };
 		37135AC92085E1B40019ADA1 /* LXJsonValidateTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXJsonValidateTools.h; sourceTree = "<group>"; };
 		37135ACA2085E1B40019ADA1 /* LXJsonValidateTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXJsonValidateTools.m; sourceTree = "<group>"; };
+		37135ACC2088C01C0019ADA1 /* sjt_appBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_appBridge.js; sourceTree = "<group>"; };
 		37385861207B52C4001D34F4 /* LXRouterTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXRouterTools.h; sourceTree = "<group>"; };
 		37385862207B52C4001D34F4 /* LXRouterTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterTools.m; sourceTree = "<group>"; };
 		37385866207B6314001D34F4 /* sjt_app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_app.js; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		37BC22D2200C5CAC00AAFB5A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				37135ACC2088C01C0019ADA1 /* sjt_appBridge.js */,
 				37385868207B88CE001D34F4 /* ExampleApp.html */,
 				37385866207B6314001D34F4 /* sjt_app.js */,
 				37BC22D3200C5CAC00AAFB5A /* main.m */,
@@ -347,6 +350,7 @@
 				37BC22E2200C5CAC00AAFB5A /* LaunchScreen.storyboard in Resources */,
 				37BC22DF200C5CAC00AAFB5A /* Assets.xcassets in Resources */,
 				37385869207B88CE001D34F4 /* ExampleApp.html in Resources */,
+				37135ACD2088C01C0019ADA1 /* sjt_appBridge.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
