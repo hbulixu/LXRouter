@@ -52,6 +52,32 @@ var sjtApp= {
     * @param {Undefine} data 
     * @param {String}   number 
     * @param {func}     callBack -回调函数
+    * 
+    * ###输出信息如下###:
+    * responseObj = {
+    *    isTest:  //String -是否测试 
+    *    urls:  //Array - 
+    *    hhh:  //Object - 
+    *    hhh = {
+    *        aaaa:  //String - 
+    *        date:  //String - 
+    *        data:  //Undefine - 
+    *        number:  //String - 
+    *    }
+    *    array:  //Array - 
+    *    array = [{
+    *        aaaa:  //String - 
+    *        date:  //String - 
+    *        data:  //Undefine - 
+    *        number:  //String - 
+    *    }]
+    *    test:  //String - 
+    *    test2:  //String - 
+    * }
+    * error = {
+    * errorCode: //String
+    * errorMsg: //String
+    * }
     */ 
  
     test2:function (aaaa,date,data,number,callBack)  {
@@ -64,6 +90,50 @@ var sjtApp= {
         }
 
         this._callNative("test2",params,callBack);
+    }  , 
+    /**
+    * 调用native支付功能
+    * @param {Object}  inputParams
+    * inputParams = { 
+    *    payfrom:  //String -支付类型1微信2什么 
+    *    productDesc:  //String - 
+    *    payType:  //String - 
+    *    balanceType:  //String -支付类型1旧接口2新接口 
+    *    orderMoney:  //String -订单金额 
+    *    orderId:  //String -订单id 
+    *    merId:  //String - 
+    * }
+    * @param {func}     callBack -回调函数
+    * 
+    * ###输出信息如下###:
+    * responseObj = {
+    *    payfrom:  //String -支付类型1微信2什么 
+    *    productDesc:  //String - 
+    *    payType:  //String - 
+    *    balanceType:  //String -支付类型1旧接口2新接口 
+    *    orderMoney:  //String -订单金额 
+    *    orderId:  //String -订单id 
+    *    merId:  //String - 
+    * }
+    * error = {
+    * errorCode: //String
+    * errorMsg: //String
+    * }
+    */ 
+ 
+    nativePay:function (inputParams,callBack)  {
+
+        var params= {
+            payfrom: inputParams.payfrom,
+            productDesc: inputParams.productDesc,
+            payType: inputParams.payType,
+            balanceType: inputParams.balanceType,
+            orderMoney: inputParams.orderMoney,
+            orderId: inputParams.orderId,
+            merId: inputParams.merId,
+        }
+
+        this._callNative("nativePay",params,callBack);
     }  , 
     /**
     * @param {Object}  inputParams
@@ -88,6 +158,18 @@ var sjtApp= {
     *    test2:  //String - 
     * }
     * @param {func}     callBack -回调函数
+    * 
+    * ###输出信息如下###:
+    * responseObj = {
+    *    aaaa:  //String - 
+    *    date:  //String - 
+    *    data:  //Undefine - 
+    *    number:  //String - 
+    * }
+    * error = {
+    * errorCode: //String
+    * errorMsg: //String
+    * }
     */ 
  
     test:function (inputParams,callBack)  {

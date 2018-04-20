@@ -11,7 +11,7 @@
 #import "TestObj.h"
 #import "LXRouterTools.h"
 #import "LXJsonValidateTools.h"
-
+#import "SJTPayModel.h"
 @interface TextViewController ()
 
 @end
@@ -28,10 +28,13 @@
 //        [routerInfo.topNavigationController pushViewController:vc animated:YES];
 //    }];
     
-    [LXRouter registerIdentify:@"test2" inputClass:[Test2Obj class] toHandler:^(LXRouterInfo *routerInfo) {
+    [LXRouter registerIdentify:@"test2" inputClass:[Test2Obj class] outputClass:[TestObj class]  toHandler:^(LXRouterInfo *routerInfo) {
         
     }];
-    [LXRouter registerIdentify:@"test" inputClass:[TestObj class] toHandler:^(LXRouterInfo *routerInfo) {
+    [LXRouter registerIdentify:@"test" inputClass:[TestObj class]  outputClass:[Test2Obj class]  toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
         NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
     }];
 }

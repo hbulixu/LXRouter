@@ -26,6 +26,14 @@
 #define PRComments(comment)
 #endif
 
+//函数功能宏
+#if DEBUG
+#define FCComments(comment) property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(FCComments_##comment##_,__COUNTER__);
+
+#else
+#define FCComments(comment)
+#endif
+
 @interface TypeAnnotation : NSObject
 
 @property (nonatomic,assign)BOOL required;

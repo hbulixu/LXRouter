@@ -123,6 +123,50 @@ static NSSet *foundationClasses_;
         return error;
     }
 }
+
+
++ (id)genFuncCommentsWithClass:(Class) clz
+{
+    unsigned int methodCount = 0;
+    objc_property_t *propertys = class_copyPropertyList(clz, &methodCount);
+      for (unsigned int i = 0; i < methodCount; i++) {
+          objc_property_t propety = propertys[i];
+          NSString *name = [NSString stringWithCString:property_getName(propety) encoding:NSUTF8StringEncoding];
+          
+          NSString *propAttrs = [[NSString alloc] initWithCString:property_getAttributes(propety) encoding:NSUTF8StringEncoding];
+          
+          NSRange range = [propAttrs rangeOfString:@"@\".*\"" options:NSRegularExpressionSearch];
+          
+          if (range.location != NSNotFound) {
+              range.location += 2;
+              range.length -= 3;
+              
+              NSString *typeName = [propAttrs substringWithRange:range];
+              if ([typeName isEqualToString:@"TypeAnnotation"]) {
+                  
+                  NSRange commetsRange = [name rangeOfString:@"FCComments_"];
+                  if (commetsRange.location !=NSNotFound) {
+                      NSArray * array =  [name componentsSeparatedByString:@"_"];
+                      if (array.count == 3) {
+                          
+                          NSString * comments = array[1];
+                          if (comments) {
+                              return comments;
+                          }
+                      }
+                  }
+              
+          }
+          
+      }
+    }
+    return nil;
+    
+}
+
+
+
+
 + (id)genValidateObjectWithClass:(Class) clz
 {
     
@@ -193,6 +237,9 @@ static id classToJsonRecursive(Class clz, int level,NSString * fatherKey)
                         }
                         continue;
                     }
+                    
+                    continue;
+                    
                     
                 }else //自定义类
                 {

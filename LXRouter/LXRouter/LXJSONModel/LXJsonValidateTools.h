@@ -12,5 +12,6 @@
 
 + (NSError *)validateJson:(id)json WithClass:(Class)clz;
 + ( id)genValidateObjectWithClass:(Class) clz;
++ ( id)genFuncCommentsWithClass:(Class) clz;
 + (BOOL)isClassFromFoundation:(Class)c;
 @end

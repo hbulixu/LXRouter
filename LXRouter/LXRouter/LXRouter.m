@@ -34,7 +34,7 @@ static NSString * errorDomain = @"lx.router.error";
     return [LXRouter sharedInstance];
 }
 
-+(void)registerIdentify:(NSString *)identify inputClass:(Class) clz toHandler:(LXRouterHandler) handler
++(void)registerIdentify:(NSString *)identify inputClass:(Class) input outputClass:(Class) output toHandler:(LXRouterHandler) handler;
 {
     LXRouter * router =  [LXRouter sharedInstance];
     if (identify && handler) {
@@ -43,8 +43,11 @@ static NSString * errorDomain = @"lx.router.error";
             if (handler) {
                 [router.routeHandle setObject:[handler copy] forKey:identify];
             }
-            if (clz) {
-                [router.routeInputClass setObject:clz forKey:identify];
+            if (input) {
+                [router.routeInputClass setObject:input forKey:identify];
+            }
+            if (output) {
+                [router.routeOutputClass setObject:output forKey:identify];
             }
         }
     }
@@ -133,5 +136,13 @@ static NSString * errorDomain = @"lx.router.error";
         _routeInputClass = [NSMutableDictionary dictionary];
     }
     return _routeInputClass;
+}
+
+-(NSMutableDictionary *)routeOutputClass
+{
+    if (!_routeOutputClass) {
+        _routeOutputClass = [NSMutableDictionary dictionary];
+    }
+    return _routeOutputClass;
 }
 @end
