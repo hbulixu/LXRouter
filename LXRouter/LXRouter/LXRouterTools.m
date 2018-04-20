@@ -21,6 +21,7 @@
 #define lBrace @"{"
 #define rBrace @"}"
 
+#define part1End @"/**************begin*****************/"
 #
 @implementation LXRouterTools
 
@@ -41,7 +42,18 @@
     NSEnumerator *  enumerator = [routeInputClass keyEnumerator];
     NSString * identify;
     NSString * filePath = @"/Users/a58/Desktop/LXRouter/LXRouter/sjt_appBridge.js";
+    NSString * readPath = [[NSBundle mainBundle]pathForResource:@"sjt_app" ofType:@"js"];
     NSFileHandle * fileHandel = [NSFileHandle fileHandleForWritingAtPath:filePath];
+    NSFileHandle * readHandel = [NSFileHandle fileHandleForReadingAtPath:readPath];
+    NSData * baseJsData =[readHandel readDataToEndOfFile];
+    NSString * baseJsStr = [[NSString alloc]initWithData:baseJsData encoding:NSUTF8StringEncoding];
+    NSRange  range = [baseJsStr rangeOfString:part1End];
+    NSString * baseJsPart1 = [baseJsStr substringToIndex:range.location + range.length];
+    NSString * baseJsPart2 = [baseJsStr substringFromIndex:range.location + range.length];
+    [readHandel closeFile];
+    NSMutableString * allJs = [NSMutableString string];
+    [allJs appendString:baseJsPart1];
+ 
     while ((identify = [enumerator nextObject]) !=nil) {
         
         Class clz = routeInputClass[identify];
@@ -100,10 +112,15 @@
                 [funcBody appendFormat:@"%@}",tab];
 
             }
-            NSString * functionStr = [NSString stringWithFormat:@" \n%@ \n \n%@%@  ",commentsStr,funcParamsStr,funcBody ];
-            [fileHandel writeData:[functionStr dataUsingEncoding:NSUTF8StringEncoding]];
+            NSString * functionStr = [NSString stringWithFormat:@" \n%@ \n \n%@%@  ,",commentsStr,funcParamsStr,funcBody ];
+            [allJs appendString:functionStr];
+           
         }
+        
     }
+    [allJs appendString:baseJsPart2];
+    
+    [fileHandel writeData:[allJs dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
 +(BOOL)setStrRecursiveWithValidateObject:(id )json params2More:(BOOL)params2More commentsStr:(NSMutableString *)commentsStr funcParamsStr:(NSMutableString *)funcParamsStr paramsAnalyzeStr:(NSMutableString *)paramsAnalyzeStr
@@ -171,7 +188,7 @@
                     [commentsStr appendFormat:@"%@%@ @param %-10s %@ \n",tab,star,blockJSType.UTF8String,annotation.keyName];
                     
                     //isTest: isTest
-                    [paramsAnalyzeStr appendFormat:@"%@%@%@%@:  %@\n",tab,tab,tab,annotation.keyName,annotation.keyName];
+                    [paramsAnalyzeStr appendFormat:@"%@%@%@%@:  %@,\n",tab,tab,tab,annotation.keyName,annotation.keyName];
                     
                 }else//如果最外层是个对象
                 {

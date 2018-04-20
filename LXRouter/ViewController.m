@@ -12,7 +12,9 @@
 #import "LXJsonValidateTools.h"
 #import "TestObj.h"
 #import "LXRouterTools.h"
-@interface ViewController ()
+#import <MessageUI/MFMailComposeViewController.h>
+
+@interface ViewController ()<MFMailComposeViewControllerDelegate>
 @property (nonatomic,retain)UIWebView * webView;
 @end
 
@@ -32,7 +34,7 @@
     [self.webView loadHTMLString:htmlCont baseURL:baseURL];
     
     [LXRouterTools genScriptBridgeWithRouteHandles:[LXRouter sharedInstance].routeHandle RouteInputClass:[LXRouter sharedInstance].routeInputClass];
-    
+    [self sendMailInApp];
 //    [LXRouter openIdentify:@"test1" withUserInfo:@{@"title":@"测试"} completion:^(id result) {
 //        
 //    }];
@@ -99,6 +101,65 @@
     }
     NSLog(@"%@",strDic);
     return NO;
+}
+
+- (void)sendMailInApp
+{
+    Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+    if (!mailClass) {
+        //[self alertWithMessage:@"当前系统版本不支持应用内发送邮件功能，您可以使用mailto方法代替"];
+        NSLog(@"当前系统版本不支持应用内发送邮件功能，您可以使用mailto方法代替");
+        return;
+    }
+    if (![mailClass canSendMail]) {
+        //[self alertWithMessage:@"用户没有设置邮件账户"];
+        NSLog(@"用户没有设置邮件账户");
+        return;
+    }
+    [self displayMailPicker];
+}
+
+- (void)displayMailPicker
+{
+    MFMailComposeViewController *mailPicker = [[MFMailComposeViewController alloc] init];
+    mailPicker.mailComposeDelegate = self;
+    
+    //设置主题
+    [mailPicker setSubject: @"eMail主题"];
+    NSString *file =[[NSBundle mainBundle]pathForResource:@"sjt_appBridge" ofType:@"js"];
+    NSData *pdf = [NSData dataWithContentsOfFile:file];
+    [mailPicker addAttachmentData: pdf mimeType: @"" fileName: @"sjt_appBridge.js"];
+    
+    NSString *emailBody = @"<font color='red'>eMail</font> 正文";
+    [mailPicker setMessageBody:emailBody isHTML:YES];
+    [self presentModalViewController: mailPicker animated:YES];
+
+}
+
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    //关闭邮件发送窗口
+    [self dismissModalViewControllerAnimated:YES];
+    NSString *msg;
+    switch (result) {
+        case MFMailComposeResultCancelled:
+            msg = @"用户取消编辑邮件";
+            break;
+        case MFMailComposeResultSaved:
+            msg = @"用户成功保存邮件";
+            break;
+        case MFMailComposeResultSent:
+            msg = @"用户点击发送，将邮件放到队列中，还没发送";
+            break;
+        case MFMailComposeResultFailed:
+            msg = @"用户试图保存或者发送邮件失败";
+            break;
+        default:
+            msg = @"";
+            break;
+    }
+    //[self alertWithMessage:msg];
 }
 
 -(UIWebView *)webView
