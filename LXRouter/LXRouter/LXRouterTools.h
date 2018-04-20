@@ -10,7 +10,8 @@
 #import "NSObject+LXJsonModel.h"
 @interface LXRouterTools : NSObject
 
-+(void)genScriptBridgeWithRouteHandles:(NSDictionary *)routeHandles RouteInputClass:(NSDictionary *)routeInputClass RouteOutPutClass:(NSDictionary *)routeOutPutClass;
+
++(void)genJavaScriptBridge;
 
 + (NSError *)validateJson:(id)json WithClass:(Class)clz;
 @end

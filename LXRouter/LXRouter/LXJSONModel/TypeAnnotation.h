@@ -14,13 +14,22 @@
 #define __annotation_macro_concat_inner(A, B) A##B
 #define __annotation_macro_concat(a,b) __annotation_macro_concat_inner(a, b)
 
-#define ParamRequired property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(paramRequired_,__COUNTER__);
+#if DEBUG
+#define ParamRequired @property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(paramRequired_,__COUNTER__);
+#else
+#define ParamRequired 
+#endif
 
-#define DSProtocol(class) property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(propertyProtocol_##class##_,__COUNTER__);
+#if DEBUG
+#define DSProtocol(class) @property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(propertyProtocol_##class##_,__COUNTER__);
+#else
+#define DSProtocol(comment)
+#endif
+
 
 //注释宏
 #if DEBUG
-#define PRComments(comment) property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(PRComments_##comment##_,__COUNTER__);
+#define PRComments(comment) @property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(PRComments_##comment##_,__COUNTER__);
 
 #else
 #define PRComments(comment)
@@ -28,7 +37,7 @@
 
 //函数功能宏
 #if DEBUG
-#define FCComments(comment) property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(FCComments_##comment##_,__COUNTER__);
+#define FCComments(comment) @property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(FCComments_##comment##_,__COUNTER__);
 
 #else
 #define FCComments(comment)

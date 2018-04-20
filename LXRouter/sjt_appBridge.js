@@ -205,7 +205,3 @@ var sjtApp= {
     var doc = document;
     sjtApp._createQueueReadyIframe(doc);
 
-
-
-
-

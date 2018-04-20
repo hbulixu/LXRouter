@@ -9,6 +9,8 @@
 #import "LXRouterTools.h"
 #import "LXJsonValidateTools.h"
 #import "TypeAnnotation.h"
+#import "LXRouter.h"
+#import "LXRouterPrivate.h"
 
 #define funcParamsKey @"inputParams"
 #define innerParams @"params"
@@ -29,6 +31,11 @@
 + (NSError *)validateJson:(id)json WithClass:(Class)clz
 {
     return  [LXJsonValidateTools validateJson:json WithClass:clz];
+}
+
++(void)genJavaScriptBridge
+{
+    [LXRouterTools genScriptBridgeWithRouteHandles:[LXRouter sharedInstance].routeHandle RouteInputClass:[LXRouter sharedInstance].routeInputClass RouteOutPutClass:[LXRouter sharedInstance].routeOutputClass];
 }
 
 +(NSDictionary *)mapDic
@@ -52,6 +59,10 @@
 
     NSString * filePath = @"/Users/a58/Desktop/LXRouter/LXRouter/sjt_appBridge.js";
     NSString * readPath = [[NSBundle mainBundle]pathForResource:@"sjt_app" ofType:@"js"];
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    
+    [fileManager removeItemAtPath:filePath error:nil];
+    [fileManager createFileAtPath:filePath contents:nil attributes:nil];
     NSFileHandle * fileHandel = [NSFileHandle fileHandleForWritingAtPath:filePath];
     //用来取固定js的代码
     NSFileHandle * readHandel = [NSFileHandle fileHandleForReadingAtPath:readPath];
@@ -311,6 +322,7 @@
     }
 }
 
+//递归生成输入注释，函数入参，函数组装
 +(BOOL)setStrRecursiveWithValidateObject:(id )json params2More:(BOOL)params2More inputCommentsStr:(NSMutableString *)commentsStr funcParamsStr:(NSMutableString *)funcParamsStr paramsAnalyzeStr:(NSMutableString *)paramsAnalyzeStr
 {
 
@@ -429,20 +441,4 @@
     }
 }
 
-
-
-
-//最外层参数超过三个传对象
-// 要生成脚本的样式
-//标明参数。
-/**
- @param {type} key - comments
- */
-//function identify(@param ,responseCallback)
-//{
-//   var params = {
-//      key:parmkey
-//   }
-//  _callNative("identify",params,responseCallback);
-//}
 @end

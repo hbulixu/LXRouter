@@ -12,7 +12,13 @@
 static NSString * errorDomain = @"lx.router.error";
 @interface LXRouter()
 
-
+/**
+ *  保存了所有已注册的 Identify
+ */
+@property (nonatomic,retain,readwrite) NSMutableDictionary *routeHandle;
+@property (nonatomic,retain,readwrite) NSMutableDictionary *routeJson;
+@property (nonatomic,retain,readwrite) NSMutableDictionary *routeInputClass;
+@property (nonatomic,retain,readwrite) NSMutableDictionary *routeOutputClass;
 
 @end
 
@@ -53,25 +59,6 @@ static NSString * errorDomain = @"lx.router.error";
     }
 }
 
-//注册一个路由
-+(void)registerIdentify:(NSString *)identify inputJson:(id) json toHandler:(LXRouterHandler)handler
-{
-    LXRouter * router =  [LXRouter sharedInstance];
-    
-    if (identify && handler) {
-        
-        @synchronized (router) {
-            if (handler) {
-                [router.routeHandle setObject:[handler copy] forKey:identify];
-            }
-            if (json) {
-                [router.routeJson setObject:json forKey:identify];
-            }
-        }
-    }
-
-}
-
 //执行一个路由
 +(void)openIdentify:(NSString *)identify withJson:(id)json completion:(void (^)(id result,NSError *error))completion
 {
@@ -83,24 +70,20 @@ static NSString * errorDomain = @"lx.router.error";
     
     LXRouterHandler handler = [[LXRouter sharedInstance].routeHandle objectForKey:identify];
     
-//    id formJson = [[LXRouter sharedInstance].routeJson objectForKey:identify];
-    
-//    if (formJson) {
-//        if (![LXRouter validateJSON:json withValidator:formJson]) {
-//            error = [NSError errorWithDomain:errorDomain code:-1 userInfo:@{NSLocalizedDescriptionKey:@"invalidate json"}];
-//            completion(nil,error);
-//            return;
-//        };
-//    }
     Class clz = [[LXRouter sharedInstance].routeInputClass objectForKey:identify];
+    
     if (clz) {
+#if  DEBUG
         NSError * error = [LXRouterTools validateJson:json WithClass:clz];
         if (error) {
             completion(nil,error);
             return;
         }
+#endif
         routerInfo.inputModel = [clz lx_modelWithJSON:json];
     }
+
+
     if (handler) {
         handler(routerInfo);
     }else
@@ -110,6 +93,12 @@ static NSString * errorDomain = @"lx.router.error";
     }
 }
 
+
++(void)openIdentify:(NSString *)identify withModel:(id)model completion:(void (^)(id result,NSError *error))completion
+{
+    
+    
+}
 
 
 #pragma mark -GET&SET

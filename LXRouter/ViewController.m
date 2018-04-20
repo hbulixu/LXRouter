@@ -14,6 +14,7 @@
 #import "LXRouterTools.h"
 #import <MessageUI/MFMailComposeViewController.h>
 
+
 @interface ViewController ()<MFMailComposeViewControllerDelegate>
 @property (nonatomic,retain)UIWebView * webView;
 @end
@@ -33,8 +34,10 @@
                                                        error:nil];
     [self.webView loadHTMLString:htmlCont baseURL:baseURL];
     
-    [LXRouterTools genScriptBridgeWithRouteHandles:[LXRouter sharedInstance].routeHandle RouteInputClass:[LXRouter sharedInstance].routeInputClass RouteOutPutClass:[LXRouter sharedInstance].routeOutputClass];
+
     [self sendMailInApp];
+
+    [LXRouterTools genJavaScriptBridge];
 //    [LXRouter openIdentify:@"test1" withUserInfo:@{@"title":@"测试"} completion:^(id result) {
 //        
 //    }];
