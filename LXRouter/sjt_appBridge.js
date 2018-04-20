@@ -47,51 +47,6 @@ var sjtApp= {
     //供外部调用的函数从此开始
     /**************begin*****************/ 
     /**
-    * @param {String}   aaaa 
-    * @param {String}   date 
-    * @param {Undefine} data 
-    * @param {String}   number 
-    * @param {func}     callBack -回调函数
-    * 
-    * ###输出信息如下###:
-    * responseObj = {
-    *    isTest:  //String -是否测试 
-    *    urls:  //Array - 
-    *    hhh:  //Object - 
-    *    hhh = {
-    *        aaaa:  //String - 
-    *        date:  //String - 
-    *        data:  //Undefine - 
-    *        number:  //String - 
-    *    }
-    *    array:  //Array - 
-    *    array = [{
-    *        aaaa:  //String - 
-    *        date:  //String - 
-    *        data:  //Undefine - 
-    *        number:  //String - 
-    *    }]
-    *    test:  //String - 
-    *    test2:  //String - 
-    * }
-    * error = {
-    * errorCode: //String
-    * errorMsg: //String
-    * }
-    */ 
- 
-    test2:function (aaaa,date,data,number,callBack)  {
-
-        var params= {
-            aaaa:  aaaa,
-            date:  date,
-            data:  data,
-            number:  number,
-        }
-
-        this._callNative("test2",params,callBack);
-    }  , 
-    /**
     * 调用native支付功能
     * @param {Object}  inputParams
     * inputParams = { 
@@ -184,10 +139,73 @@ var sjtApp= {
         }
 
         this._callNative("test",params,callBack);
+    }  , 
+    /**
+    * @param {String}   aaaa 
+    * @param {String}   date 
+    * @param {Undefine} data 
+    * @param {String}   number 
+    * @param {func}     callBack -回调函数
+    * 
+    * ###输出信息如下###:
+    * responseObj = {
+    *    isTest:  //String -是否测试 
+    *    urls:  //Array - 
+    *    hhh:  //Object - 
+    *    hhh = {
+    *        aaaa:  //String - 
+    *        date:  //String - 
+    *        data:  //Undefine - 
+    *        number:  //String - 
+    *    }
+    *    array:  //Array - 
+    *    array = [{
+    *        aaaa:  //String - 
+    *        date:  //String - 
+    *        data:  //Undefine - 
+    *        number:  //String - 
+    *    }]
+    *    test:  //String - 
+    *    test2:  //String - 
+    * }
+    * error = {
+    * errorCode: //String
+    * errorMsg: //String
+    * }
+    */ 
+ 
+    test2:function (aaaa,date,data,number,callBack)  {
+
+        var params= {
+            aaaa:  aaaa,
+            date:  date,
+            data:  data,
+            number:  number,
+        }
+
+        this._callNative("test2",params,callBack);
+    }  , 
+    /**
+    * 
+    * ###输出信息如下###:
+    * responseObj = {
+    * }
+    * error = {
+    * errorCode: //String
+    * errorMsg: //String
+    * }
+    */ 
+ 
+    diaoyixia:function (callBack)   {
+        this._callNative("diaoyixia","",callBack);
     }  ,
     
     /**************end*******************/
 }
     var doc = document;
     sjtApp._createQueueReadyIframe(doc);
+
+
+
+
 

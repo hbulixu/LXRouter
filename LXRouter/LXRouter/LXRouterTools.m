@@ -25,6 +25,12 @@
 #
 @implementation LXRouterTools
 
+
++ (NSError *)validateJson:(id)json WithClass:(Class)clz
+{
+    return  [LXJsonValidateTools validateJson:json WithClass:clz];
+}
+
 +(NSDictionary *)mapDic
 {
     return @{
@@ -39,13 +45,11 @@
 }
 
 /*该方法用于生成代码总体思路如下
- 1.js代码分为两部分，一部分是固定的代码，在sjt_app.js,一部分是通过分析类生成的代码
- 
+ js代码分为两部分，一部分是固定的代码，在sjt_app.js,一部分是通过分析类生成的代码
  **/
 +(void)genScriptBridgeWithRouteHandles:(NSDictionary *)routeHandles RouteInputClass:(NSDictionary *)routeInputClass RouteOutPutClass:(NSDictionary *)routeOutPutClass
 {
-    NSEnumerator *  enumerator = [routeInputClass keyEnumerator];
-    NSString * identify;
+
     NSString * filePath = @"/Users/a58/Desktop/LXRouter/LXRouter/sjt_appBridge.js";
     NSString * readPath = [[NSBundle mainBundle]pathForResource:@"sjt_app" ofType:@"js"];
     NSFileHandle * fileHandel = [NSFileHandle fileHandleForWritingAtPath:filePath];
@@ -64,6 +68,8 @@
     //添加上半部分固定代码
     [allJs appendString:baseJsPart1];
  
+    NSEnumerator *  enumerator = [routeHandles keyEnumerator];
+    NSString * identify;
     while ((identify = [enumerator nextObject]) !=nil) {
         
         //输入注释字符串
@@ -159,6 +165,13 @@
                 [funcBody appendFormat:@"%@}",tab];
 
             }
+        }else //如果没有入参添加固定格式
+        {
+            [inputCommentsStr appendFormat:@"%@/**\n",tab];
+            [funcParamsStr appendFormat:@"%@%@:function (callBack) ",tab,identify];
+            [funcBody appendString:@"  {\n"];
+            [funcBody appendFormat:@"%@%@this._callNative(\"%@\",\"\",callBack);\n",tab,tab,identify];
+            [funcBody appendFormat:@"%@}",tab];
         }
         
         
@@ -417,10 +430,7 @@
 }
 
 
-+ (NSError *)validateJson:(id)json WithClass:(Class)clz
-{
-    return  [LXJsonValidateTools validateJson:json WithClass:clz];
-}
+
 
 //最外层参数超过三个传对象
 // 要生成脚本的样式

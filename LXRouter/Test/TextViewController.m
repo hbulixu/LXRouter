@@ -37,6 +37,10 @@
     [LXRouter registerIdentify:@"nativePay" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
         NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
     }];
+    
+    [LXRouter registerIdentify:@"diaoyixia" inputClass:nil outputClass:nil toHandler:^(LXRouterInfo *routerInfo) {
+        
+    }];
 }
 
 - (void)viewDidLoad {
