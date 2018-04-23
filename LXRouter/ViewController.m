@@ -50,7 +50,7 @@
 //                               //@"array":@[@{@"aaaa":@"11111",@"number":@"2222"}]
 //                               };
 //
-//    [LXRouter openIdentify:@"test" withJson:dic completion:^(id result,NSError *error) {
+//    [LXRouter openIdentify:@"callNativePay" withJson:dic completion:^(id result,NSError *error) {
 //        NSLog(@"%@",error);
 //    }];
     

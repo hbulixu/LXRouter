@@ -404,7 +404,7 @@
                 {
                     
                     // *    isTest:  //NSNumber -是否测试
-                    [commentsStr appendFormat:@"%@%@%@%@:  //%@ -%@ \n",tab,star,tab,annotation.keyName, jsType,annotation.comments?:@""];
+                    [commentsStr appendFormat:@"%@%@%@%@:  //%@ -%@ -%@ \n",tab,star,tab,annotation.keyName, jsType,annotation.comments?:@"",annotation.required?@"(必输项)":@""];
                     
                     //isTest: isTest
                     [paramsAnalyzeStr appendString:[NSString stringWithFormat:@"%@%@%@%@: %@.%@,\n",tab,tab,tab,annotation.keyName,funcParamsKey,annotation.keyName]];
@@ -414,7 +414,7 @@
             }else //第二级 第三级 ...
             {
                 // *    isTest:  //NSNumber -是否测试
-                [commentsStr appendFormat:@"%@%@%@%@:  //%@ -%@ \n",tab,star,mtab,annotation.keyName,jsType,annotation.comments?:@""];
+                [commentsStr appendFormat:@"%@%@%@%@:  //%@ -%@ -%@ \n",tab,star,mtab,annotation.keyName,jsType,annotation.comments?:@"",annotation.required?@"(必输项)":@""];
             }
             //如果当前节点有子节点
             if (annotation.child) {

@@ -50,13 +50,13 @@ var sjtApp= {
     * 调用native支付功能
     * @param {Object}  inputParams
     * inputParams = { 
-    *    payfrom:  //String -支付类型1微信2什么 
-    *    productDesc:  //String - 
-    *    payType:  //String - 
-    *    balanceType:  //String -支付类型1旧接口2新接口 
-    *    orderMoney:  //String -订单金额 
-    *    orderId:  //String -订单id 
-    *    merId:  //String - 
+    *    payfrom:  //String -支付类型1微信2什么 - 
+    *    productDesc:  //String - - 
+    *    payType:  //String - - 
+    *    balanceType:  //String -支付类型1旧接口2新接口 - 
+    *    orderMoney:  //String -订单金额 -(必输项) 
+    *    orderId:  //String -订单id - 
+    *    merId:  //String - - 
     * }
     * @param {func}     callBack -回调函数
     * 
@@ -93,44 +93,44 @@ var sjtApp= {
     /**
     * @param {Object}  inputParams
     * inputParams = { 
-    *    isTest:  //String -是否测试 
-    *    urls:  //Array - 
-    *    hhh:  //Object - 
+    *    isTest:  //String -是否测试 -(必输项) 
+    *    urls:  //Array - -(必输项) 
+    *    hhh:  //Object - -(必输项) 
     *    hhh = {
-    *        payModel:  //Object - 
+    *        payModel:  //Object - - 
     *        payModel = {
-    *            payfrom:  //String -支付类型1微信2什么 
-    *            productDesc:  //String - 
-    *            payType:  //String - 
-    *            balanceType:  //String -支付类型1旧接口2新接口 
-    *            orderMoney:  //String -订单金额 
-    *            orderId:  //String -订单id 
-    *            merId:  //String - 
+    *            payfrom:  //String -支付类型1微信2什么 - 
+    *            productDesc:  //String - - 
+    *            payType:  //String - - 
+    *            balanceType:  //String -支付类型1旧接口2新接口 - 
+    *            orderMoney:  //String -订单金额 -(必输项) 
+    *            orderId:  //String -订单id - 
+    *            merId:  //String - - 
     *        }
-    *        aaaa:  //String - 
-    *        date:  //String - 
-    *        data:  //Undefine - 
-    *        number:  //String - 
+    *        aaaa:  //String - - 
+    *        date:  //String - - 
+    *        data:  //Undefine - - 
+    *        number:  //String - -(必输项) 
     *    }
-    *    array:  //Array - 
+    *    array:  //Array - -(必输项) 
     *    array = [{
-    *        payModel:  //Object - 
+    *        payModel:  //Object - - 
     *        payModel = {
-    *            payfrom:  //String -支付类型1微信2什么 
-    *            productDesc:  //String - 
-    *            payType:  //String - 
-    *            balanceType:  //String -支付类型1旧接口2新接口 
-    *            orderMoney:  //String -订单金额 
-    *            orderId:  //String -订单id 
-    *            merId:  //String - 
+    *            payfrom:  //String -支付类型1微信2什么 - 
+    *            productDesc:  //String - - 
+    *            payType:  //String - - 
+    *            balanceType:  //String -支付类型1旧接口2新接口 - 
+    *            orderMoney:  //String -订单金额 -(必输项) 
+    *            orderId:  //String -订单id - 
+    *            merId:  //String - - 
     *        }
-    *        aaaa:  //String - 
-    *        date:  //String - 
-    *        data:  //Undefine - 
-    *        number:  //String - 
+    *        aaaa:  //String - - 
+    *        date:  //String - - 
+    *        data:  //Undefine - - 
+    *        number:  //String - -(必输项) 
     *    }]
-    *    test:  //String - 
-    *    test2:  //String - 
+    *    test:  //String - -(必输项) 
+    *    test2:  //String - -(必输项) 
     * }
     * @param {func}     callBack -回调函数
     * 
@@ -173,20 +173,20 @@ var sjtApp= {
     /**
     * @param {Object}  inputParams
     * inputParams = { 
-    *    payModel:  //Object - 
+    *    payModel:  //Object - - 
     *    payModel = {
-    *        payfrom:  //String -支付类型1微信2什么 
-    *        productDesc:  //String - 
-    *        payType:  //String - 
-    *        balanceType:  //String -支付类型1旧接口2新接口 
-    *        orderMoney:  //String -订单金额 
-    *        orderId:  //String -订单id 
-    *        merId:  //String - 
+    *        payfrom:  //String -支付类型1微信2什么 - 
+    *        productDesc:  //String - - 
+    *        payType:  //String - - 
+    *        balanceType:  //String -支付类型1旧接口2新接口 - 
+    *        orderMoney:  //String -订单金额 -(必输项) 
+    *        orderId:  //String -订单id - 
+    *        merId:  //String - - 
     *    }
-    *    aaaa:  //String - 
-    *    date:  //String - 
-    *    data:  //Undefine - 
-    *    number:  //String - 
+    *    aaaa:  //String - - 
+    *    date:  //String - - 
+    *    data:  //Undefine - - 
+    *    number:  //String - -(必输项) 
     * }
     * @param {func}     callBack -回调函数
     * 
@@ -250,6 +250,18 @@ var sjtApp= {
         this._callNative("test2",params,callBack);
     }  , 
     /**
+    * 调用native支付功能
+    * @param {Object}  inputParams
+    * inputParams = { 
+    *    payfrom:  //String -支付类型1微信2什么 - 
+    *    productDesc:  //String - - 
+    *    payType:  //String - - 
+    *    balanceType:  //String -支付类型1旧接口2新接口 - 
+    *    orderMoney:  //String -订单金额 -(必输项) 
+    *    orderId:  //String -订单id - 
+    *    merId:  //String - - 
+    * }
+    * @param {func}     callBack -回调函数
     * 
     * ###输出信息如下###:
     * responseObj = {
@@ -260,8 +272,19 @@ var sjtApp= {
     * }
     */ 
  
-    diaoyixia:function (callBack)   {
-        this._callNative("diaoyixia","",callBack);
+    callNativePay:function (inputParams,callBack)  {
+
+        var params= {
+            payfrom: inputParams.payfrom,
+            productDesc: inputParams.productDesc,
+            payType: inputParams.payType,
+            balanceType: inputParams.balanceType,
+            orderMoney: inputParams.orderMoney,
+            orderId: inputParams.orderId,
+            merId: inputParams.merId,
+        }
+
+        this._callNative("callNativePay",params,callBack);
     }  ,
     
     /**************end*******************/

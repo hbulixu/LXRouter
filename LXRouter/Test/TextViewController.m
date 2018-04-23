@@ -38,8 +38,18 @@
         NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
     }];
     
-    [LXRouter registerIdentify:@"diaoyixia" inputClass:nil outputClass:nil toHandler:^(LXRouterInfo *routerInfo) {
+    SJTPayModel * model = [SJTPayModel new];
+    model.orderMoney = @"123";
+    model.payType = @"1";
+    [LXRouter openIdentify:@"callNativePay" withModel:model completion:^(id result, NSError *error) {
         
+    }];
+    
+    [LXRouter registerIdentify:@"callNativePay" inputClass:[SJTPayModel class] outputClass:nil toHandler:^(LXRouterInfo *routerInfo) {
+        //process业务处理
+        
+        //处理完成后的回调
+        routerInfo.completionBlock(nil, nil);
     }];
 }
 

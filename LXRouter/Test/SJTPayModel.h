@@ -11,6 +11,7 @@
 @interface SJTPayModel : NSObject
 FCComments(调用native支付功能)
 PRComments(订单金额)
+ParamRequired
 @property (nonatomic,copy)NSString * orderMoney;
 PRComments(支付类型1_58_2什么)
 @property (nonatomic,copy)NSString * payType;
