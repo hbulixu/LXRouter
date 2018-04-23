@@ -97,6 +97,16 @@ var sjtApp= {
     *    urls:  //Array - 
     *    hhh:  //Object - 
     *    hhh = {
+    *        payModel:  //Object - 
+    *        payModel = {
+    *            payfrom:  //String -支付类型1微信2什么 
+    *            productDesc:  //String - 
+    *            payType:  //String - 
+    *            balanceType:  //String -支付类型1旧接口2新接口 
+    *            orderMoney:  //String -订单金额 
+    *            orderId:  //String -订单id 
+    *            merId:  //String - 
+    *        }
     *        aaaa:  //String - 
     *        date:  //String - 
     *        data:  //Undefine - 
@@ -104,6 +114,16 @@ var sjtApp= {
     *    }
     *    array:  //Array - 
     *    array = [{
+    *        payModel:  //Object - 
+    *        payModel = {
+    *            payfrom:  //String -支付类型1微信2什么 
+    *            productDesc:  //String - 
+    *            payType:  //String - 
+    *            balanceType:  //String -支付类型1旧接口2新接口 
+    *            orderMoney:  //String -订单金额 
+    *            orderId:  //String -订单id 
+    *            merId:  //String - 
+    *        }
     *        aaaa:  //String - 
     *        date:  //String - 
     *        data:  //Undefine - 
@@ -116,6 +136,16 @@ var sjtApp= {
     * 
     * ###输出信息如下###:
     * responseObj = {
+    *    payModel:  //Object - 
+    *    payModel = {
+    *        payfrom:  //String -支付类型1微信2什么 
+    *        productDesc:  //String - 
+    *        payType:  //String - 
+    *        balanceType:  //String -支付类型1旧接口2新接口 
+    *        orderMoney:  //String -订单金额 
+    *        orderId:  //String -订单id 
+    *        merId:  //String - 
+    *    }
     *    aaaa:  //String - 
     *    date:  //String - 
     *    data:  //Undefine - 
@@ -141,10 +171,23 @@ var sjtApp= {
         this._callNative("test",params,callBack);
     }  , 
     /**
-    * @param {String}   aaaa 
-    * @param {String}   date 
-    * @param {Undefine} data 
-    * @param {String}   number 
+    * @param {Object}  inputParams
+    * inputParams = { 
+    *    payModel:  //Object - 
+    *    payModel = {
+    *        payfrom:  //String -支付类型1微信2什么 
+    *        productDesc:  //String - 
+    *        payType:  //String - 
+    *        balanceType:  //String -支付类型1旧接口2新接口 
+    *        orderMoney:  //String -订单金额 
+    *        orderId:  //String -订单id 
+    *        merId:  //String - 
+    *    }
+    *    aaaa:  //String - 
+    *    date:  //String - 
+    *    data:  //Undefine - 
+    *    number:  //String - 
+    * }
     * @param {func}     callBack -回调函数
     * 
     * ###输出信息如下###:
@@ -153,6 +196,16 @@ var sjtApp= {
     *    urls:  //Array - 
     *    hhh:  //Object - 
     *    hhh = {
+    *        payModel:  //Object - 
+    *        payModel = {
+    *            payfrom:  //String -支付类型1微信2什么 
+    *            productDesc:  //String - 
+    *            payType:  //String - 
+    *            balanceType:  //String -支付类型1旧接口2新接口 
+    *            orderMoney:  //String -订单金额 
+    *            orderId:  //String -订单id 
+    *            merId:  //String - 
+    *        }
     *        aaaa:  //String - 
     *        date:  //String - 
     *        data:  //Undefine - 
@@ -160,6 +213,16 @@ var sjtApp= {
     *    }
     *    array:  //Array - 
     *    array = [{
+    *        payModel:  //Object - 
+    *        payModel = {
+    *            payfrom:  //String -支付类型1微信2什么 
+    *            productDesc:  //String - 
+    *            payType:  //String - 
+    *            balanceType:  //String -支付类型1旧接口2新接口 
+    *            orderMoney:  //String -订单金额 
+    *            orderId:  //String -订单id 
+    *            merId:  //String - 
+    *        }
     *        aaaa:  //String - 
     *        date:  //String - 
     *        data:  //Undefine - 
@@ -174,13 +237,14 @@ var sjtApp= {
     * }
     */ 
  
-    test2:function (aaaa,date,data,number,callBack)  {
+    test2:function (inputParams,callBack)  {
 
         var params= {
-            aaaa:  aaaa,
-            date:  date,
-            data:  data,
-            number:  number,
+            payModel: inputParams.payModel,
+            aaaa: inputParams.aaaa,
+            date: inputParams.date,
+            data: inputParams.data,
+            number: inputParams.number,
         }
 
         this._callNative("test2",params,callBack);

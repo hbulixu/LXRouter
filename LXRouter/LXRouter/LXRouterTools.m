@@ -264,9 +264,17 @@
     else
     {
         TypeAnnotation * annotation = json;
+        
+
         //普通类
         if([annotation isKindOfClass:[TypeAnnotation class]])
         {
+            NSInteger level = annotation.level;
+            NSMutableString * mtab = [NSMutableString string];
+            while (level) {
+                [mtab appendString:tab];
+                level --;
+            }
             NSDictionary * dic = [self mapDic];
             //自定义类型
             //String
@@ -285,12 +293,7 @@
             }
             blockJSType = [NSString stringWithFormat:@"{%@}",jsType];
             
-            NSInteger level = annotation.level;
-            NSMutableString * mtab = [NSMutableString string];
-            while (level) {
-                [mtab appendString:tab];
-                level --;
-            }
+
             // *    isTest:  //NSNumber -是否测试
             [outPutCommentsStr appendFormat:@"%@%@%@%@:  //%@ -%@ \n",tab,star,mtab,annotation.keyName,jsType,annotation.comments?:@""];
             //如果当前节点有子节点
@@ -299,20 +302,20 @@
                 //opts = [{
                 if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {
                     
-                    [outPutCommentsStr appendFormat:@"%@%@%@%@ = %@%@\n",tab,star,tab,annotation.keyName,lSquareBracket,lBrace];
+                    [outPutCommentsStr appendFormat:@"%@%@%@%@ = %@%@\n",tab,star,mtab,annotation.keyName,lSquareBracket,lBrace];
                 }else//opts = {
                 {
-                    [outPutCommentsStr appendFormat:@"%@%@%@%@ = %@\n",tab,star,tab,annotation.keyName,lBrace];
+                    [outPutCommentsStr appendFormat:@"%@%@%@%@ = %@\n",tab,star,mtab,annotation.keyName,lBrace];
                 }
                 
                 [self setStrRecursiveWithValidateObject:annotation.child outPutCommentsStr:outPutCommentsStr];
                 //结尾 }]
                 if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {
                     
-                    [outPutCommentsStr appendFormat:@"%@%@%@%@%@\n",tab,star,tab,rBrace,rSquareBracket];
+                    [outPutCommentsStr appendFormat:@"%@%@%@%@%@\n",tab,star,mtab,rBrace,rSquareBracket];
                 }else //结尾 }
                 {
-                    [outPutCommentsStr appendFormat:@"%@%@%@%@\n",tab,star,tab,rBrace];
+                    [outPutCommentsStr appendFormat:@"%@%@%@%@\n",tab,star,mtab,rBrace];
                 }
                 
             }
@@ -372,6 +375,13 @@
                 }
             }
             blockJSType = [NSString stringWithFormat:@"{%@}",jsType];
+            
+            NSInteger level = annotation.level;
+            NSMutableString * mtab = [NSMutableString string];
+            while (level) {
+                [mtab appendString:tab];
+                level --;
+            }
             //第一级
             if (annotation.level == 1) {
                 //参数过多，只传一个model，不需要拼写参数了
@@ -403,12 +413,6 @@
  
             }else //第二级 第三级 ...
             {
-                NSInteger level = annotation.level;
-                NSMutableString * mtab = [NSMutableString string];
-                while (level) {
-                    [mtab appendString:tab];
-                    level --;
-                }
                 // *    isTest:  //NSNumber -是否测试
                 [commentsStr appendFormat:@"%@%@%@%@:  //%@ -%@ \n",tab,star,mtab,annotation.keyName,jsType,annotation.comments?:@""];
             }
@@ -418,20 +422,20 @@
                 //opts = [{
                 if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {
                     
-                    [commentsStr appendFormat:@"%@%@%@%@ = %@%@\n",tab,star,tab,annotation.keyName,lSquareBracket,lBrace];
+                    [commentsStr appendFormat:@"%@%@%@%@ = %@%@\n",tab,star,mtab,annotation.keyName,lSquareBracket,lBrace];
                 }else//opts = {
                 {
-                    [commentsStr appendFormat:@"%@%@%@%@ = %@\n",tab,star,tab,annotation.keyName,lBrace];
+                    [commentsStr appendFormat:@"%@%@%@%@ = %@\n",tab,star,mtab,annotation.keyName,lBrace];
                 }
 
                 [self setStrRecursiveWithValidateObject:annotation.child params2More:params2More inputCommentsStr:commentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
                 //结尾 }]
                 if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {
                     
-                    [commentsStr appendFormat:@"%@%@%@%@%@\n",tab,star,tab,rBrace,rSquareBracket];
+                    [commentsStr appendFormat:@"%@%@%@%@%@\n",tab,star,mtab,rBrace,rSquareBracket];
                 }else //结尾 }
                 {
-                    [commentsStr appendFormat:@"%@%@%@%@\n",tab,star,tab,rBrace];
+                    [commentsStr appendFormat:@"%@%@%@%@\n",tab,star,mtab,rBrace];
                 }
                 
             }
