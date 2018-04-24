@@ -39,7 +39,7 @@
     }];
     
     [LXRouter registerIdentify:@"dianyixia" inputClass:nil outputClass:nil toHandler:^(LXRouterInfo *routerInfo) {
-        
+        routerInfo.completionBlock(@"aaaaa111", nil);
     }];
     
     [LXRouter registerIdentify:@"callNativePay" inputClass:[SJTPayModel class] outputClass:nil toHandler:^(LXRouterInfo *routerInfo) {

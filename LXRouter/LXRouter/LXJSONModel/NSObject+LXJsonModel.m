@@ -22,6 +22,11 @@ static NSSet *foundationClasses_;
     return self.yy_modelToJSONObject;
 }
 
+- (nullable id)lx_modelToJSONString
+{
+    return self.yy_modelToJSONString;
+}
+
 + (NSSet *)foundationClasses
 {
     if (foundationClasses_ == nil) {

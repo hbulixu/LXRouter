@@ -20,6 +20,7 @@
 		37135AF7208F166B0019ADA1 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AF0208F166B0019ADA1 /* AFNetworkReachabilityManager.m */; };
 		37135AF8208F166B0019ADA1 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AF1208F166B0019ADA1 /* AFSecurityPolicy.m */; };
 		37135AFA208F21920019ADA1 /* sjt_appBridge_release.js in Resources */ = {isa = PBXBuildFile; fileRef = 37135AF9208F21910019ADA1 /* sjt_appBridge_release.js */; };
+		37135AFF208F2E610019ADA1 /* LXJSBridgeAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AFE208F2E610019ADA1 /* LXJSBridgeAnalysis.m */; };
 		37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 37385862207B52C4001D34F4 /* LXRouterTools.m */; };
 		37385867207B6314001D34F4 /* sjt_app.js in Resources */ = {isa = PBXBuildFile; fileRef = 37385866207B6314001D34F4 /* sjt_app.js */; };
 		37385869207B88CE001D34F4 /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 37385868207B88CE001D34F4 /* ExampleApp.html */; };
@@ -85,6 +86,8 @@
 		37135AF1208F166B0019ADA1 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
 		37135AF2208F166B0019ADA1 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		37135AF9208F21910019ADA1 /* sjt_appBridge_release.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_appBridge_release.js; sourceTree = "<group>"; };
+		37135AFD208F2E610019ADA1 /* LXJSBridgeAnalysis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXJSBridgeAnalysis.h; sourceTree = "<group>"; };
+		37135AFE208F2E610019ADA1 /* LXJSBridgeAnalysis.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXJSBridgeAnalysis.m; sourceTree = "<group>"; };
 		37385861207B52C4001D34F4 /* LXRouterTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXRouterTools.h; sourceTree = "<group>"; };
 		37385862207B52C4001D34F4 /* LXRouterTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterTools.m; sourceTree = "<group>"; };
 		37385866207B6314001D34F4 /* sjt_app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_app.js; sourceTree = "<group>"; };
@@ -196,6 +199,15 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		37135AFC208F2DF80019ADA1 /* LXJSBridgeAnalysis */ = {
+			isa = PBXGroup;
+			children = (
+				37135AFD208F2E610019ADA1 /* LXJSBridgeAnalysis.h */,
+				37135AFE208F2E610019ADA1 /* LXJSBridgeAnalysis.m */,
+			);
+			path = LXJSBridgeAnalysis;
+			sourceTree = "<group>";
+		};
 		37BC22C6200C5CAC00AAFB5A = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +292,7 @@
 		37DD76F72080825E00A7ECCA /* LXRouter */ = {
 			isa = PBXGroup;
 			children = (
+				37135AFC208F2DF80019ADA1 /* LXJSBridgeAnalysis */,
 				37135ADF208F05020019ADA1 /* LXRouterTools */,
 				37135AC82085E14B0019ADA1 /* LXJSONModel */,
 				37BC230B200C7E7E00AAFB5A /* LXRouterInfo.h */,
@@ -458,6 +471,7 @@
 				37135AF4208F166B0019ADA1 /* AFHTTPSessionManager.m in Sources */,
 				37135AD02089938B0019ADA1 /* SJTPayModel.m in Sources */,
 				37DD76FB208082D000A7ECCA /* TestObj.m in Sources */,
+				37135AFF208F2E610019ADA1 /* LXJSBridgeAnalysis.m in Sources */,
 				37135AF3208F166B0019ADA1 /* AFURLResponseSerialization.m in Sources */,
 				37BC22DA200C5CAC00AAFB5A /* ViewController.m in Sources */,
 				37DD76F52080821800A7ECCA /* TypeAnnotation.m in Sources */,

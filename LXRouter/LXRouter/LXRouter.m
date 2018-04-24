@@ -65,7 +65,7 @@ static NSString * errorDomain = @"lx.router.error";
     
     LXRouterInfo * routerInfo = [LXRouterInfo new];
     routerInfo.jsonInfo = json;
-    routerInfo.completionBlock = completion;
+    routerInfo.completionBlock = [completion copy];
     NSError *error = nil;
     
     LXRouterHandler handler = [[LXRouter sharedInstance].routeHandle objectForKey:identify];

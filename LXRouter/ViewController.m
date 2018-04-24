@@ -12,7 +12,7 @@
 #import "TestObj.h"
 #import "LXRouterTools.h"
 #import <MessageUI/MFMailComposeViewController.h>
-
+#import "LXJSBridgeAnalysis.h"
 
 @interface ViewController ()<MFMailComposeViewControllerDelegate>
 @property (nonatomic,retain)UIWebView * webView;
@@ -82,27 +82,7 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     NSString *urlString = request.URL.absoluteString;
-    NSArray *urlCompnents = [urlString componentsSeparatedByString:@"wbbpchannel://"];
-    BOOL needProcess = urlCompnents.count >= 2 ? YES : NO;
-    if (!needProcess) {
-        return YES;
-    }
-    
-    NSString *component = [urlCompnents lastObject];
-    NSString *strAction = [component stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSData *strData = [strAction dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *strDic = [NSJSONSerialization JSONObjectWithData:strData options:NSJSONReadingMutableContainers error:NULL];
-    NSString *funcName = [NSString stringWithFormat:@"%@:", strDic[@"function"]];
-    NSDictionary *paramDic = strDic[@"params"];
-    NSString * callBackId = strDic[@"callbackId"];
-    if (callBackId) {
-        NSDictionary * callBackJson = @{@"responseId":callBackId};
-       NSString  * jsonString = [ViewController dictionaryToJson:callBackJson];
-        NSString * callBack =  [NSString stringWithFormat:@"sjtApp._dispatchMessageFromNative('%@')",jsonString];
-        [webView stringByEvaluatingJavaScriptFromString:callBack];
-    }
-    NSLog(@"%@",strDic);
-    return NO;
+   return  [LXJSBridgeAnalysis webView:webView shouldStartLoadAfterTransUriToRouter:urlString];
 }
 
 - (void)sendMailInApp
