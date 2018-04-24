@@ -15,5 +15,4 @@ ParamRequired
 @property (nonatomic,retain)NSNumber * number;
 @property (nonatomic,retain)NSDate * date;
 @property (nonatomic,retain)NSData * data;
-@property (nonatomic,retain)SJTPayModel * payModel;
 @end

@@ -38,10 +38,7 @@
         NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
     }];
     
-    SJTPayModel * model = [SJTPayModel new];
-    model.orderMoney = @"123";
-    model.payType = @"1";
-    [LXRouter openIdentify:@"callNativePay" withModel:model completion:^(id result, NSError *error) {
+    [LXRouter registerIdentify:@"dianyixia" inputClass:nil outputClass:nil toHandler:^(LXRouterInfo *routerInfo) {
         
     }];
     

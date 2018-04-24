@@ -12,6 +12,7 @@
 #import "LXRouterPrivate.h"
 #import "LXParamsInfoTree.h"
 #import "NSObject+LXJsonModel.h"
+#import "AFNetworking.h"
 
 #define funcParamsKey @"inputParams"
 #define innerParams @"params"
@@ -54,12 +55,18 @@
 {
     
     NSString * filePath = @"/Users/a58/Desktop/LXRouter/LXRouter/sjt_appBridge.js";
+    NSString * releaseFilePath = @"/Users/a58/Desktop/LXRouter/LXRouter/sjt_appBridge_release.js";
     NSString * readPath = [[NSBundle mainBundle]pathForResource:@"sjt_app" ofType:@"js"];
     NSFileManager * fileManager = [NSFileManager defaultManager];
     
     [fileManager removeItemAtPath:filePath error:nil];
     [fileManager createFileAtPath:filePath contents:nil attributes:nil];
+    
+    [fileManager removeItemAtPath:releaseFilePath error:nil];
+    [fileManager createFileAtPath:releaseFilePath contents:nil attributes:nil];
+    
     NSFileHandle * fileHandel = [NSFileHandle fileHandleForWritingAtPath:filePath];
+    NSFileHandle * releaseFileHandel = [NSFileHandle fileHandleForWritingAtPath:releaseFilePath];
     //用来取固定js的代码
     NSFileHandle * readHandel = [NSFileHandle fileHandleForReadingAtPath:readPath];
     NSData * baseJsData =[readHandel readDataToEndOfFile];
@@ -135,7 +142,7 @@
                 }
                 
                 //递归处理子节点,组装输入注释，函数入参，入参组装等
-                [LXJSCodeGenerator setStrRecursiveWithValidateObject:dic params2More:params2More inputCommentsStr:inputCommentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
+                [LXJSCodeGenerator setStrRecursiveWithParamsInfoTree:dic params2More:params2More inputCommentsStr:inputCommentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
                 
                 //如果有入参组装函数，添加入参头部
                 if (paramsAnalyzeStr.length) {
@@ -222,6 +229,11 @@
     
     [allJs appendString:baseJsPart2];
     
+    [self getJSRelease:allJs finish:^(NSString *compressJS) {
+        if (compressJS) {
+            [releaseFileHandel writeData:[compressJS dataUsingEncoding:NSUTF8StringEncoding]];
+        }
+    }];
     [fileHandel writeData:[allJs dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
@@ -322,7 +334,7 @@
 }
 
 //递归生成输入注释，函数入参，函数组装
-+(BOOL)setStrRecursiveWithValidateObject:(id )json params2More:(BOOL)params2More inputCommentsStr:(NSMutableString *)commentsStr funcParamsStr:(NSMutableString *)funcParamsStr paramsAnalyzeStr:(NSMutableString *)paramsAnalyzeStr
++(BOOL)setStrRecursiveWithParamsInfoTree:(id )json params2More:(BOOL)params2More inputCommentsStr:(NSMutableString *)commentsStr funcParamsStr:(NSMutableString *)funcParamsStr paramsAnalyzeStr:(NSMutableString *)paramsAnalyzeStr
 {
     
     if([json isKindOfClass:[NSDictionary class]])//自定义对象
@@ -331,7 +343,7 @@
         NSEnumerator * dicEnumerator =[json keyEnumerator];
         while ((itemKey = [dicEnumerator nextObject] )!= nil) {
             id value = json[itemKey];
-            [self setStrRecursiveWithValidateObject:value params2More:params2More inputCommentsStr:commentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr ];
+            [self setStrRecursiveWithParamsInfoTree:value params2More:params2More inputCommentsStr:commentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr ];
         }
         return YES;
     }else if([json isKindOfClass:[NSArray class]] )//数组中存在自定义对象的情况
@@ -345,7 +357,7 @@
                 NSEnumerator * dicEnumerator =[dic keyEnumerator];
                 while ((itemKey = [dicEnumerator nextObject] )!= nil) {
                     id value = dic[itemKey];
-                    [self setStrRecursiveWithValidateObject:value params2More:params2More inputCommentsStr:commentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
+                    [self setStrRecursiveWithParamsInfoTree:value params2More:params2More inputCommentsStr:commentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
                 }
             }
         }
@@ -424,7 +436,7 @@
                     [commentsStr appendFormat:@"%@%@%@%@ = %@\n",tab,star,mtab,annotation.keyName,lBrace];
                 }
                 
-                [self setStrRecursiveWithValidateObject:annotation.child params2More:params2More inputCommentsStr:commentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
+                [self setStrRecursiveWithParamsInfoTree:annotation.child params2More:params2More inputCommentsStr:commentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
                 //结尾 }]
                 if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {
                     
@@ -441,4 +453,23 @@
     }
 }
 
++(void)getJSRelease:(NSString *) js finish:(void (^)(NSString * compressJS)) finish
+{
+    NSDictionary * dic = @{@"js_code":js,
+                           @"compilation_level":@"WHITESPACE_ONLY",
+                           @"output_format": @"text",
+                           @"output_info" : @"compiled_code"
+                           };
+
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObjects:@"application/x-javascript", nil]];
+    [manager POST:@"https://closure-compiler.appspot.com/compile" parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSData *   _Nullable responseObject) {
+    
+        NSString * compressJS = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+        finish(compressJS);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        finish(nil);
+    }];
+}
 @end

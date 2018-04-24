@@ -13,6 +13,13 @@
 		37135ADB208F04CB0019ADA1 /* LXJSCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135ADA208F04CB0019ADA1 /* LXJSCodeGenerator.m */; };
 		37135ADE208F04F10019ADA1 /* LXRouterInputValidate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135ADD208F04F10019ADA1 /* LXRouterInputValidate.m */; };
 		37135AE2208F06390019ADA1 /* LXParamsInfoTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AE1208F06390019ADA1 /* LXParamsInfoTree.m */; };
+		37135AF3208F166B0019ADA1 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AEA208F166B0019ADA1 /* AFURLResponseSerialization.m */; };
+		37135AF4208F166B0019ADA1 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AEB208F166B0019ADA1 /* AFHTTPSessionManager.m */; };
+		37135AF5208F166B0019ADA1 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AED208F166B0019ADA1 /* AFURLSessionManager.m */; };
+		37135AF6208F166B0019ADA1 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AEE208F166B0019ADA1 /* AFURLRequestSerialization.m */; };
+		37135AF7208F166B0019ADA1 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AF0208F166B0019ADA1 /* AFNetworkReachabilityManager.m */; };
+		37135AF8208F166B0019ADA1 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AF1208F166B0019ADA1 /* AFSecurityPolicy.m */; };
+		37135AFA208F21920019ADA1 /* sjt_appBridge_release.js in Resources */ = {isa = PBXBuildFile; fileRef = 37135AF9208F21910019ADA1 /* sjt_appBridge_release.js */; };
 		37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 37385862207B52C4001D34F4 /* LXRouterTools.m */; };
 		37385867207B6314001D34F4 /* sjt_app.js in Resources */ = {isa = PBXBuildFile; fileRef = 37385866207B6314001D34F4 /* sjt_app.js */; };
 		37385869207B88CE001D34F4 /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 37385868207B88CE001D34F4 /* ExampleApp.html */; };
@@ -64,6 +71,20 @@
 		37135ADD208F04F10019ADA1 /* LXRouterInputValidate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterInputValidate.m; sourceTree = "<group>"; };
 		37135AE0208F06390019ADA1 /* LXParamsInfoTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXParamsInfoTree.h; sourceTree = "<group>"; };
 		37135AE1208F06390019ADA1 /* LXParamsInfoTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXParamsInfoTree.m; sourceTree = "<group>"; };
+		37135AE6208F166B0019ADA1 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		37135AE7208F166B0019ADA1 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		37135AE8208F166B0019ADA1 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		37135AE9208F166B0019ADA1 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		37135AEA208F166B0019ADA1 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		37135AEB208F166B0019ADA1 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		37135AEC208F166B0019ADA1 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		37135AED208F166B0019ADA1 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		37135AEE208F166B0019ADA1 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		37135AEF208F166B0019ADA1 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		37135AF0208F166B0019ADA1 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		37135AF1208F166B0019ADA1 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		37135AF2208F166B0019ADA1 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		37135AF9208F21910019ADA1 /* sjt_appBridge_release.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_appBridge_release.js; sourceTree = "<group>"; };
 		37385861207B52C4001D34F4 /* LXRouterTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXRouterTools.h; sourceTree = "<group>"; };
 		37385862207B52C4001D34F4 /* LXRouterTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterTools.m; sourceTree = "<group>"; };
 		37385866207B6314001D34F4 /* sjt_app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_app.js; sourceTree = "<group>"; };
@@ -155,6 +176,26 @@
 			path = LXRouterTools;
 			sourceTree = "<group>";
 		};
+		37135AE5208F166B0019ADA1 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				37135AE6208F166B0019ADA1 /* AFSecurityPolicy.h */,
+				37135AE7208F166B0019ADA1 /* AFNetworkReachabilityManager.h */,
+				37135AE8208F166B0019ADA1 /* AFURLSessionManager.h */,
+				37135AE9208F166B0019ADA1 /* AFURLRequestSerialization.h */,
+				37135AEA208F166B0019ADA1 /* AFURLResponseSerialization.m */,
+				37135AEB208F166B0019ADA1 /* AFHTTPSessionManager.m */,
+				37135AEC208F166B0019ADA1 /* AFURLResponseSerialization.h */,
+				37135AED208F166B0019ADA1 /* AFURLSessionManager.m */,
+				37135AEE208F166B0019ADA1 /* AFURLRequestSerialization.m */,
+				37135AEF208F166B0019ADA1 /* AFNetworking.h */,
+				37135AF0208F166B0019ADA1 /* AFNetworkReachabilityManager.m */,
+				37135AF1208F166B0019ADA1 /* AFSecurityPolicy.m */,
+				37135AF2208F166B0019ADA1 /* AFHTTPSessionManager.h */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
 		37BC22C6200C5CAC00AAFB5A = {
 			isa = PBXGroup;
 			children = (
@@ -178,9 +219,10 @@
 		37BC22D1200C5CAC00AAFB5A /* LXRouter */ = {
 			isa = PBXGroup;
 			children = (
+				37DD76E920807B6400A7ECCA /* YYModel */,
+				37135AE5208F166B0019ADA1 /* AFNetworking */,
 				37DD76F82080828800A7ECCA /* Test */,
 				37DD76F72080825E00A7ECCA /* LXRouter */,
-				37DD76E920807B6400A7ECCA /* YYModel */,
 				37BC22D5200C5CAC00AAFB5A /* AppDelegate.h */,
 				37BC22D6200C5CAC00AAFB5A /* AppDelegate.m */,
 				37BC22D8200C5CAC00AAFB5A /* ViewController.h */,
@@ -196,6 +238,7 @@
 		37BC22D2200C5CAC00AAFB5A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				37135AF9208F21910019ADA1 /* sjt_appBridge_release.js */,
 				37135AD72089EB790019ADA1 /* sjt_appBridge.js */,
 				37385868207B88CE001D34F4 /* ExampleApp.html */,
 				37385866207B6314001D34F4 /* sjt_app.js */,
@@ -375,6 +418,7 @@
 				37385867207B6314001D34F4 /* sjt_app.js in Resources */,
 				37BC22E2200C5CAC00AAFB5A /* LaunchScreen.storyboard in Resources */,
 				37BC22DF200C5CAC00AAFB5A /* Assets.xcassets in Resources */,
+				37135AFA208F21920019ADA1 /* sjt_appBridge_release.js in Resources */,
 				37385869207B88CE001D34F4 /* ExampleApp.html in Resources */,
 				37135AD82089EB790019ADA1 /* sjt_appBridge.js in Resources */,
 			);
@@ -404,15 +448,21 @@
 				37DD76EF20807B6500A7ECCA /* NSObject+YYModel.m in Sources */,
 				37135ADE208F04F10019ADA1 /* LXRouterInputValidate.m in Sources */,
 				37135AE2208F06390019ADA1 /* LXParamsInfoTree.m in Sources */,
+				37135AF5208F166B0019ADA1 /* AFURLSessionManager.m in Sources */,
+				37135AF8208F166B0019ADA1 /* AFSecurityPolicy.m in Sources */,
 				37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */,
 				37BC230D200C7E7E00AAFB5A /* LXRouterInfo.m in Sources */,
 				37DD76FE20809A1700A7ECCA /* Test2Obj.m in Sources */,
+				37135AF6208F166B0019ADA1 /* AFURLRequestSerialization.m in Sources */,
 				37135ADB208F04CB0019ADA1 /* LXJSCodeGenerator.m in Sources */,
+				37135AF4208F166B0019ADA1 /* AFHTTPSessionManager.m in Sources */,
 				37135AD02089938B0019ADA1 /* SJTPayModel.m in Sources */,
 				37DD76FB208082D000A7ECCA /* TestObj.m in Sources */,
+				37135AF3208F166B0019ADA1 /* AFURLResponseSerialization.m in Sources */,
 				37BC22DA200C5CAC00AAFB5A /* ViewController.m in Sources */,
 				37DD76F52080821800A7ECCA /* TypeAnnotation.m in Sources */,
 				37135AC72084A1B80019ADA1 /* NSObject+LXJsonModel.m in Sources */,
+				37135AF7208F166B0019ADA1 /* AFNetworkReachabilityManager.m in Sources */,
 				37BC22D7200C5CAC00AAFB5A /* AppDelegate.m in Sources */,
 				37BC2310200DE14400AAFB5A /* TextViewController.m in Sources */,
 				37BC2313200DE53100AAFB5A /* PresentViewController.m in Sources */,
