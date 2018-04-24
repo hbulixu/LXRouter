@@ -61,18 +61,20 @@ var sjtApp= {
     * @param {func}     callBack -回调函数
     * 
     * ###输出信息如下###:
-    * responseObj = {
-    *    payfrom:  //String -支付类型1微信2什么 
-    *    productDesc:  //String - 
-    *    payType:  //String - 
-    *    balanceType:  //String -支付类型1旧接口2新接口 
-    *    orderMoney:  //String -订单金额 
-    *    orderId:  //String -订单id 
-    *    merId:  //String - 
-    * }
-    * error = {
-    * errorCode: //String
-    * errorMsg: //String
+    * callBackResponse = {
+    *     responseObj = {
+    *        payfrom:  //String -支付类型1微信2什么 
+    *        productDesc:  //String - 
+    *        payType:  //String - 
+    *        balanceType:  //String -支付类型1旧接口2新接口 
+    *        orderMoney:  //String -订单金额 
+    *        orderId:  //String -订单id 
+    *        merId:  //String - 
+    *     }
+    *     error = {
+    *         errorCode: //String
+    *         errorMsg: //String
+    *     }
     * }
     */ 
  
@@ -115,15 +117,17 @@ var sjtApp= {
     * @param {func}     callBack -回调函数
     * 
     * ###输出信息如下###:
-    * responseObj = {
-    *    aaaa:  //String - 
-    *    date:  //String - 
-    *    data:  //Undefine - 
-    *    number:  //String - 
-    * }
-    * error = {
-    * errorCode: //String
-    * errorMsg: //String
+    * callBackResponse = {
+    *     responseObj = {
+    *        aaaa:  //String - 
+    *        date:  //String - 
+    *        data:  //Undefine - 
+    *        number:  //String - 
+    *     }
+    *     error = {
+    *         errorCode: //String
+    *         errorMsg: //String
+    *     }
     * }
     */ 
  
@@ -148,29 +152,31 @@ var sjtApp= {
     * @param {func}     callBack -回调函数
     * 
     * ###输出信息如下###:
-    * responseObj = {
-    *    isTest:  //String -是否测试 
-    *    urls:  //Array - 
-    *    hhh:  //Object - 
-    *    hhh = {
-    *        aaaa:  //String - 
-    *        date:  //String - 
-    *        data:  //Undefine - 
-    *        number:  //String - 
-    *    }
-    *    array:  //Array - 
-    *    array = [{
-    *        aaaa:  //String - 
-    *        date:  //String - 
-    *        data:  //Undefine - 
-    *        number:  //String - 
-    *    }]
-    *    test:  //String - 
-    *    test2:  //String - 
-    * }
-    * error = {
-    * errorCode: //String
-    * errorMsg: //String
+    * callBackResponse = {
+    *     responseObj = {
+    *        isTest:  //String -是否测试 
+    *        urls:  //Array - 
+    *        hhh:  //Object - 
+    *        hhh = {
+    *            aaaa:  //String - 
+    *            date:  //String - 
+    *            data:  //Undefine - 
+    *            number:  //String - 
+    *        }
+    *        array:  //Array - 
+    *        array = [{
+    *            aaaa:  //String - 
+    *            date:  //String - 
+    *            data:  //Undefine - 
+    *            number:  //String - 
+    *        }]
+    *        test:  //String - 
+    *        test2:  //String - 
+    *     }
+    *     error = {
+    *         errorCode: //String
+    *         errorMsg: //String
+    *     }
     * }
     */ 
  
@@ -188,11 +194,13 @@ var sjtApp= {
     /**
     * 
     * ###输出信息如下###:
-    * responseObj = {
-    * }
-    * error = {
-    * errorCode: //String
-    * errorMsg: //String
+    * callBackResponse = {
+    *     responseObj = {
+    *     }
+    *     error = {
+    *         errorCode: //String
+    *         errorMsg: //String
+    *     }
     * }
     */ 
  
@@ -214,11 +222,13 @@ var sjtApp= {
     * @param {func}     callBack -回调函数
     * 
     * ###输出信息如下###:
-    * responseObj = {
-    * }
-    * error = {
-    * errorCode: //String
-    * errorMsg: //String
+    * callBackResponse = {
+    *     responseObj = {
+    *     }
+    *     error = {
+    *         errorCode: //String
+    *         errorMsg: //String
+    *     }
     * }
     */ 
  

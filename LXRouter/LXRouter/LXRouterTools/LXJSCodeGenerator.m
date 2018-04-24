@@ -193,7 +193,8 @@
         //生成注释中返回结果的信息
         [outputCommentsStr appendFormat:@"%@* \n",tab];
         [outputCommentsStr appendFormat:@"%@* ###输出信息如下###:\n",tab];
-        [outputCommentsStr appendFormat:@"%@* responseObj = {\n",tab];
+        [outputCommentsStr appendFormat:@"%@* callBackResponse = {\n",tab];
+        [outputCommentsStr appendFormat:@"%@* %@responseObj = {\n",tab,tab];
         
         Class outputClz = routeOutPutClass[identify];
         if (outputClz) {
@@ -214,10 +215,11 @@
          * }
          *\/
          */
-        [outputCommentsStr appendFormat:@"%@* }\n",tab];
-        [outputCommentsStr appendFormat:@"%@* error = {\n",tab];
-        [outputCommentsStr appendFormat:@"%@* errorCode: //String\n",tab];
-        [outputCommentsStr appendFormat:@"%@* errorMsg: //String\n",tab];
+        [outputCommentsStr appendFormat:@"%@* %@}\n",tab,tab];
+        [outputCommentsStr appendFormat:@"%@* %@error = {\n",tab,tab];
+        [outputCommentsStr appendFormat:@"%@* %@%@errorCode: //String\n",tab,tab,tab];
+        [outputCommentsStr appendFormat:@"%@* %@%@errorMsg: //String\n",tab,tab,tab];
+        [outputCommentsStr appendFormat:@"%@* %@}\n",tab,tab];
         [outputCommentsStr appendFormat:@"%@* }\n",tab];
         [outputCommentsStr appendFormat:@"%@*/",tab];
         
@@ -279,6 +281,7 @@
         {
             NSInteger level = annotation.level;
             NSMutableString * mtab = [NSMutableString string];
+            level = level+1;
             while (level) {
                 [mtab appendString:tab];
                 level --;
