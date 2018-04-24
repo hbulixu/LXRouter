@@ -14,4 +14,6 @@
 
 - (nullable id)lx_modelToJSONObject;
 
++ (BOOL)isClassFromFoundation:(Class)c;
+
 @end

@@ -10,8 +10,8 @@
 #import "LXRouter.h"
 #import "TestObj.h"
 #import "LXRouterTools.h"
-#import "LXJsonValidateTools.h"
 #import "SJTPayModel.h"
+#import "NSObject+LXJsonModel.h"
 @interface TextViewController ()
 
 @end

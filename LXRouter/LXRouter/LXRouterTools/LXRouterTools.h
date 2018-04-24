@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSObject+LXJsonModel.h"
-@interface LXRouterTools : NSObject
 
+@interface LXRouterTools : NSObject
 
 +(void)genJavaScriptBridge;
 
-+ (NSError *)validateJson:(id)json WithClass:(Class)clz;
++(NSError *)validateJson:(id)json WithClass:(Class)clz;
 @end

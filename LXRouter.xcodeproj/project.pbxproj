@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		37135AC72084A1B80019ADA1 /* NSObject+LXJsonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AC62084A1B80019ADA1 /* NSObject+LXJsonModel.m */; };
-		37135ACB2085E1B40019ADA1 /* LXJsonValidateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135ACA2085E1B40019ADA1 /* LXJsonValidateTools.m */; };
 		37135AD02089938B0019ADA1 /* SJTPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135ACF2089938B0019ADA1 /* SJTPayModel.m */; };
 		37135AD82089EB790019ADA1 /* sjt_appBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 37135AD72089EB790019ADA1 /* sjt_appBridge.js */; };
+		37135ADB208F04CB0019ADA1 /* LXJSCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135ADA208F04CB0019ADA1 /* LXJSCodeGenerator.m */; };
+		37135ADE208F04F10019ADA1 /* LXRouterInputValidate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135ADD208F04F10019ADA1 /* LXRouterInputValidate.m */; };
+		37135AE2208F06390019ADA1 /* LXParamsInfoTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AE1208F06390019ADA1 /* LXParamsInfoTree.m */; };
 		37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 37385862207B52C4001D34F4 /* LXRouterTools.m */; };
 		37385867207B6314001D34F4 /* sjt_app.js in Resources */ = {isa = PBXBuildFile; fileRef = 37385866207B6314001D34F4 /* sjt_app.js */; };
 		37385869207B88CE001D34F4 /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 37385868207B88CE001D34F4 /* ExampleApp.html */; };
@@ -52,12 +54,16 @@
 /* Begin PBXFileReference section */
 		37135AC52084A1B80019ADA1 /* NSObject+LXJsonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LXJsonModel.h"; sourceTree = "<group>"; };
 		37135AC62084A1B80019ADA1 /* NSObject+LXJsonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LXJsonModel.m"; sourceTree = "<group>"; };
-		37135AC92085E1B40019ADA1 /* LXJsonValidateTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXJsonValidateTools.h; sourceTree = "<group>"; };
-		37135ACA2085E1B40019ADA1 /* LXJsonValidateTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXJsonValidateTools.m; sourceTree = "<group>"; };
 		37135ACE2089938B0019ADA1 /* SJTPayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJTPayModel.h; sourceTree = "<group>"; };
 		37135ACF2089938B0019ADA1 /* SJTPayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJTPayModel.m; sourceTree = "<group>"; };
 		37135AD42089E78D0019ADA1 /* LXRouterPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXRouterPrivate.h; sourceTree = "<group>"; };
 		37135AD72089EB790019ADA1 /* sjt_appBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_appBridge.js; sourceTree = "<group>"; };
+		37135AD9208F04CB0019ADA1 /* LXJSCodeGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXJSCodeGenerator.h; sourceTree = "<group>"; };
+		37135ADA208F04CB0019ADA1 /* LXJSCodeGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXJSCodeGenerator.m; sourceTree = "<group>"; };
+		37135ADC208F04F10019ADA1 /* LXRouterInputValidate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXRouterInputValidate.h; sourceTree = "<group>"; };
+		37135ADD208F04F10019ADA1 /* LXRouterInputValidate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterInputValidate.m; sourceTree = "<group>"; };
+		37135AE0208F06390019ADA1 /* LXParamsInfoTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXParamsInfoTree.h; sourceTree = "<group>"; };
+		37135AE1208F06390019ADA1 /* LXParamsInfoTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXParamsInfoTree.m; sourceTree = "<group>"; };
 		37385861207B52C4001D34F4 /* LXRouterTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXRouterTools.h; sourceTree = "<group>"; };
 		37385862207B52C4001D34F4 /* LXRouterTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterTools.m; sourceTree = "<group>"; };
 		37385866207B6314001D34F4 /* sjt_app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_app.js; sourceTree = "<group>"; };
@@ -130,10 +136,23 @@
 				37DD76F42080821800A7ECCA /* TypeAnnotation.m */,
 				37135AC52084A1B80019ADA1 /* NSObject+LXJsonModel.h */,
 				37135AC62084A1B80019ADA1 /* NSObject+LXJsonModel.m */,
-				37135AC92085E1B40019ADA1 /* LXJsonValidateTools.h */,
-				37135ACA2085E1B40019ADA1 /* LXJsonValidateTools.m */,
 			);
 			path = LXJSONModel;
+			sourceTree = "<group>";
+		};
+		37135ADF208F05020019ADA1 /* LXRouterTools */ = {
+			isa = PBXGroup;
+			children = (
+				37385861207B52C4001D34F4 /* LXRouterTools.h */,
+				37385862207B52C4001D34F4 /* LXRouterTools.m */,
+				37135ADC208F04F10019ADA1 /* LXRouterInputValidate.h */,
+				37135ADD208F04F10019ADA1 /* LXRouterInputValidate.m */,
+				37135AD9208F04CB0019ADA1 /* LXJSCodeGenerator.h */,
+				37135ADA208F04CB0019ADA1 /* LXJSCodeGenerator.m */,
+				37135AE0208F06390019ADA1 /* LXParamsInfoTree.h */,
+				37135AE1208F06390019ADA1 /* LXParamsInfoTree.m */,
+			);
+			path = LXRouterTools;
 			sourceTree = "<group>";
 		};
 		37BC22C6200C5CAC00AAFB5A = {
@@ -218,13 +237,12 @@
 		37DD76F72080825E00A7ECCA /* LXRouter */ = {
 			isa = PBXGroup;
 			children = (
+				37135ADF208F05020019ADA1 /* LXRouterTools */,
 				37135AC82085E14B0019ADA1 /* LXJSONModel */,
 				37BC230B200C7E7E00AAFB5A /* LXRouterInfo.h */,
 				37BC230C200C7E7E00AAFB5A /* LXRouterInfo.m */,
 				37BC2308200C7C0500AAFB5A /* LXRouter.h */,
 				37BC2309200C7C0500AAFB5A /* LXRouter.m */,
-				37385861207B52C4001D34F4 /* LXRouterTools.h */,
-				37385862207B52C4001D34F4 /* LXRouterTools.m */,
 				37135AD42089E78D0019ADA1 /* LXRouterPrivate.h */,
 			);
 			path = LXRouter;
@@ -384,13 +402,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				37DD76EF20807B6500A7ECCA /* NSObject+YYModel.m in Sources */,
+				37135ADE208F04F10019ADA1 /* LXRouterInputValidate.m in Sources */,
+				37135AE2208F06390019ADA1 /* LXParamsInfoTree.m in Sources */,
 				37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */,
 				37BC230D200C7E7E00AAFB5A /* LXRouterInfo.m in Sources */,
 				37DD76FE20809A1700A7ECCA /* Test2Obj.m in Sources */,
+				37135ADB208F04CB0019ADA1 /* LXJSCodeGenerator.m in Sources */,
 				37135AD02089938B0019ADA1 /* SJTPayModel.m in Sources */,
 				37DD76FB208082D000A7ECCA /* TestObj.m in Sources */,
 				37BC22DA200C5CAC00AAFB5A /* ViewController.m in Sources */,
-				37135ACB2085E1B40019ADA1 /* LXJsonValidateTools.m in Sources */,
 				37DD76F52080821800A7ECCA /* TypeAnnotation.m in Sources */,
 				37135AC72084A1B80019ADA1 /* NSObject+LXJsonModel.m in Sources */,
 				37BC22D7200C5CAC00AAFB5A /* AppDelegate.m in Sources */,

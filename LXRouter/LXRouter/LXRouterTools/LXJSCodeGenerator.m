@@ -1,16 +1,17 @@
 //
-//  LXRouterTools.m
+//  LXJSCodeGenerator.m
 //  LXRouter
 //
-//  Created by 58 on 2018/4/9.
+//  Created by 58 on 2018/4/24.
 //  Copyright © 2018年 LX. All rights reserved.
 //
 
-#import "LXRouterTools.h"
-#import "LXJsonValidateTools.h"
+#import "LXJSCodeGenerator.h"
 #import "TypeAnnotation.h"
 #import "LXRouter.h"
 #import "LXRouterPrivate.h"
+#import "LXParamsInfoTree.h"
+#import "NSObject+LXJsonModel.h"
 
 #define funcParamsKey @"inputParams"
 #define innerParams @"params"
@@ -24,19 +25,8 @@
 #define rBrace @"}"
 
 #define part1End @"/**************begin*****************/"
-#
-@implementation LXRouterTools
 
-
-+ (NSError *)validateJson:(id)json WithClass:(Class)clz
-{
-    return  [LXJsonValidateTools validateJson:json WithClass:clz];
-}
-
-+(void)genJavaScriptBridge
-{
-    [LXRouterTools genScriptBridgeWithRouteHandles:[LXRouter sharedInstance].routeHandle RouteInputClass:[LXRouter sharedInstance].routeInputClass RouteOutPutClass:[LXRouter sharedInstance].routeOutputClass];
-}
+@implementation LXJSCodeGenerator
 
 +(NSDictionary *)mapDic
 {
@@ -51,12 +41,18 @@
              };
 }
 
++(void)genJavaScriptBridge
+{
+    [LXJSCodeGenerator genScriptBridgeWithRouteHandles:[LXRouter sharedInstance].routeHandle RouteInputClass:[LXRouter sharedInstance].routeInputClass RouteOutPutClass:[LXRouter sharedInstance].routeOutputClass];
+}
+
+
 /*该方法用于生成代码总体思路如下
  js代码分为两部分，一部分是固定的代码，在sjt_app.js,一部分是通过分析类生成的代码
  **/
 +(void)genScriptBridgeWithRouteHandles:(NSDictionary *)routeHandles RouteInputClass:(NSDictionary *)routeInputClass RouteOutPutClass:(NSDictionary *)routeOutPutClass
 {
-
+    
     NSString * filePath = @"/Users/a58/Desktop/LXRouter/LXRouter/sjt_appBridge.js";
     NSString * readPath = [[NSBundle mainBundle]pathForResource:@"sjt_app" ofType:@"js"];
     NSFileManager * fileManager = [NSFileManager defaultManager];
@@ -78,7 +74,7 @@
     NSMutableString * allJs = [NSMutableString string];
     //添加上半部分固定代码
     [allJs appendString:baseJsPart1];
- 
+    
     NSEnumerator *  enumerator = [routeHandles keyEnumerator];
     NSString * identify;
     while ((identify = [enumerator nextObject]) !=nil) {
@@ -95,20 +91,20 @@
         NSMutableString * funcBody = [NSMutableString string];
         //内部函数入参组装
         NSMutableString * paramsAnalyzeStr = [NSMutableString string];
-
+        
         
         //通过输入类生成1.输入注释，2.函数入参，3.入参组装，4.调用部分
         Class inputClz = routeInputClass[identify];
         
         if (inputClz) {
             //根据类生成类的字典校验树，该树是生成注释和组装的基础
-            NSDictionary * dic = [LXJsonValidateTools genValidateObjectWithClass:inputClz];
-  
+            NSDictionary * dic = [LXParamsInfoTree genParamsInfoTreeWithClass:inputClz];
+            
             //获取当前函数功能说明
-            NSString * funcComments = [LXJsonValidateTools genFuncCommentsWithClass:inputClz];
+            NSString * funcComments = [LXParamsInfoTree genFuncCommentsWithClass:inputClz];
             
             if (dic && [dic isKindOfClass:[NSDictionary class]]) {
-            
+                
                 //注释头添加开始
                 //  /**
                 [inputCommentsStr appendFormat:@"%@/**\n",tab];
@@ -124,8 +120,8 @@
                 //如果参数被（inputParams）包裹，需要对注释，函数入参特殊处理
                 if (params2More) {
                     /*以下生成
-                         * @param {Object}  inputParams
-                         * inputParams = { *
+                     * @param {Object}  inputParams
+                     * inputParams = { *
                      */
                     //*@param {Object    }  inputParams
                     [inputCommentsStr appendFormat:@"%@%@ @param {%@}  %@",tab,star,Object,funcParamsKey];
@@ -139,7 +135,7 @@
                 }
                 
                 //递归处理子节点,组装输入注释，函数入参，入参组装等
-                [LXRouterTools setStrRecursiveWithValidateObject:dic params2More:params2More inputCommentsStr:inputCommentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
+                [LXJSCodeGenerator setStrRecursiveWithValidateObject:dic params2More:params2More inputCommentsStr:inputCommentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
                 
                 //如果有入参组装函数，添加入参头部
                 if (paramsAnalyzeStr.length) {
@@ -174,7 +170,7 @@
                 [funcBody appendString:paramsAnalyzeStr];
                 [funcBody appendFormat:@"%@%@this._callNative(\"%@\",params,callBack);\n",tab,tab,identify];
                 [funcBody appendFormat:@"%@}",tab];
-
+                
             }
         }else //如果没有入参添加固定格式
         {
@@ -194,22 +190,22 @@
         
         Class outputClz = routeOutPutClass[identify];
         if (outputClz) {
-            NSDictionary * dic = [LXJsonValidateTools genValidateObjectWithClass:outputClz];
-             //递归生成子注释
+            NSDictionary * dic = [LXParamsInfoTree genParamsInfoTreeWithClass:outputClz];
+            //递归生成子注释
             if (dic && [dic isKindOfClass:[NSDictionary class]])
             {
-                [LXRouterTools setStrRecursiveWithValidateObject:dic outPutCommentsStr:outputCommentsStr];
+                [LXJSCodeGenerator setStrRecursiveWithValidateObject:dic outPutCommentsStr:outputCommentsStr];
                 
             }
         }
         
         /**生成以下部分
-             * }
-             * error = {
-             * errorCode: //String
-             * errorMsg: //String
-             * }
-             *\/
+         * }
+         * error = {
+         * errorCode: //String
+         * errorMsg: //String
+         * }
+         *\/
          */
         [outputCommentsStr appendFormat:@"%@* }\n",tab];
         [outputCommentsStr appendFormat:@"%@* error = {\n",tab];
@@ -265,7 +261,7 @@
     {
         TypeAnnotation * annotation = json;
         
-
+        
         //普通类
         if([annotation isKindOfClass:[TypeAnnotation class]])
         {
@@ -282,7 +278,7 @@
             //{String}
             NSString * blockJSType;
             
-            if (![LXJsonValidateTools isClassFromFoundation:NSClassFromString(annotation.typeName)]) {
+            if (![NSObject isClassFromFoundation:NSClassFromString(annotation.typeName)]) {
                 jsType = @"Object";
             }else
             {
@@ -293,7 +289,7 @@
             }
             blockJSType = [NSString stringWithFormat:@"{%@}",jsType];
             
-
+            
             // *    isTest:  //NSNumber -是否测试
             [outPutCommentsStr appendFormat:@"%@%@%@%@:  //%@ -%@ \n",tab,star,mtab,annotation.keyName,jsType,annotation.comments?:@""];
             //如果当前节点有子节点
@@ -328,14 +324,14 @@
 //递归生成输入注释，函数入参，函数组装
 +(BOOL)setStrRecursiveWithValidateObject:(id )json params2More:(BOOL)params2More inputCommentsStr:(NSMutableString *)commentsStr funcParamsStr:(NSMutableString *)funcParamsStr paramsAnalyzeStr:(NSMutableString *)paramsAnalyzeStr
 {
-
+    
     if([json isKindOfClass:[NSDictionary class]])//自定义对象
     {
         NSString * itemKey;
         NSEnumerator * dicEnumerator =[json keyEnumerator];
         while ((itemKey = [dicEnumerator nextObject] )!= nil) {
             id value = json[itemKey];
-           [self setStrRecursiveWithValidateObject:value params2More:params2More inputCommentsStr:commentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr ];
+            [self setStrRecursiveWithValidateObject:value params2More:params2More inputCommentsStr:commentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr ];
         }
         return YES;
     }else if([json isKindOfClass:[NSArray class]] )//数组中存在自定义对象的情况
@@ -365,13 +361,13 @@
             //自定义类型
             NSString * jsType;
             NSString * blockJSType;
-            if (![LXJsonValidateTools isClassFromFoundation:NSClassFromString(annotation.typeName)]) {
+            if (![NSObject isClassFromFoundation:NSClassFromString(annotation.typeName)]) {
                 jsType = @"Object";
             }else
             {
                 jsType = dic[annotation.typeName];
                 if (!jsType) {
-                   jsType = @"Undefine";
+                    jsType = @"Undefine";
                 }
             }
             blockJSType = [NSString stringWithFormat:@"{%@}",jsType];
@@ -394,7 +390,7 @@
                         [funcParamsStr appendFormat:@"%@",annotation.keyName];
                     }
                     
-
+                    
                     [commentsStr appendFormat:@"%@%@ @param %-10s %@ \n",tab,star,blockJSType.UTF8String,annotation.keyName];
                     
                     //isTest: isTest
@@ -410,7 +406,7 @@
                     [paramsAnalyzeStr appendString:[NSString stringWithFormat:@"%@%@%@%@: %@.%@,\n",tab,tab,tab,annotation.keyName,funcParamsKey,annotation.keyName]];
                     
                 }
- 
+                
             }else //第二级 第三级 ...
             {
                 // *    isTest:  //NSNumber -是否测试
@@ -427,7 +423,7 @@
                 {
                     [commentsStr appendFormat:@"%@%@%@%@ = %@\n",tab,star,mtab,annotation.keyName,lBrace];
                 }
-
+                
                 [self setStrRecursiveWithValidateObject:annotation.child params2More:params2More inputCommentsStr:commentsStr funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
                 //结尾 }]
                 if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {

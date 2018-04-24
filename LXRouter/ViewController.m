@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "LXRouter.h"
 #import "NSObject+LXJsonModel.h"
-#import "LXJsonValidateTools.h"
 #import "TestObj.h"
 #import "LXRouterTools.h"
 #import <MessageUI/MFMailComposeViewController.h>
