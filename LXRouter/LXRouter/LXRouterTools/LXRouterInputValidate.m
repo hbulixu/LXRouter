@@ -9,6 +9,7 @@
 #import "LXRouterInputValidate.h"
 #import "LXParamsInfoTree.h"
 #import "TypeAnnotation.h"
+#define errorDomain @"LXRouterInputValidateError"
 
 @implementation LXRouterInputValidate
 
@@ -35,7 +36,8 @@
             if ( [format isKindOfClass:[TypeAnnotation class]] && ([format.child isKindOfClass:[NSDictionary class]] || [format.child isKindOfClass:[NSArray class]])) {
                 
                 if (format.required && (!value || [value isKindOfClass:[NSNull class]])) {
-                    error = [NSError errorWithDomain:[NSString stringWithFormat:@"need value for key [%@ %@]",format.fatherKey?:@"",format.keyName] code:-2 userInfo:nil];
+
+                    error = [NSError errorWithDomain:errorDomain code:-2 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"need value for key [%@ %@]",format.fatherKey?:@"",format.keyName]}];
                     if (error) {
                         break;
                     }
@@ -79,12 +81,16 @@
         NSError * error = nil;
         if (![validateObject isKindOfClass:[TypeAnnotation class]])
         {
-            error = [NSError errorWithDomain:@"validateObject error" code:-1 userInfo:nil];
+
+            error = [NSError errorWithDomain:errorDomain code:-2 userInfo:@{NSLocalizedDescriptionKey:@"validateObject error"}];
+
             return error;
         }
         TypeAnnotation * annotation = (TypeAnnotation *)validateObject;
         if (annotation.required && (!json || [json isKindOfClass:[NSNull class]])) {
-            error = [NSError errorWithDomain:[NSString stringWithFormat:@"need value for key [%@ %@]",annotation.fatherKey?:@"", annotation.keyName] code:-2 userInfo:nil];
+
+            
+            error = [NSError errorWithDomain:errorDomain code:-2 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"need value for key [%@ %@]",annotation.fatherKey?:@"", annotation.keyName]}];
         }
         return error;
     }

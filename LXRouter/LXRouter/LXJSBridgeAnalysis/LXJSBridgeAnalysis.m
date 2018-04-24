@@ -40,7 +40,7 @@
         if (callBackId) {
             NSDictionary * responseData = @{@"responseObj":result?:@"",
                                         @"error":@{
-                                                @"errorMsg":error.domain?:@"",
+                                                    @"errorMsg":error.userInfo[NSLocalizedDescriptionKey]?:@"",
                                                 @"errorCode":@(error.code)                                                }
                                         };
             NSDictionary * callBackResponse = @{@"responseId":callBackId,
