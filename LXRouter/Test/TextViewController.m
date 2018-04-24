@@ -39,7 +39,8 @@
     }];
     
     [LXRouter registerIdentify:@"dianyixia" inputClass:nil outputClass:nil toHandler:^(LXRouterInfo *routerInfo) {
-        routerInfo.completionBlock(@"aaaaa111", nil);
+        NSError * error = [NSError errorWithDomain:@"1111" code:-2 userInfo:@{NSLocalizedDescriptionKey:@"我是失败代码"}];
+        routerInfo.completionBlock(@"aaaaa111", error);
     }];
     
     [LXRouter registerIdentify:@"callNativePay" inputClass:[SJTPayModel class] outputClass:nil toHandler:^(LXRouterInfo *routerInfo) {
