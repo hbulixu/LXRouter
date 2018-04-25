@@ -74,7 +74,7 @@ static NSString * errorDomain = @"lx.router.error";
     
     if (clz) {
 #if  DEBUG
-        NSError * error = [LXRouterTools validateJson:json WithClass:clz];
+        error = [LXRouterTools validateJson:json WithClass:clz];
         if (error) {
             completion(nil,error);
             return;
@@ -93,11 +93,37 @@ static NSString * errorDomain = @"lx.router.error";
     }
 }
 
-
+//适用于本地调用
 +(void)openIdentify:(NSString *)identify withModel:(id)model completion:(void (^)(id result,NSError *error))completion
 {
     
     
+}
+
+//为自动测试化准备
++(void)debug_openIdentify:(NSString *)identify withJson:(id)json completion:(void (^)(id result,NSError *error))completion
+{
+    
+    LXRouterInfo * routerInfo = [LXRouterInfo new];
+    routerInfo.jsonInfo = json;
+    routerInfo.completionBlock = [completion copy];
+    NSError *error = nil;
+    
+    LXRouterHandler handler = [[LXRouter sharedInstance].routeHandle objectForKey:identify];
+    
+    Class clz = [[LXRouter sharedInstance].routeInputClass objectForKey:identify];
+    
+    if (clz) {
+        error = [LXRouterTools validateJson:json WithClass:clz];
+        if (error) {
+            completion(nil,error);
+            return;
+        }
+    }
+    
+    if (handler) {
+        completion(nil,nil);
+    }
 }
 
 

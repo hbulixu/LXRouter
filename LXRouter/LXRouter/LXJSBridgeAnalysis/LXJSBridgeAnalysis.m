@@ -39,10 +39,10 @@
         
         if (callBackId) {
             NSDictionary * responseData = @{@"responseObj":result?:@"",
-                                        @"error":@{
-                                                    @"errorMsg":error.userInfo[NSLocalizedDescriptionKey]?:@"",
-                                                @"errorCode":@(error.code)                                                }
-                                        };
+                                            @"error":error?@{
+                                                @"errorMsg":error.userInfo[NSLocalizedDescriptionKey]?:@"",
+                                                @"errorCode":@(error.code)                                                }:[NSNull null]
+                                            };
             NSDictionary * callBackResponse = @{@"responseId":callBackId,
                                             @"responseData": responseData
                                             };
