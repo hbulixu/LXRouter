@@ -95,7 +95,7 @@
     mailPicker.mailComposeDelegate = self;
     
     //设置主题
-    [mailPicker setSubject: @"eMail主题"];
+    [mailPicker setSubject: @"LXRouter JSbridge"];
     NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     NSString * filePath = [NSString stringWithFormat:@"%@/sjt_appBridge.js",docDir];
     NSString * releaseFilePath =[NSString stringWithFormat:@"%@/sjt_appBridge_release.js",docDir];
@@ -110,9 +110,9 @@
     NSData *releaseJs = [NSData dataWithContentsOfFile:releaseFilePath];
     [mailPicker addAttachmentData: releaseJs mimeType: @"" fileName: @"sjt_appBridge_release.js"];
     
-    NSString *emailBody = @"<font color='red'>eMail</font> 正文";
+    NSString *emailBody = @"<font color='red'>详看附件</font> sjt_appBridge.js是bridge文件，sjt_JSTestRun.html是js测试文件";
     [mailPicker setMessageBody:emailBody isHTML:YES];
-    [self presentModalViewController: mailPicker animated:YES];
+    [self presentViewController:mailPicker animated:YES completion:nil];
 
 }
 
@@ -120,17 +120,17 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     //关闭邮件发送窗口
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     NSString *msg;
     switch (result) {
         case MFMailComposeResultCancelled:
             msg = @"用户取消编辑邮件";
             break;
         case MFMailComposeResultSaved:
-           // msg = @"用户成功保存邮件";
+            msg = @"用户成功保存邮件";
             break;
         case MFMailComposeResultSent:
-            //msg = @"用户点击发送，将邮件放到队列中，还没发送";
+            msg = @"发送成功";
             break;
         case MFMailComposeResultFailed:
             msg = @"用户试图保存或者发送邮件失败";
