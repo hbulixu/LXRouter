@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		37135AC72084A1B80019ADA1 /* NSObject+LXJsonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AC62084A1B80019ADA1 /* NSObject+LXJsonModel.m */; };
 		37135AD02089938B0019ADA1 /* SJTPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135ACF2089938B0019ADA1 /* SJTPayModel.m */; };
-		37135AD82089EB790019ADA1 /* sjt_appBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 37135AD72089EB790019ADA1 /* sjt_appBridge.js */; };
 		37135ADB208F04CB0019ADA1 /* LXJSCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135ADA208F04CB0019ADA1 /* LXJSCodeGenerator.m */; };
 		37135ADE208F04F10019ADA1 /* LXRouterInputValidate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135ADD208F04F10019ADA1 /* LXRouterInputValidate.m */; };
 		37135AE2208F06390019ADA1 /* LXParamsInfoTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AE1208F06390019ADA1 /* LXParamsInfoTree.m */; };
@@ -19,9 +18,8 @@
 		37135AF6208F166B0019ADA1 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AEE208F166B0019ADA1 /* AFURLRequestSerialization.m */; };
 		37135AF7208F166B0019ADA1 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AF0208F166B0019ADA1 /* AFNetworkReachabilityManager.m */; };
 		37135AF8208F166B0019ADA1 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AF1208F166B0019ADA1 /* AFSecurityPolicy.m */; };
-		37135AFA208F21920019ADA1 /* sjt_appBridge_release.js in Resources */ = {isa = PBXBuildFile; fileRef = 37135AF9208F21910019ADA1 /* sjt_appBridge_release.js */; };
 		37135AFF208F2E610019ADA1 /* LXJSBridgeAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AFE208F2E610019ADA1 /* LXJSBridgeAnalysis.m */; };
-		37135B0520906AE50019ADA1 /* sjt_JSTestRun.html in Resources */ = {isa = PBXBuildFile; fileRef = 37135B0420906AE40019ADA1 /* sjt_JSTestRun.html */; };
+		37135B082090703C0019ADA1 /* JSTestWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135B072090703C0019ADA1 /* JSTestWebViewController.m */; };
 		37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 37385862207B52C4001D34F4 /* LXRouterTools.m */; };
 		37385867207B6314001D34F4 /* sjt_app.js in Resources */ = {isa = PBXBuildFile; fileRef = 37385866207B6314001D34F4 /* sjt_app.js */; };
 		37385869207B88CE001D34F4 /* sjt_JSTestBase.html in Resources */ = {isa = PBXBuildFile; fileRef = 37385868207B88CE001D34F4 /* sjt_JSTestBase.html */; };
@@ -66,7 +64,6 @@
 		37135ACE2089938B0019ADA1 /* SJTPayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJTPayModel.h; sourceTree = "<group>"; };
 		37135ACF2089938B0019ADA1 /* SJTPayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJTPayModel.m; sourceTree = "<group>"; };
 		37135AD42089E78D0019ADA1 /* LXRouterPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXRouterPrivate.h; sourceTree = "<group>"; };
-		37135AD72089EB790019ADA1 /* sjt_appBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_appBridge.js; sourceTree = "<group>"; };
 		37135AD9208F04CB0019ADA1 /* LXJSCodeGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXJSCodeGenerator.h; sourceTree = "<group>"; };
 		37135ADA208F04CB0019ADA1 /* LXJSCodeGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXJSCodeGenerator.m; sourceTree = "<group>"; };
 		37135ADC208F04F10019ADA1 /* LXRouterInputValidate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXRouterInputValidate.h; sourceTree = "<group>"; };
@@ -86,10 +83,10 @@
 		37135AF0208F166B0019ADA1 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		37135AF1208F166B0019ADA1 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
 		37135AF2208F166B0019ADA1 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
-		37135AF9208F21910019ADA1 /* sjt_appBridge_release.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_appBridge_release.js; sourceTree = "<group>"; };
 		37135AFD208F2E610019ADA1 /* LXJSBridgeAnalysis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXJSBridgeAnalysis.h; sourceTree = "<group>"; };
 		37135AFE208F2E610019ADA1 /* LXJSBridgeAnalysis.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXJSBridgeAnalysis.m; sourceTree = "<group>"; };
-		37135B0420906AE40019ADA1 /* sjt_JSTestRun.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sjt_JSTestRun.html; sourceTree = "<group>"; };
+		37135B062090703C0019ADA1 /* JSTestWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSTestWebViewController.h; sourceTree = "<group>"; };
+		37135B072090703C0019ADA1 /* JSTestWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSTestWebViewController.m; sourceTree = "<group>"; };
 		37385861207B52C4001D34F4 /* LXRouterTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXRouterTools.h; sourceTree = "<group>"; };
 		37385862207B52C4001D34F4 /* LXRouterTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterTools.m; sourceTree = "<group>"; };
 		37385866207B6314001D34F4 /* sjt_app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_app.js; sourceTree = "<group>"; };
@@ -210,6 +207,34 @@
 			path = LXJSBridgeAnalysis;
 			sourceTree = "<group>";
 		};
+		37135B092090704B0019ADA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				37BC22D8200C5CAC00AAFB5A /* ViewController.h */,
+				37BC22D9200C5CAC00AAFB5A /* ViewController.m */,
+				37BC230E200DE14400AAFB5A /* TextViewController.h */,
+				37BC230F200DE14400AAFB5A /* TextViewController.m */,
+				37BC2311200DE53100AAFB5A /* PresentViewController.h */,
+				37BC2312200DE53100AAFB5A /* PresentViewController.m */,
+				37135B062090703C0019ADA1 /* JSTestWebViewController.h */,
+				37135B072090703C0019ADA1 /* JSTestWebViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		37135B0A209070640019ADA1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				37DD76F9208082D000A7ECCA /* TestObj.h */,
+				37DD76FA208082D000A7ECCA /* TestObj.m */,
+				37DD76FC20809A1700A7ECCA /* Test2Obj.h */,
+				37DD76FD20809A1700A7ECCA /* Test2Obj.m */,
+				37135ACE2089938B0019ADA1 /* SJTPayModel.h */,
+				37135ACF2089938B0019ADA1 /* SJTPayModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		37BC22C6200C5CAC00AAFB5A = {
 			isa = PBXGroup;
 			children = (
@@ -233,14 +258,12 @@
 		37BC22D1200C5CAC00AAFB5A /* LXRouter */ = {
 			isa = PBXGroup;
 			children = (
+				37DD76F72080825E00A7ECCA /* LXRouter */,
 				37DD76E920807B6400A7ECCA /* YYModel */,
 				37135AE5208F166B0019ADA1 /* AFNetworking */,
 				37DD76F82080828800A7ECCA /* Test */,
-				37DD76F72080825E00A7ECCA /* LXRouter */,
 				37BC22D5200C5CAC00AAFB5A /* AppDelegate.h */,
 				37BC22D6200C5CAC00AAFB5A /* AppDelegate.m */,
-				37BC22D8200C5CAC00AAFB5A /* ViewController.h */,
-				37BC22D9200C5CAC00AAFB5A /* ViewController.m */,
 				37BC22DE200C5CAC00AAFB5A /* Assets.xcassets */,
 				37BC22E0200C5CAC00AAFB5A /* LaunchScreen.storyboard */,
 				37BC22E3200C5CAC00AAFB5A /* Info.plist */,
@@ -252,9 +275,6 @@
 		37BC22D2200C5CAC00AAFB5A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				37135B0420906AE40019ADA1 /* sjt_JSTestRun.html */,
-				37135AF9208F21910019ADA1 /* sjt_appBridge_release.js */,
-				37135AD72089EB790019ADA1 /* sjt_appBridge.js */,
 				37385868207B88CE001D34F4 /* sjt_JSTestBase.html */,
 				37385866207B6314001D34F4 /* sjt_app.js */,
 				37BC22D3200C5CAC00AAFB5A /* main.m */,
@@ -310,16 +330,8 @@
 		37DD76F82080828800A7ECCA /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				37BC230E200DE14400AAFB5A /* TextViewController.h */,
-				37BC230F200DE14400AAFB5A /* TextViewController.m */,
-				37BC2311200DE53100AAFB5A /* PresentViewController.h */,
-				37BC2312200DE53100AAFB5A /* PresentViewController.m */,
-				37DD76F9208082D000A7ECCA /* TestObj.h */,
-				37DD76FA208082D000A7ECCA /* TestObj.m */,
-				37DD76FC20809A1700A7ECCA /* Test2Obj.h */,
-				37DD76FD20809A1700A7ECCA /* Test2Obj.m */,
-				37135ACE2089938B0019ADA1 /* SJTPayModel.h */,
-				37135ACF2089938B0019ADA1 /* SJTPayModel.m */,
+				37135B0A209070640019ADA1 /* Models */,
+				37135B092090704B0019ADA1 /* Controllers */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -432,12 +444,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				37385867207B6314001D34F4 /* sjt_app.js in Resources */,
-				37135B0520906AE50019ADA1 /* sjt_JSTestRun.html in Resources */,
 				37BC22E2200C5CAC00AAFB5A /* LaunchScreen.storyboard in Resources */,
 				37BC22DF200C5CAC00AAFB5A /* Assets.xcassets in Resources */,
-				37135AFA208F21920019ADA1 /* sjt_appBridge_release.js in Resources */,
 				37385869207B88CE001D34F4 /* sjt_JSTestBase.html in Resources */,
-				37135AD82089EB790019ADA1 /* sjt_appBridge.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +483,7 @@
 				37135ADB208F04CB0019ADA1 /* LXJSCodeGenerator.m in Sources */,
 				37135AF4208F166B0019ADA1 /* AFHTTPSessionManager.m in Sources */,
 				37135AD02089938B0019ADA1 /* SJTPayModel.m in Sources */,
+				37135B082090703C0019ADA1 /* JSTestWebViewController.m in Sources */,
 				37DD76FB208082D000A7ECCA /* TestObj.m in Sources */,
 				37135AFF208F2E610019ADA1 /* LXJSBridgeAnalysis.m in Sources */,
 				37135AF3208F166B0019ADA1 /* AFURLResponseSerialization.m in Sources */,

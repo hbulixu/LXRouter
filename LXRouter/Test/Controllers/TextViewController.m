@@ -53,31 +53,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    TestObj * obj1 = [TestObj new];
-//    obj1.test = @"111";
-//    id  dic1 = [obj1 yy_modelDescription];
-//   
-//    NSLog(@"%@", obj1.yy_modelToJSONObject);
 
-//    NSDictionary * dic = @{@"test":@1234,
-//                           @"test2":@"",
-//                           @"isTest": @"12345",
-//                           @"hhh" : @{@"aaaa":@"11111",@"number":@"2222"}
-////                           };
-//    NSDictionary * dic = @{@"hhh" : @{@"aaaa":@"11111",@"number":@"2222"},
-//                           @"test":@"1234",
-//                           @"test2":@"",
-//                           @"isTest":@"1",
-//                           @"urls":@[@{@"aaaa":@"11111",@"number":@"2222"}],
-//                           @"array":@[@{@"aaaa":@"11111",@"number":@"2222"}]
-//                           };
-//    
-//   TestObj * obj = [TestObj lx_modelWithJSON:dic];
-//   // NSLog(@"%@",obj.lx_modelToJSONObject);
-//   NSError * error = [LXRouterTools validateJson:obj.lx_modelToJSONObject WithClass:[TestObj class]];
-//   // NSLog(@"%@",error);
-    
-  
+
 }
 
 

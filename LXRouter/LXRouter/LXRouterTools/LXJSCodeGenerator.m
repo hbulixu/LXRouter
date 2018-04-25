@@ -53,9 +53,9 @@
  **/
 +(void)genScriptBridgeWithRouteHandles:(NSDictionary *)routeHandles RouteInputClass:(NSDictionary *)routeInputClass RouteOutPutClass:(NSDictionary *)routeOutPutClass
 {
-    
-    NSString * filePath = @"/Users/a58/Desktop/LXRouter/LXRouter/sjt_appBridge.js";
-    NSString * releaseFilePath = @"/Users/a58/Desktop/LXRouter/LXRouter/sjt_appBridge_release.js";
+    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString * filePath = [NSString stringWithFormat:@"%@/sjt_appBridge.js",docDir];
+    NSString * releaseFilePath =[NSString stringWithFormat:@"%@/sjt_appBridge_release.js",docDir];
     NSString * readPath = [[NSBundle mainBundle]pathForResource:@"sjt_app" ofType:@"js"];
     NSFileManager * fileManager = [NSFileManager defaultManager];
     
@@ -486,7 +486,8 @@
 +(void)genjsValidateHtmlWithRouteHandles:(NSDictionary *)routeHandles RouteInputClass:(NSDictionary *)routeInputClass
 {
     
-    NSString * filePath = @"/Users/a58/Desktop/LXRouter/LXRouter/sjt_JSTestRun.html";
+    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString * filePath = [NSString stringWithFormat:@"%@/sjt_JSTestRun.html",docDir];
     NSString * readPath = [[NSBundle mainBundle]pathForResource:@"sjt_JSTestBase" ofType:@"html"];
     NSFileManager * fileManager = [NSFileManager defaultManager];
     
