@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head lang="zh">
+        
+        <meta charset="UTF-8">
+            
+            <title>脚本测试</title>
+            
+                <script src="sjt_appBridge_release.js"></script>
+    </head>
+    <body>
+        
+        <h1>脚本测试</h1>
+        
+        <button onclick = "test()">开始测试</button>
+    </body>
+
+<script>
+    
+    function LXLog (msg,error)
+    {
+        xmlDoc = document.getElementsByTagName("body")[0];
+        var div = document.createElement('div');
+        if(error)
+        {
+            div.style.color = 'red';
+        }
+        msgNode =document.createTextNode(msg);
+        div.appendChild(msgNode);
+        document.body.appendChild(div);
+    }
+
+function test(){
+    
+     /**************begin*****************/
+     
+}
+
+</script>
+
+</html>
+

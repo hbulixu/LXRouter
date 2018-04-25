@@ -5,10 +5,10 @@ var sjtApp= {
     responseCallbacks :{},
     uniqueId : 1,
     //创建iframe
-    _createQueueReadyIframe:function(doc) {
-        this.messagingIframe = doc.createElement('iframe');
-        this.messagingIframe.style.display = 'none';
-        doc.documentElement.appendChild(this.messagingIframe);
+    _createIframe:function(){
+        var  iframe=document.createElement("iframe");
+        iframe.style.display="none";
+        return iframe;
     },
     //内部函数不要使用
     _callNative:function(action, params, responseCallback) {
@@ -25,7 +25,14 @@ var sjtApp= {
             message.callbackId = callbackId;
         }
         var messageQueueString = JSON.stringify(message);
-        this.messagingIframe.src = this.CUSTOM_PROTOCOL_SCHEME + '://' + encodeURIComponent(messageQueueString);
+        
+        var iframe=this._createIframe();
+        iframe.src = this.CUSTOM_PROTOCOL_SCHEME + '://' + encodeURIComponent(messageQueueString);
+        document.body.appendChild(iframe);
+        setTimeout(function(){
+                   document.body.removeChild(iframe);
+                   iframe=null;
+                   },200);
     },
     //内部函数不要使用
     _dispatchMessageFromNative:function (messageJSON) {
@@ -49,6 +56,4 @@ var sjtApp= {
     
     /**************end*******************/
 }
-    var doc = document;
-    sjtApp._createQueueReadyIframe(doc);
 

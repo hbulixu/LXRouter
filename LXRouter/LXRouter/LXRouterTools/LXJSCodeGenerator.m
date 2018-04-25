@@ -475,4 +475,195 @@
         finish(nil);
     }];
 }
+
+
++(void)genjsValidateHtml
+{
+    [LXJSCodeGenerator genjsValidateHtmlWithRouteHandles:[LXRouter sharedInstance].routeHandle RouteInputClass:[LXRouter sharedInstance].routeInputClass];
+}
+
+//生成验证html
++(void)genjsValidateHtmlWithRouteHandles:(NSDictionary *)routeHandles RouteInputClass:(NSDictionary *)routeInputClass
+{
+    
+    NSString * filePath = @"/Users/a58/Desktop/LXRouter/LXRouter/sjt_JSTestRun.html";
+    NSString * readPath = [[NSBundle mainBundle]pathForResource:@"sjt_JSTestBase" ofType:@"html"];
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    
+    [fileManager removeItemAtPath:filePath error:nil];
+    [fileManager createFileAtPath:filePath contents:nil attributes:nil];
+    
+    NSFileHandle * fileHandel = [NSFileHandle fileHandleForWritingAtPath:filePath];
+
+    //用来取固定js的代码
+    NSFileHandle * readHandel = [NSFileHandle fileHandleForReadingAtPath:readPath];
+    NSData * baseJsData =[readHandel readDataToEndOfFile];
+    NSString * baseJsStr = [[NSString alloc]initWithData:baseJsData encoding:NSUTF8StringEncoding];
+    NSRange  range = [baseJsStr rangeOfString:part1End];
+    //固定代码分为两部分，
+    NSString * baseJsPart1 = [baseJsStr substringToIndex:range.location + range.length];
+    NSString * baseJsPart2 = [baseJsStr substringFromIndex:range.location + range.length];
+    [readHandel closeFile];
+    
+    //存储最终的js代码
+    NSMutableString * allJs = [NSMutableString string];
+    //添加上半部分固定代码
+    [allJs appendString:baseJsPart1];
+    
+    NSEnumerator *  enumerator = [routeHandles keyEnumerator];
+    NSString * identify;
+    while ((identify = [enumerator nextObject]) !=nil) {
+        
+        //内部函数入参组装
+        NSMutableString * paramsAnalyzeStr = [NSMutableString string];
+        //函数入参字符串
+        NSMutableString * funcParamsStr = [NSMutableString string];
+        
+        //通过输入类生成1.输入注释，2.函数入参，3.入参组装，4.调用部分
+        Class inputClz = routeInputClass[identify];
+        
+        if (inputClz) {
+            //根据类生成类的字典校验树，该树是生成注释和组装的基础
+            NSDictionary * dic = [LXParamsInfoTree genParamsInfoTreeWithClass:inputClz];
+            
+            if (dic && [dic isKindOfClass:[NSDictionary class]]) {
+                
+                /*js 函数定义为最多可传入5个参数，包含回调callBack，如果超过4个入参，就用对象（inputParams）包裹所有的入参**/
+                BOOL params2More = dic.allKeys.count > 4;
+                
+                //如果参数被（inputParams）包裹，需要对注释，函数入参特殊处理
+                if (params2More) {
+                    //函数参数增加 inputParams
+                    [funcParamsStr appendFormat:@"%@",funcParamsKey];
+                    
+                    //*inputParams = {
+                    [paramsAnalyzeStr appendFormat:@"%@ %@ = { \n",tab,funcParamsKey];
+                }
+                
+                //递归处理子节点,组装输入注释，函数入参，入参组装等
+                [LXJSCodeGenerator setStrRecursiveWithParamsInfoTree:dic params2More:params2More  funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
+                
+                //生成最终的函数声明
+                /**
+                 test:function (inputParams,callBack)
+                 */
+                funcParamsStr = [NSMutableString stringWithFormat:@"%@sjtApp.%@ (%@,function( callBackResponse ){LXLog('%@',callBackResponse.error)});",tab,identify,funcParamsStr,identify];
+                
+                if (params2More) {
+                    [paramsAnalyzeStr appendFormat:@"%@ }\n",tab];
+                }
+            }
+        }else //如果没有入参添加固定格式
+        {
+            [funcParamsStr appendFormat:@"%@sjtApp.%@(function( callBackResponse ){LXLog('%@',callBackResponse.error)}) ",tab,identify,identify];
+        }
+        
+        
+        //第三部分 最终拼成整个函数代码
+        NSString * functionStr = [NSString stringWithFormat:@"\n%@\n%@ \n",paramsAnalyzeStr,funcParamsStr];
+        [allJs appendString:functionStr];
+        
+    }
+    
+    [allJs appendString:baseJsPart2];
+    [fileHandel writeData:[allJs dataUsingEncoding:NSUTF8StringEncoding]];
+}
+
+//递归生成输入注释，函数入参，函数组装
++(BOOL)setStrRecursiveWithParamsInfoTree:(id )json params2More:(BOOL)params2More funcParamsStr:(NSMutableString *)funcParamsStr paramsAnalyzeStr:(NSMutableString *)paramsAnalyzeStr
+{
+    
+    if([json isKindOfClass:[NSDictionary class]])//自定义对象
+    {
+        NSString * itemKey;
+        NSEnumerator * dicEnumerator =[json keyEnumerator];
+        while ((itemKey = [dicEnumerator nextObject] )!= nil) {
+            id value = json[itemKey];
+            [self setStrRecursiveWithParamsInfoTree:value params2More:params2More funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr ];
+        }
+        return YES;
+    }else if([json isKindOfClass:[NSArray class]] )//数组中存在自定义对象的情况
+    {
+        NSArray * array = (NSArray *)json;
+        if (array.count) {
+            id dic = [array firstObject];
+            
+            if ([dic isKindOfClass:[NSDictionary class]]) {
+                NSString * itemKey;
+                NSEnumerator * dicEnumerator =[dic keyEnumerator];
+                while ((itemKey = [dicEnumerator nextObject] )!= nil) {
+                    id value = dic[itemKey];
+                    [self setStrRecursiveWithParamsInfoTree:value params2More:params2More funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
+                }
+            }
+        }
+        return YES;
+    }
+    else
+    {
+        TypeAnnotation * annotation = json;
+        //普通类
+        if([annotation isKindOfClass:[TypeAnnotation class]])
+        {
+            NSInteger level = annotation.level;
+            NSMutableString * mtab = [NSMutableString string];
+            while (level) {
+                [mtab appendString:tab];
+                level --;
+            }
+            //第一级
+            if (annotation.level == 1) {
+                //参数过多，只传一个model，不需要拼写参数了
+                if (!params2More) {
+                    
+                    if (funcParamsStr.length) {
+                        [funcParamsStr appendFormat:@",%@",annotation.keyName];
+                    }else //第一个参数不需要 ,
+                    {
+                        [funcParamsStr appendFormat:@"%@",annotation.keyName];
+                    }
+                    
+
+                    //var isTest = 'isTest';
+                    [paramsAnalyzeStr appendFormat:@"%@%@var %@ = '%@';\n",tab,mtab,annotation.keyName,annotation.keyName];
+                    
+                }else//如果最外层是个对象
+                {
+                    //isTest: 'isTest'
+                    [paramsAnalyzeStr appendString:[NSString stringWithFormat:@"%@%@%@:'%@',\n",tab,mtab,annotation.keyName,annotation.keyName]];
+                }
+                
+            }else //第二级 第三级 ...
+            {
+                // isTest:'isTest',
+                [paramsAnalyzeStr appendFormat:@"%@%@%@:'%@', \n",tab,mtab,annotation.keyName,annotation.keyName];
+            }
+            //如果当前节点有子节点
+            if (annotation.child) {
+                
+                //opts = [{
+                if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {
+                    
+                    [paramsAnalyzeStr appendFormat:@"%@%@%@: %@%@\n",tab,mtab,annotation.keyName,lSquareBracket,lBrace];
+                }else//opts = {
+                {
+                    [paramsAnalyzeStr appendFormat:@"%@%@%@: %@\n",tab,mtab,annotation.keyName,lBrace];
+                }
+                
+                [self setStrRecursiveWithParamsInfoTree:annotation.child params2More:params2More funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
+                //结尾 }]
+                if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {
+                    
+                    [paramsAnalyzeStr appendFormat:@"%@%@%@%@,\n",tab,mtab,rBrace,rSquareBracket];
+                }else //结尾 }
+                {
+                    [paramsAnalyzeStr appendFormat:@"%@%@%@,\n",tab,mtab,rBrace];
+                }
+                
+            }
+            
+        }
+        return YES;
+    }
+}
 @end

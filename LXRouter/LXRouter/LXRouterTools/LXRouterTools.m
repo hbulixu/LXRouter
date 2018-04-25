@@ -17,6 +17,12 @@
     return  [LXRouterInputValidate validateJson:json WithClass:clz];
 }
 
+
+//生成html脚本校验文件
++(void)genjsValidateHtml
+{
+   [LXJSCodeGenerator genjsValidateHtml];
+}
 +(void)genJavaScriptBridge
 {
     [LXJSCodeGenerator genJavaScriptBridge];

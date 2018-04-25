@@ -21,9 +21,10 @@
 		37135AF8208F166B0019ADA1 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AF1208F166B0019ADA1 /* AFSecurityPolicy.m */; };
 		37135AFA208F21920019ADA1 /* sjt_appBridge_release.js in Resources */ = {isa = PBXBuildFile; fileRef = 37135AF9208F21910019ADA1 /* sjt_appBridge_release.js */; };
 		37135AFF208F2E610019ADA1 /* LXJSBridgeAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 37135AFE208F2E610019ADA1 /* LXJSBridgeAnalysis.m */; };
+		37135B0520906AE50019ADA1 /* sjt_JSTestRun.html in Resources */ = {isa = PBXBuildFile; fileRef = 37135B0420906AE40019ADA1 /* sjt_JSTestRun.html */; };
 		37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 37385862207B52C4001D34F4 /* LXRouterTools.m */; };
 		37385867207B6314001D34F4 /* sjt_app.js in Resources */ = {isa = PBXBuildFile; fileRef = 37385866207B6314001D34F4 /* sjt_app.js */; };
-		37385869207B88CE001D34F4 /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 37385868207B88CE001D34F4 /* ExampleApp.html */; };
+		37385869207B88CE001D34F4 /* sjt_JSTestBase.html in Resources */ = {isa = PBXBuildFile; fileRef = 37385868207B88CE001D34F4 /* sjt_JSTestBase.html */; };
 		37BC22D4200C5CAC00AAFB5A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC22D3200C5CAC00AAFB5A /* main.m */; };
 		37BC22D7200C5CAC00AAFB5A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC22D6200C5CAC00AAFB5A /* AppDelegate.m */; };
 		37BC22DA200C5CAC00AAFB5A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC22D9200C5CAC00AAFB5A /* ViewController.m */; };
@@ -88,10 +89,11 @@
 		37135AF9208F21910019ADA1 /* sjt_appBridge_release.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_appBridge_release.js; sourceTree = "<group>"; };
 		37135AFD208F2E610019ADA1 /* LXJSBridgeAnalysis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXJSBridgeAnalysis.h; sourceTree = "<group>"; };
 		37135AFE208F2E610019ADA1 /* LXJSBridgeAnalysis.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXJSBridgeAnalysis.m; sourceTree = "<group>"; };
+		37135B0420906AE40019ADA1 /* sjt_JSTestRun.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sjt_JSTestRun.html; sourceTree = "<group>"; };
 		37385861207B52C4001D34F4 /* LXRouterTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXRouterTools.h; sourceTree = "<group>"; };
 		37385862207B52C4001D34F4 /* LXRouterTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterTools.m; sourceTree = "<group>"; };
 		37385866207B6314001D34F4 /* sjt_app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_app.js; sourceTree = "<group>"; };
-		37385868207B88CE001D34F4 /* ExampleApp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ExampleApp.html; sourceTree = "<group>"; };
+		37385868207B88CE001D34F4 /* sjt_JSTestBase.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sjt_JSTestBase.html; sourceTree = "<group>"; };
 		37BC22CF200C5CAC00AAFB5A /* LXRouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LXRouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37BC22D3200C5CAC00AAFB5A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		37BC22D5200C5CAC00AAFB5A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -250,9 +252,10 @@
 		37BC22D2200C5CAC00AAFB5A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				37135B0420906AE40019ADA1 /* sjt_JSTestRun.html */,
 				37135AF9208F21910019ADA1 /* sjt_appBridge_release.js */,
 				37135AD72089EB790019ADA1 /* sjt_appBridge.js */,
-				37385868207B88CE001D34F4 /* ExampleApp.html */,
+				37385868207B88CE001D34F4 /* sjt_JSTestBase.html */,
 				37385866207B6314001D34F4 /* sjt_app.js */,
 				37BC22D3200C5CAC00AAFB5A /* main.m */,
 			);
@@ -429,10 +432,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				37385867207B6314001D34F4 /* sjt_app.js in Resources */,
+				37135B0520906AE50019ADA1 /* sjt_JSTestRun.html in Resources */,
 				37BC22E2200C5CAC00AAFB5A /* LaunchScreen.storyboard in Resources */,
 				37BC22DF200C5CAC00AAFB5A /* Assets.xcassets in Resources */,
 				37135AFA208F21920019ADA1 /* sjt_appBridge_release.js in Resources */,
-				37385869207B88CE001D34F4 /* ExampleApp.html in Resources */,
+				37385869207B88CE001D34F4 /* sjt_JSTestBase.html in Resources */,
 				37135AD82089EB790019ADA1 /* sjt_appBridge.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

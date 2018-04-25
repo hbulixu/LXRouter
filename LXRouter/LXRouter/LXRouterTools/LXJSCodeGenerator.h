@@ -11,4 +11,6 @@
 @interface LXJSCodeGenerator : NSObject
 
 +(void)genJavaScriptBridge;
+//生成html脚本校验文件
++(void)genjsValidateHtml;
 @end

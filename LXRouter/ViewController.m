@@ -26,7 +26,7 @@
     
     NSString *path = [[NSBundle mainBundle] bundlePath];
     NSURL *baseURL = [NSURL fileURLWithPath:path];
-    NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@"ExampleApp"
+    NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@"sjt_JSTestRun"
                                                           ofType:@"html"];
     NSString * htmlCont = [NSString stringWithContentsOfFile:htmlPath
                                                     encoding:NSUTF8StringEncoding
@@ -37,6 +37,7 @@
     [self sendMailInApp];
 
     [LXRouterTools genJavaScriptBridge];
+    [LXRouterTools genjsValidateHtml];
 //    [LXRouter openIdentify:@"test1" withUserInfo:@{@"title":@"测试"} completion:^(id result) {
 //        
 //    }];
@@ -82,7 +83,7 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     NSString *urlString = request.URL.absoluteString;
-   return  [LXJSBridgeAnalysis webView:webView shouldStartLoadAfterTransUriToRouter:urlString];
+   return  [LXJSBridgeAnalysis debug_webView:webView shouldStartLoadAfterTransUriToRouter:urlString];
 }
 
 - (void)sendMailInApp

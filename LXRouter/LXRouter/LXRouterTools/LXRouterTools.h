@@ -12,5 +12,8 @@
 
 +(void)genJavaScriptBridge;
 
+//生成html脚本校验文件
++(void)genjsValidateHtml;
+
 +(NSError *)validateJson:(id)json WithClass:(Class)clz;
 @end

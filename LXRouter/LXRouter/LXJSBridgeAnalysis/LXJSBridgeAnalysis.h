@@ -12,4 +12,7 @@
 
 +(BOOL)webView:(UIWebView *)webView shouldStartLoadAfterTransUriToRouter:(NSString *)uri;
 
+//自动化测试使用
++(BOOL)debug_webView:(UIWebView *)webView shouldStartLoadAfterTransUriToRouter:(NSString *)uri;
+
 @end
