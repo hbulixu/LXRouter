@@ -112,7 +112,6 @@ static NSString * errorDomain = @"lx.router.error";
     LXRouterHandler handler = [[LXRouter sharedInstance].routeHandle objectForKey:identify];
     
     Class clz = [[LXRouter sharedInstance].routeInputClass objectForKey:identify];
-    
     if (clz) {
         error = [LXRouterTools validateJson:json WithClass:clz];
         if (error) {

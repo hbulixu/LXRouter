@@ -78,13 +78,12 @@
 {
     Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
     if (!mailClass) {
-        //[self alertWithMessage:@"当前系统版本不支持应用内发送邮件功能，您可以使用mailto方法代替"];
-        NSLog(@"当前系统版本不支持应用内发送邮件功能，您可以使用mailto方法代替");
+        [self alertWithMessage:@"当前系统版本不支持应用内发送邮件功能，您可以使用mailto方法代替"];
         return;
     }
     if (![mailClass canSendMail]) {
-        //[self alertWithMessage:@"用户没有设置邮件账户"];
-        NSLog(@"用户没有设置邮件账户");
+        [self alertWithMessage:@"用户没有设置邮件账户"];
+
         return;
     }
     [self displayMailPicker];
@@ -128,10 +127,10 @@
             msg = @"用户取消编辑邮件";
             break;
         case MFMailComposeResultSaved:
-            msg = @"用户成功保存邮件";
+           // msg = @"用户成功保存邮件";
             break;
         case MFMailComposeResultSent:
-            msg = @"用户点击发送，将邮件放到队列中，还没发送";
+            //msg = @"用户点击发送，将邮件放到队列中，还没发送";
             break;
         case MFMailComposeResultFailed:
             msg = @"用户试图保存或者发送邮件失败";
@@ -140,6 +139,8 @@
             msg = @"";
             break;
     }
+    
+    [self alertWithMessage:msg];
 
 }
 
@@ -161,6 +162,15 @@
     return _tableView;
 }
 
+-(void)alertWithMessage:(NSString *)message
+{
+    UIAlertController* alertController =   [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Cancel Action");
+    }];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 -(void)showdarkLoadView
 {
     [self.darkLoadView addSubview:self.activeIndicator];
