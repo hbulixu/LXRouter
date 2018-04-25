@@ -49,6 +49,69 @@
         //处理完成后的回调
         routerInfo.completionBlock(nil, nil);
     }];
+    [LXRouter registerIdentify:@"nativePay1" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay2" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay3" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay4" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay5" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay6" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay7" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay8" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay9" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay10" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay11" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay12" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay13" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay14" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay15" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay16" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay17" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay18" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay19" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
+    [LXRouter registerIdentify:@"nativePay20" inputClass:[SJTPayModel class] outputClass:[SJTPayModel class] toHandler:^(LXRouterInfo *routerInfo) {
+        NSLog(@"%@",((TestObj *)routerInfo.inputModel).lx_modelToJSONObject);
+    }];
 }
 
 - (void)viewDidLoad {

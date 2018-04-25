@@ -1,6 +1,5 @@
 //商家通app js调用native脚本
 var sjtApp= {
-    messagingIframe : "",
     CUSTOM_PROTOCOL_SCHEME : 'wbbpchannel',
     responseCallbacks :{},
     uniqueId : 1,

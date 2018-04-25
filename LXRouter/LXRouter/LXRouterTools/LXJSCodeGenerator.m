@@ -612,35 +612,38 @@
                 [mtab appendString:tab];
                 level --;
             }
-            //第一级
-            if (annotation.level == 1) {
-                //参数过多，只传一个model，不需要拼写参数了
-                if (!params2More) {
-                    
-                    if (funcParamsStr.length) {
-                        [funcParamsStr appendFormat:@",%@",annotation.keyName];
-                    }else //第一个参数不需要 ,
+
+            if (!annotation.child) {
+                //第一级
+                if (annotation.level == 1) {
+                    //参数过多，只传一个model，不需要拼写参数了
+                    if (!params2More) {
+                        
+                        if (funcParamsStr.length) {
+                            [funcParamsStr appendFormat:@",%@",annotation.keyName];
+                        }else //第一个参数不需要 ,
+                        {
+                            [funcParamsStr appendFormat:@"%@",annotation.keyName];
+                        }
+                        
+                        
+                        //var isTest = 'isTest';
+                        [paramsAnalyzeStr appendFormat:@"%@%@var %@ = '%@';\n",tab,mtab,annotation.keyName,annotation.keyName];
+                        
+                    }else//如果最外层是个对象
                     {
-                        [funcParamsStr appendFormat:@"%@",annotation.keyName];
+                        //isTest: 'isTest'
+                        [paramsAnalyzeStr appendString:[NSString stringWithFormat:@"%@%@%@:'%@',\n",tab,mtab,annotation.keyName,annotation.keyName]];
                     }
                     
-
-                    //var isTest = 'isTest';
-                    [paramsAnalyzeStr appendFormat:@"%@%@var %@ = '%@';\n",tab,mtab,annotation.keyName,annotation.keyName];
-                    
-                }else//如果最外层是个对象
+                }else //第二级 第三级 ...
                 {
-                    //isTest: 'isTest'
-                    [paramsAnalyzeStr appendString:[NSString stringWithFormat:@"%@%@%@:'%@',\n",tab,mtab,annotation.keyName,annotation.keyName]];
+                    // isTest:'isTest',
+                    [paramsAnalyzeStr appendFormat:@"%@%@%@:'%@', \n",tab,mtab,annotation.keyName,annotation.keyName];
                 }
-                
-            }else //第二级 第三级 ...
-            {
-                // isTest:'isTest',
-                [paramsAnalyzeStr appendFormat:@"%@%@%@:'%@', \n",tab,mtab,annotation.keyName,annotation.keyName];
             }
             //如果当前节点有子节点
-            if (annotation.child) {
+            else{
                 
                 //opts = [{
                 if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {
