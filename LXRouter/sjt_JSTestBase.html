@@ -6,7 +6,7 @@
             
             <title>脚本测试</title>
             
-                <script src="sjt_appBridge_release.js"></script>
+                <script src="sjt_appBridge.js"></script>
     </head>
     <body>
         
@@ -24,6 +24,10 @@
         if(error)
         {
             div.style.color = 'red';
+            msg = 'call native func ['+msg+'] failure !!!';
+        }else
+        {
+            msg = 'call native func ['+msg+'] success !!!';
         }
         msgNode =document.createTextNode(msg);
         div.appendChild(msgNode);
