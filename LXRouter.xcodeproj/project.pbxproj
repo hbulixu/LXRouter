@@ -155,8 +155,6 @@
 		37135AC82085E14B0019ADA1 /* LXJSONModel */ = {
 			isa = PBXGroup;
 			children = (
-				37DD76F32080821800A7ECCA /* TypeAnnotation.h */,
-				37DD76F42080821800A7ECCA /* TypeAnnotation.m */,
 				37135AC52084A1B80019ADA1 /* NSObject+LXJsonModel.h */,
 				37135AC62084A1B80019ADA1 /* NSObject+LXJsonModel.m */,
 			);
@@ -166,6 +164,8 @@
 		37135ADF208F05020019ADA1 /* LXRouterTools */ = {
 			isa = PBXGroup;
 			children = (
+				37DD76F32080821800A7ECCA /* TypeAnnotation.h */,
+				37DD76F42080821800A7ECCA /* TypeAnnotation.m */,
 				37385861207B52C4001D34F4 /* LXRouterTools.h */,
 				37385862207B52C4001D34F4 /* LXRouterTools.m */,
 				37135ADC208F04F10019ADA1 /* LXRouterInputValidate.h */,
