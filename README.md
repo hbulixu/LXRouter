@@ -19,6 +19,26 @@ WebViewJavascriptBridge 是常用的native和js交互方案。优点众多，就
 
 
 
+
+注意：demo中使用系统邮件导出沙盒中生成的js脚本，如果邮件设置繁琐，可以修改脚本路径到工程目录，在调试模式下生成文件到工程目录。修改以下代码：
+LXJSCodeGenerator.m
+```
++(void)genScriptBridgeWithRouteHandles:(NSDictionary *)routeHandles RouteInputClass:(NSDictionary *)routeInputClass RouteOutPutClass:(NSDictionary *)routeOutPutClass
+{
+NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+//修改该路径为本地工程路径
+NSString * filePath = [NSString stringWithFormat:@"%@/sjt_appBridge.js",docDir];
+
+
+
++(void)genjsValidateHtmlWithRouteHandles:(NSDictionary *)routeHandles RouteInputClass:(NSDictionary *)routeInputClass
+{
+
+NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+//修改该路径为本地工程路径
+NSString * filePath = [NSString stringWithFormat:@"%@/sjt_JSTestRun.html",docDir];
+```
+
 使用方式：
 
 1.生成路由输入输出model
@@ -96,5 +116,7 @@ var params= {
 this._callNative("nativePay",params,callBack);
 }  
 ```
+
+
 
 
