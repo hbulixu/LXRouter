@@ -1,9 +1,22 @@
 # LXRouter
-IOS router 和 jsBridge的综合解决方案。具有以下特点：
-一. 路由调用方可以使用model作为入参执行路由，减少硬编码。
-二. LXRouterTools 根据注册内容生成jsBridge脚本，脚本注释明确，无需说明文档。可以供前端直接使用。
-三. LXRouterTools 生成jsBridge相应的校验脚本，保证jsBridge的接口正确性。
-四. 路由具有参数校验功能，协助前端调试。
+IOS router 和 jsBridge的综合解决方案。具有以下特点：<br>
+一. 路由调用方可以使用model作为入参执行路由，减少硬编码。<br>
+二. LXRouterTools 根据注册内容生成jsBridge脚本，脚本注释明确，无需说明文档。可以供前端直接使用。<br>
+三. LXRouterTools 生成jsBridge相应的校验脚本，保证jsBridge的接口正确性。<br>
+四. 路由具有参数校验功能，协助前端调试。<br>
+
+WebViewJavascriptBridge 是常用的native和js交互方案。优点众多，就不说明了，简单说一下使用当中的缺点。<br>
+1.硬编码严重，对于参数较多，较复杂的情况下使用不便。<br>
+2.只局限于web端调用，无法在native中使用路由，不符合大路由的思路。<br>
+3.对接口说明文档要求较高。调试耗时。<br>
+
+现有的一些做法：<br>
+1.每个路由调用都生成独立的方法，通过内部组装减少硬编码。<br>
+2.维护一套完善的js使用文档，给使用者。<br>
+3.剥离出jsbridge解析模块，与路由衔接，使得路由不局限于web端调用。<br>
+
+以上做法依然有问题，就js和js文档维护就消耗很多人力。LXRouter就是为解决以上问题开发的。<br>
+
 
 
 使用方式：
