@@ -21,7 +21,7 @@
 #endif
 
 #if DEBUG
-#define DSProtocol(class) @property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(propertyProtocol_##class##_,__COUNTER__);
+#define DSProtocol(class) @property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(propertyProtocol_##class##propertyProtocol_,__COUNTER__);
 #else
 #define DSProtocol(comment)
 #endif
@@ -29,7 +29,7 @@
 
 //注释宏
 #if DEBUG
-#define PRComments(comment) @property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(PRComments_##comment##_,__COUNTER__);
+#define PRComments(comment) @property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(PRComments_##comment##PRComments_,__COUNTER__);
 
 #else
 #define PRComments(comment)
@@ -37,7 +37,7 @@
 
 //函数功能宏
 #if DEBUG
-#define FCComments(comment) @property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(FCComments_##comment##_,__COUNTER__);
+#define FCComments(comment) @property (nonatomic, weak, readonly) TypeAnnotation *__annotation_macro_concat(FCComments_##comment##FCComments_,__COUNTER__);
 
 #else
 #define FCComments(comment)

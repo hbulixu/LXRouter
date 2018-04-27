@@ -23,6 +23,11 @@
 		37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 37385862207B52C4001D34F4 /* LXRouterTools.m */; };
 		37385867207B6314001D34F4 /* sjt_app.js in Resources */ = {isa = PBXBuildFile; fileRef = 37385866207B6314001D34F4 /* sjt_app.js */; };
 		37385869207B88CE001D34F4 /* sjt_JSTestBase.html in Resources */ = {isa = PBXBuildFile; fileRef = 37385868207B88CE001D34F4 /* sjt_JSTestBase.html */; };
+		37675DCC2092D01F0049DE07 /* SJTNativeImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 37675DCB2092D01F0049DE07 /* SJTNativeImagePicker.m */; };
+		37675DCF2092D2A00049DE07 /* SJTCountEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 37675DCE2092D2A00049DE07 /* SJTCountEvent.m */; };
+		37675DD22092D3840049DE07 /* SJTOpenNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 37675DD12092D3840049DE07 /* SJTOpenNative.m */; };
+		37675DD52092F61D0049DE07 /* SJTOpenWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37675DD42092F61D0049DE07 /* SJTOpenWebView.m */; };
+		37675DD82092F7460049DE07 /* SJTPostGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 37675DD72092F7460049DE07 /* SJTPostGoods.m */; };
 		37BC22D4200C5CAC00AAFB5A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC22D3200C5CAC00AAFB5A /* main.m */; };
 		37BC22D7200C5CAC00AAFB5A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC22D6200C5CAC00AAFB5A /* AppDelegate.m */; };
 		37BC22DA200C5CAC00AAFB5A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC22D9200C5CAC00AAFB5A /* ViewController.m */; };
@@ -37,8 +42,6 @@
 		37DD76EF20807B6500A7ECCA /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37DD76EC20807B6400A7ECCA /* NSObject+YYModel.m */; };
 		37DD76F020807B6500A7ECCA /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 37DD76ED20807B6400A7ECCA /* YYClassInfo.m */; };
 		37DD76F52080821800A7ECCA /* TypeAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 37DD76F42080821800A7ECCA /* TypeAnnotation.m */; };
-		37DD76FB208082D000A7ECCA /* TestObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 37DD76FA208082D000A7ECCA /* TestObj.m */; };
-		37DD76FE20809A1700A7ECCA /* Test2Obj.m in Sources */ = {isa = PBXBuildFile; fileRef = 37DD76FD20809A1700A7ECCA /* Test2Obj.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,16 @@
 		37385862207B52C4001D34F4 /* LXRouterTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterTools.m; sourceTree = "<group>"; };
 		37385866207B6314001D34F4 /* sjt_app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_app.js; sourceTree = "<group>"; };
 		37385868207B88CE001D34F4 /* sjt_JSTestBase.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sjt_JSTestBase.html; sourceTree = "<group>"; };
+		37675DCA2092D01F0049DE07 /* SJTNativeImagePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJTNativeImagePicker.h; sourceTree = "<group>"; };
+		37675DCB2092D01F0049DE07 /* SJTNativeImagePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJTNativeImagePicker.m; sourceTree = "<group>"; };
+		37675DCD2092D2A00049DE07 /* SJTCountEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJTCountEvent.h; sourceTree = "<group>"; };
+		37675DCE2092D2A00049DE07 /* SJTCountEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJTCountEvent.m; sourceTree = "<group>"; };
+		37675DD02092D3840049DE07 /* SJTOpenNative.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJTOpenNative.h; sourceTree = "<group>"; };
+		37675DD12092D3840049DE07 /* SJTOpenNative.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJTOpenNative.m; sourceTree = "<group>"; };
+		37675DD32092F61D0049DE07 /* SJTOpenWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJTOpenWebView.h; sourceTree = "<group>"; };
+		37675DD42092F61D0049DE07 /* SJTOpenWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJTOpenWebView.m; sourceTree = "<group>"; };
+		37675DD62092F7460049DE07 /* SJTPostGoods.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJTPostGoods.h; sourceTree = "<group>"; };
+		37675DD72092F7460049DE07 /* SJTPostGoods.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJTPostGoods.m; sourceTree = "<group>"; };
 		37BC22CF200C5CAC00AAFB5A /* LXRouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LXRouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37BC22D3200C5CAC00AAFB5A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		37BC22D5200C5CAC00AAFB5A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -121,10 +134,6 @@
 		37DD76EE20807B6400A7ECCA /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
 		37DD76F32080821800A7ECCA /* TypeAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeAnnotation.h; sourceTree = "<group>"; };
 		37DD76F42080821800A7ECCA /* TypeAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypeAnnotation.m; sourceTree = "<group>"; };
-		37DD76F9208082D000A7ECCA /* TestObj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestObj.h; sourceTree = "<group>"; };
-		37DD76FA208082D000A7ECCA /* TestObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestObj.m; sourceTree = "<group>"; };
-		37DD76FC20809A1700A7ECCA /* Test2Obj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test2Obj.h; sourceTree = "<group>"; };
-		37DD76FD20809A1700A7ECCA /* Test2Obj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test2Obj.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,12 +234,18 @@
 		37135B0A209070640019ADA1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				37DD76F9208082D000A7ECCA /* TestObj.h */,
-				37DD76FA208082D000A7ECCA /* TestObj.m */,
-				37DD76FC20809A1700A7ECCA /* Test2Obj.h */,
-				37DD76FD20809A1700A7ECCA /* Test2Obj.m */,
 				37135ACE2089938B0019ADA1 /* SJTPayModel.h */,
 				37135ACF2089938B0019ADA1 /* SJTPayModel.m */,
+				37675DCA2092D01F0049DE07 /* SJTNativeImagePicker.h */,
+				37675DCB2092D01F0049DE07 /* SJTNativeImagePicker.m */,
+				37675DCD2092D2A00049DE07 /* SJTCountEvent.h */,
+				37675DCE2092D2A00049DE07 /* SJTCountEvent.m */,
+				37675DD02092D3840049DE07 /* SJTOpenNative.h */,
+				37675DD12092D3840049DE07 /* SJTOpenNative.m */,
+				37675DD32092F61D0049DE07 /* SJTOpenWebView.h */,
+				37675DD42092F61D0049DE07 /* SJTOpenWebView.m */,
+				37675DD62092F7460049DE07 /* SJTPostGoods.h */,
+				37675DD72092F7460049DE07 /* SJTPostGoods.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -474,20 +489,21 @@
 				37DD76EF20807B6500A7ECCA /* NSObject+YYModel.m in Sources */,
 				37135ADE208F04F10019ADA1 /* LXRouterInputValidate.m in Sources */,
 				37135AE2208F06390019ADA1 /* LXParamsInfoTree.m in Sources */,
+				37675DD52092F61D0049DE07 /* SJTOpenWebView.m in Sources */,
 				37135AF5208F166B0019ADA1 /* AFURLSessionManager.m in Sources */,
 				37135AF8208F166B0019ADA1 /* AFSecurityPolicy.m in Sources */,
 				37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */,
 				37BC230D200C7E7E00AAFB5A /* LXRouterInfo.m in Sources */,
-				37DD76FE20809A1700A7ECCA /* Test2Obj.m in Sources */,
 				37135AF6208F166B0019ADA1 /* AFURLRequestSerialization.m in Sources */,
+				37675DCF2092D2A00049DE07 /* SJTCountEvent.m in Sources */,
 				37135ADB208F04CB0019ADA1 /* LXJSCodeGenerator.m in Sources */,
 				37135AF4208F166B0019ADA1 /* AFHTTPSessionManager.m in Sources */,
 				37135AD02089938B0019ADA1 /* SJTPayModel.m in Sources */,
 				37135B082090703C0019ADA1 /* JSTestWebViewController.m in Sources */,
-				37DD76FB208082D000A7ECCA /* TestObj.m in Sources */,
 				37135AFF208F2E610019ADA1 /* LXJSBridgeAnalysis.m in Sources */,
 				37135AF3208F166B0019ADA1 /* AFURLResponseSerialization.m in Sources */,
 				37BC22DA200C5CAC00AAFB5A /* ViewController.m in Sources */,
+				37675DCC2092D01F0049DE07 /* SJTNativeImagePicker.m in Sources */,
 				37DD76F52080821800A7ECCA /* TypeAnnotation.m in Sources */,
 				37135AC72084A1B80019ADA1 /* NSObject+LXJsonModel.m in Sources */,
 				37135AF7208F166B0019ADA1 /* AFNetworkReachabilityManager.m in Sources */,
@@ -496,6 +512,8 @@
 				37BC2313200DE53100AAFB5A /* PresentViewController.m in Sources */,
 				37BC22D4200C5CAC00AAFB5A /* main.m in Sources */,
 				37DD76F020807B6500A7ECCA /* YYClassInfo.m in Sources */,
+				37675DD22092D3840049DE07 /* SJTOpenNative.m in Sources */,
+				37675DD82092F7460049DE07 /* SJTPostGoods.m in Sources */,
 				37BC230A200C7C0500AAFB5A /* LXRouter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

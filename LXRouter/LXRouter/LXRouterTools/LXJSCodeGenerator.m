@@ -54,6 +54,7 @@
 +(void)genScriptBridgeWithRouteHandles:(NSDictionary *)routeHandles RouteInputClass:(NSDictionary *)routeInputClass RouteOutPutClass:(NSDictionary *)routeOutPutClass
 {
     NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSLog(@"%@",docDir);
     NSString * filePath = [NSString stringWithFormat:@"%@/sjt_appBridge.js",docDir];
     NSString * releaseFilePath =[NSString stringWithFormat:@"%@/sjt_appBridge_release.js",docDir];
     NSString * readPath = [[NSBundle mainBundle]pathForResource:@"sjt_app" ofType:@"js"];
@@ -106,7 +107,7 @@
         if (inputClz) {
             //根据类生成类的字典校验树，该树是生成注释和组装的基础
             NSDictionary * dic = [LXParamsInfoTree genParamsInfoTreeWithClass:inputClz];
-            
+            NSLog(@"%@",dic.lx_modelToJSONObject);
             //获取当前函数功能说明
             NSString * funcComments = [LXParamsInfoTree genFuncCommentsWithClass:inputClz];
             
@@ -406,7 +407,7 @@
                     }
                     
                     
-                    [commentsStr appendFormat:@"%@%@ @param %-10s %@ \n",tab,star,blockJSType.UTF8String,annotation.keyName];
+                    [commentsStr appendFormat:@"%@%@ @param %-10s %-15s //-%@ -%@ \n",tab,star,blockJSType.UTF8String,annotation.keyName.UTF8String,annotation.comments?:@"",annotation.required?@"(必输项)":@""];
                     
                     //isTest: isTest
                     [paramsAnalyzeStr appendFormat:@"%@%@%@%@:  %@,\n",tab,tab,tab,annotation.keyName,annotation.keyName];
@@ -415,7 +416,7 @@
                 {
                     
                     // *    isTest:  //NSNumber -是否测试
-                    [commentsStr appendFormat:@"%@%@%@%@:  //%@ -%@ -%@ \n",tab,star,tab,annotation.keyName, jsType,annotation.comments?:@"",annotation.required?@"(必输项)":@""];
+                    [commentsStr appendFormat:@"%@%@%@%-15s:  //%@ -%@ -%@ \n",tab,star,tab,annotation.keyName.UTF8String, jsType,annotation.comments?:@"",annotation.required?@"(必输项)":@""];
                     
                     //isTest: isTest
                     [paramsAnalyzeStr appendString:[NSString stringWithFormat:@"%@%@%@%@: %@.%@,\n",tab,tab,tab,annotation.keyName,funcParamsKey,annotation.keyName]];
@@ -425,7 +426,7 @@
             }else //第二级 第三级 ...
             {
                 // *    isTest:  //NSNumber -是否测试
-                [commentsStr appendFormat:@"%@%@%@%@:  //%@ -%@ -%@ \n",tab,star,mtab,annotation.keyName,jsType,annotation.comments?:@"",annotation.required?@"(必输项)":@""];
+                [commentsStr appendFormat:@"%@%@%@%-15s:  //%@ -%@ -%@ \n",tab,star,mtab,annotation.keyName.UTF8String,jsType,annotation.comments?:@"",annotation.required?@"(必输项)":@""];
             }
             //如果当前节点有子节点
             if (annotation.child) {
@@ -576,6 +577,7 @@
     
     if([json isKindOfClass:[NSDictionary class]])//自定义对象
     {
+ 
         NSString * itemKey;
         NSEnumerator * dicEnumerator =[json keyEnumerator];
         while ((itemKey = [dicEnumerator nextObject] )!= nil) {
@@ -648,20 +650,65 @@
                 //opts = [{
                 if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {
                     
-                    [paramsAnalyzeStr appendFormat:@"%@%@%@: %@%@\n",tab,mtab,annotation.keyName,lSquareBracket,lBrace];
+                    
+                    //最外层没有对象
+                    if (!params2More && annotation.level == 1) {
+                        [paramsAnalyzeStr appendFormat:@"%@%@var %@= %@%@\n",tab,mtab,annotation.keyName,lSquareBracket,lBrace];
+                        
+                        if (funcParamsStr.length) {
+                            [funcParamsStr appendFormat:@",%@",annotation.keyName];
+                        }else //第一个参数不需要 ,
+                        {
+                            [funcParamsStr appendFormat:@"%@",annotation.keyName];
+                        }
+                    }else
+                    {
+                        [paramsAnalyzeStr appendFormat:@"%@%@%@: %@%@\n",tab,mtab,annotation.keyName,lSquareBracket,lBrace];
+                    }
+
                 }else//opts = {
                 {
-                    [paramsAnalyzeStr appendFormat:@"%@%@%@: %@\n",tab,mtab,annotation.keyName,lBrace];
+                     if (!params2More && annotation.level == 1)
+                     {
+                         [paramsAnalyzeStr appendFormat:@"%@%@ var %@= %@\n",tab,mtab,annotation.keyName,lBrace];
+                         
+                         if (funcParamsStr.length) {
+                             [funcParamsStr appendFormat:@",%@",annotation.keyName];
+                         }else //第一个参数不需要 ,
+                         {
+                             [funcParamsStr appendFormat:@"%@",annotation.keyName];
+                         }
+                     }else
+                     {
+                         [paramsAnalyzeStr appendFormat:@"%@%@%@: %@\n",tab,mtab,annotation.keyName,lBrace];
+                     }
+
                 }
                 
                 [self setStrRecursiveWithParamsInfoTree:annotation.child params2More:params2More funcParamsStr:funcParamsStr paramsAnalyzeStr:paramsAnalyzeStr];
                 //结尾 }]
                 if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {
                     
-                    [paramsAnalyzeStr appendFormat:@"%@%@%@%@,\n",tab,mtab,rBrace,rSquareBracket];
+                    
+                    [paramsAnalyzeStr appendFormat:@"%@%@%@%@",tab,mtab,rBrace,rSquareBracket];
+                    if (!params2More && annotation.level == 1) {
+                        [paramsAnalyzeStr appendString:@";\n"];
+                    }else
+                    {
+                        [paramsAnalyzeStr appendString:@",\n"];
+                    }
+
                 }else //结尾 }
                 {
-                    [paramsAnalyzeStr appendFormat:@"%@%@%@,\n",tab,mtab,rBrace];
+                    [paramsAnalyzeStr appendFormat:@"%@%@%@",tab,mtab,rBrace];
+                    
+                    if (!params2More && annotation.level == 1) {
+                        [paramsAnalyzeStr appendString:@";\n"];
+                    }else
+                    {
+                        [paramsAnalyzeStr appendString:@",\n"];
+                    }
+
                 }
                 
             }

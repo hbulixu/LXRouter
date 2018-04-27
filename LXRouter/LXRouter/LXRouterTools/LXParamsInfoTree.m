@@ -33,7 +33,7 @@
                 
                 NSRange commetsRange = [name rangeOfString:@"FCComments_"];
                 if (commetsRange.location !=NSNotFound) {
-                    NSArray * array =  [name componentsSeparatedByString:@"_"];
+                    NSArray * array =  [name componentsSeparatedByString:@"FCComments_"];
                     if (array.count == 3) {
                         
                         NSString * comments = array[1];
@@ -99,7 +99,7 @@ static id classToInfoTreeRecursive(Class clz, int level,NSString * fatherKey)
                     }
                     NSRange protocolRange = [name rangeOfString:@"propertyProtocol_"];
                     if (protocolRange.location !=NSNotFound) {
-                        NSArray * array =  [name componentsSeparatedByString:@"_"];
+                        NSArray * array =  [name componentsSeparatedByString:@"propertyProtocol_"];
                         if (array.count == 3) {
                             
                             Class protocolClass = NSClassFromString(array[1]);
@@ -112,7 +112,7 @@ static id classToInfoTreeRecursive(Class clz, int level,NSString * fatherKey)
                     
                     NSRange commetsRange = [name rangeOfString:@"PRComments_"];
                     if (commetsRange.location !=NSNotFound) {
-                        NSArray * array =  [name componentsSeparatedByString:@"_"];
+                        NSArray * array =  [name componentsSeparatedByString:@"PRComments_"];
                         if (array.count == 3) {
                             
                             NSString * comments = array[1];
