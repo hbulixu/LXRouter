@@ -158,7 +158,7 @@
                 }
                 
                 //添加回调函数注释
-                [inputCommentsStr appendFormat:@"%@%@ @param %-10s callBack -回调函数\n",tab,star,@"{func}".UTF8String];
+                [inputCommentsStr appendFormat:@"%@%@ @param %-10s %-15s //-回调函数\n",tab,star,@"{func}".UTF8String,@"callBack".UTF8String];
                 
                 
                 //添加函数入参，回调函数
@@ -218,8 +218,8 @@
          */
         [outputCommentsStr appendFormat:@"%@* %@}\n",tab,tab];
         [outputCommentsStr appendFormat:@"%@* %@error = {\n",tab,tab];
-        [outputCommentsStr appendFormat:@"%@* %@%@errorCode: //String\n",tab,tab,tab];
-        [outputCommentsStr appendFormat:@"%@* %@%@errorMsg: //String\n",tab,tab,tab];
+        [outputCommentsStr appendFormat:@"%@* %@%@%-15s: //String\n",tab,tab,tab,@"errorCode".UTF8String];
+        [outputCommentsStr appendFormat:@"%@* %@%@%-15s: //String\n",tab,tab,tab,@"errorMsg".UTF8String];
         [outputCommentsStr appendFormat:@"%@* %@}\n",tab,tab];
         [outputCommentsStr appendFormat:@"%@* }\n",tab];
         [outputCommentsStr appendFormat:@"%@*/",tab];
@@ -307,17 +307,17 @@
             
             
             // *    isTest:  //NSNumber -是否测试
-            [outPutCommentsStr appendFormat:@"%@%@%@%@:  //%@ -%@ \n",tab,star,mtab,annotation.keyName,jsType,annotation.comments?:@""];
+            [outPutCommentsStr appendFormat:@"%@%@%@%-15s: //%@ -%@ \n",tab,star,mtab,annotation.keyName.UTF8String,jsType,annotation.comments?:@""];
             //如果当前节点有子节点
             if (annotation.child) {
                 
                 //opts = [{
                 if ([annotation.typeName isEqualToString: NSStringFromClass([NSArray class])]) {
                     
-                    [outPutCommentsStr appendFormat:@"%@%@%@%@ = %@%@\n",tab,star,mtab,annotation.keyName,lSquareBracket,lBrace];
+                    [outPutCommentsStr appendFormat:@"%@%@%@%-15s = %@%@\n",tab,star,mtab,annotation.keyName.UTF8String,lSquareBracket,lBrace];
                 }else//opts = {
                 {
-                    [outPutCommentsStr appendFormat:@"%@%@%@%@ = %@\n",tab,star,mtab,annotation.keyName,lBrace];
+                    [outPutCommentsStr appendFormat:@"%@%@%@%-15s = %@\n",tab,star,mtab,annotation.keyName.UTF8String,lBrace];
                 }
                 
                 [self setStrRecursiveWithValidateObject:annotation.child outPutCommentsStr:outPutCommentsStr];

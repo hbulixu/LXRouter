@@ -16,7 +16,7 @@
 @class SJTOpenNativeParams;
 @interface SJTOpenNative : NSObject
 FCComments(打开本地页面)
-PRComments(_1_native跳转2_web跳转)
+PRComments(1_native跳转2_web跳转)
 @property (nonatomic,copy)NSString * jumpType;
 @property (nonatomic,retain)SJTOpenNativeParams * params;
 PRComments(shopDynamic_商家动态_mPublish_发布页面_postGoods_商品发布_58busiSchool_58商学院_trace_访客足迹_task_每日任务)
