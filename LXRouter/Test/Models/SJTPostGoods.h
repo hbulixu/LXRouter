@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TypeAnnotation.h"
-
+#import "SJTOpenNative.h"
 @class SJTImageProperty;
 @interface SJTPostGoods : NSObject
 FCComments(发布商品)
@@ -31,5 +31,5 @@ PRComments(图片宽度)
 @property (nonatomic,assign)float width;
 PRComments(图片高度)
 @property (nonatomic,assign)float height;
-
+@property (nonatomic,retain) SJTOpenNative * openNative;
 @end

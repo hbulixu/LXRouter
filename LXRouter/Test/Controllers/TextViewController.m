@@ -45,7 +45,7 @@
         
     }];
     
-    [LXRouter registerIdentify:@"postGoods" inputClass:[SJTPostGoods class] outputClass:nil toHandler:^(LXRouterInfo *routerInfo) {
+    [LXRouter registerIdentify:@"postGoods" inputClass:[SJTPostGoods class] outputClass:[SJTNativeImageOutput class] toHandler:^(LXRouterInfo *routerInfo) {
         
     }];
     
