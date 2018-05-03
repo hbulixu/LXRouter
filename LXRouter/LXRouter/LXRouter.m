@@ -97,7 +97,35 @@ static NSString * errorDomain = @"lx.router.error";
 +(void)openIdentify:(NSString *)identify withModel:(id)model completion:(void (^)(id result,NSError *error))completion
 {
     
+    LXRouterInfo * routerInfo = [LXRouterInfo new];
+    routerInfo.completionBlock = [completion copy];
+    NSError *error = nil;
     
+    LXRouterHandler handler = [[LXRouter sharedInstance].routeHandle objectForKey:identify];
+    
+    Class clz = [[LXRouter sharedInstance].routeInputClass objectForKey:identify];
+    
+    
+    if (clz) {
+        
+        if (![[model class] isKindOfClass: clz]) {
+            
+            error = [NSError errorWithDomain:errorDomain code:-2 userInfo:@{NSLocalizedDescriptionKey:@"inputModel wrong classType"}];
+            if (error) {
+                completion(nil,error);
+                return;
+            }
+        }
+        routerInfo.inputModel = model;
+    }
+
+    if (handler) {
+        handler(routerInfo);
+    }else
+    {
+        error = [NSError errorWithDomain:errorDomain code:-2 userInfo:@{NSLocalizedDescriptionKey:@"not find handle"}];
+        completion(nil,error);
+    }
 }
 
 //为自动测试化准备
