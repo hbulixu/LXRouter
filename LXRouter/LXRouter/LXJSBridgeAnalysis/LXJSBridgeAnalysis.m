@@ -83,7 +83,7 @@
     [LXRouter debug_openIdentify:funcName withJson:paramDic completion:^(id result, NSError *error) {
         
         if (callBackId) {
-            NSDictionary * responseData = @{@"responseObj":result?:@"",
+            NSDictionary * responseData = @{@"responseObj":((NSObject*)result).lx_modelToJSONObject?:@"",
                                             @"error":error?@{
                                                 @"errorMsg":error.userInfo[NSLocalizedDescriptionKey]?:@"",
                                                 @"errorCode":@(error.code)                                                }:[NSNull null]
@@ -127,7 +127,7 @@
     [LXRouter debug_openIdentify:funcName withJson:paramDic completion:^(id result, NSError *error) {
         
         if (callBackId) {
-            NSDictionary * responseData = @{@"responseObj":result?:@"",
+            NSDictionary * responseData = @{@"responseObj":((NSObject*)result).lx_modelToJSONObject?:@"",
                                             @"error":error?@{
                                                 @"errorMsg":error.userInfo[NSLocalizedDescriptionKey]?:@"",
                                                 @"errorCode":@(error.code)                                                }:[NSNull null]

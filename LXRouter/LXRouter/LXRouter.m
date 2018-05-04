@@ -107,7 +107,7 @@ static NSString * errorDomain = @"lx.router.error";
     
     if (clz) {
         
-        if (![[model class] isKindOfClass: clz]) {
+        if (![NSStringFromClass([model class]) isEqualToString: NSStringFromClass(clz)]) {
             
             error = [NSError errorWithDomain:errorDomain code:-2 userInfo:@{NSLocalizedDescriptionKey:@"inputModel wrong classType"}];
             if (error) {

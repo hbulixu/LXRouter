@@ -25,7 +25,9 @@
         
         
         Pay58Controller * vc = [Pay58Controller pay58FinishBlock:^(NSInteger number) {
-            routerInfo.completionBlock(@(number), nil);
+            SJTPayResult * result =[SJTPayResult new];
+            result.payNumber = [NSString stringWithFormat:@"%ld",number];
+            routerInfo.completionBlock(result, nil);
         }];
         
         [routerInfo.topNavigationController pushViewController:vc animated:YES];

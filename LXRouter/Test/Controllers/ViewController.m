@@ -11,6 +11,9 @@
 #import "JSTestWebViewController.h"
 #import <MessageUI/MFMailComposeViewController.h>
 #import "pay58TestViewController.h"
+#import "LXRouter.h"
+#import "SJTPayModel.h"
+#import "SJTPayResult.h"
 
 @interface ViewController ()<MFMailComposeViewControllerDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,retain)UITableView * tableView;
@@ -72,6 +75,26 @@
         {
             pay58TestViewController * vc = [pay58TestViewController new];
             [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+            
+        case 4:
+        {
+            SJTPayModel * payModel = [SJTPayModel new];
+            payModel.orderMoney = @"111111";
+            [LXRouter openIdentify:@"pay58" withModel:payModel completion:^(SJTPayResult * result, NSError *error) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                    if (error) {
+                        [self alertWithMessage:error.localizedDescription];
+                    }else
+                    {
+                        [self alertWithMessage:result.payNumber];
+                    }
+                    
+                });
+
+            }];
         }
             break;
         default:
@@ -153,7 +176,7 @@
 -(NSArray *)dataSource
 {
     if (!_dataSource) {
-        _dataSource = @[@"脚本生成",@"脚本校验",@"脚本发送",@"测试"];
+        _dataSource = @[@"脚本生成",@"脚本校验",@"脚本发送",@"web端调用",@"native调用"];
     }
     return _dataSource;
 }

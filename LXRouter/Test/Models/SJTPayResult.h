@@ -10,5 +10,5 @@
 #import "TypeAnnotation.h"
 @interface SJTPayResult : NSObject
 PRComments(支付号码)
-@property (nonatomic,retain)NSString * payNumber;
+@property (nonatomic,copy)NSString * payNumber;
 @end
