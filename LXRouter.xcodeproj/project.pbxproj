@@ -186,16 +186,11 @@
 		37135ADF208F05020019ADA1 /* LXRouterTools */ = {
 			isa = PBXGroup;
 			children = (
+				375F7C8A209C3C2E003C50FC /* InnerClass */,
 				37DD76F32080821800A7ECCA /* TypeAnnotation.h */,
 				37DD76F42080821800A7ECCA /* TypeAnnotation.m */,
 				37385861207B52C4001D34F4 /* LXRouterTools.h */,
 				37385862207B52C4001D34F4 /* LXRouterTools.m */,
-				37135ADC208F04F10019ADA1 /* LXRouterInputValidate.h */,
-				37135ADD208F04F10019ADA1 /* LXRouterInputValidate.m */,
-				37135AD9208F04CB0019ADA1 /* LXJSCodeGenerator.h */,
-				37135ADA208F04CB0019ADA1 /* LXJSCodeGenerator.m */,
-				37135AE0208F06390019ADA1 /* LXParamsInfoTree.h */,
-				37135AE1208F06390019ADA1 /* LXParamsInfoTree.m */,
 			);
 			path = LXRouterTools;
 			sourceTree = "<group>";
@@ -277,6 +272,19 @@
 				375F7C7E209C2D34003C50FC /* pay58TestViewController.m */,
 			);
 			path = demo;
+			sourceTree = "<group>";
+		};
+		375F7C8A209C3C2E003C50FC /* InnerClass */ = {
+			isa = PBXGroup;
+			children = (
+				37135ADC208F04F10019ADA1 /* LXRouterInputValidate.h */,
+				37135ADD208F04F10019ADA1 /* LXRouterInputValidate.m */,
+				37135AD9208F04CB0019ADA1 /* LXJSCodeGenerator.h */,
+				37135ADA208F04CB0019ADA1 /* LXJSCodeGenerator.m */,
+				37135AE0208F06390019ADA1 /* LXParamsInfoTree.h */,
+				37135AE1208F06390019ADA1 /* LXParamsInfoTree.m */,
+			);
+			path = InnerClass;
 			sourceTree = "<group>";
 		};
 		37BC22C6200C5CAC00AAFB5A = {
