@@ -16,7 +16,6 @@ static NSString * errorDomain = @"lx.router.error";
  *  保存了所有已注册的 Identify
  */
 @property (nonatomic,retain,readwrite) NSMutableDictionary *routeHandle;
-@property (nonatomic,retain,readwrite) NSMutableDictionary *routeJson;
 @property (nonatomic,retain,readwrite) NSMutableDictionary *routeInputClass;
 @property (nonatomic,retain,readwrite) NSMutableDictionary *routeOutputClass;
 
@@ -155,14 +154,6 @@ static NSString * errorDomain = @"lx.router.error";
 
 
 #pragma mark -GET&SET
-
--(NSMutableDictionary *)routeJson
-{
-    if (!_routeJson) {
-        _routeJson = [[NSMutableDictionary alloc]init];
-    }
-    return _routeJson;
-}
 
 - (NSMutableDictionary *)routeHandle
 {
