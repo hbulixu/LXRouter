@@ -81,8 +81,8 @@ static NSString * errorDomain = @"lx.router.error";
 #endif
         routerInfo.inputModel = [clz lx_modelWithJSON:json];
     }
-
-
+    
+    
     if (handler) {
         handler(routerInfo);
     }else
@@ -117,7 +117,7 @@ static NSString * errorDomain = @"lx.router.error";
         }
         routerInfo.inputModel = model;
     }
-
+    
     if (handler) {
         handler(routerInfo);
     }else
