@@ -23,6 +23,11 @@
 		37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 37385862207B52C4001D34F4 /* LXRouterTools.m */; };
 		37385867207B6314001D34F4 /* sjt_app.js in Resources */ = {isa = PBXBuildFile; fileRef = 37385866207B6314001D34F4 /* sjt_app.js */; };
 		37385869207B88CE001D34F4 /* sjt_JSTestBase.html in Resources */ = {isa = PBXBuildFile; fileRef = 37385868207B88CE001D34F4 /* sjt_JSTestBase.html */; };
+		375F7C7A209C29B2003C50FC /* Pay58Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 375F7C79209C29B2003C50FC /* Pay58Controller.m */; };
+		375F7C7C209C2CE7003C50FC /* sjt_JSTestRun.html in Resources */ = {isa = PBXBuildFile; fileRef = 375F7C7B209C2CE6003C50FC /* sjt_JSTestRun.html */; };
+		375F7C7F209C2D34003C50FC /* pay58TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 375F7C7E209C2D34003C50FC /* pay58TestViewController.m */; };
+		375F7C85209C33E2003C50FC /* SJTPayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 375F7C84209C33E2003C50FC /* SJTPayResult.m */; };
+		375F7C89209C3506003C50FC /* sjt_appBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 375F7C88209C3506003C50FC /* sjt_appBridge.js */; };
 		37675DCC2092D01F0049DE07 /* SJTNativeImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 37675DCB2092D01F0049DE07 /* SJTNativeImagePicker.m */; };
 		37675DCF2092D2A00049DE07 /* SJTCountEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 37675DCE2092D2A00049DE07 /* SJTCountEvent.m */; };
 		37675DD22092D3840049DE07 /* SJTOpenNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 37675DD12092D3840049DE07 /* SJTOpenNative.m */; };
@@ -94,6 +99,14 @@
 		37385862207B52C4001D34F4 /* LXRouterTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterTools.m; sourceTree = "<group>"; };
 		37385866207B6314001D34F4 /* sjt_app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_app.js; sourceTree = "<group>"; };
 		37385868207B88CE001D34F4 /* sjt_JSTestBase.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sjt_JSTestBase.html; sourceTree = "<group>"; };
+		375F7C78209C29B2003C50FC /* Pay58Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pay58Controller.h; sourceTree = "<group>"; };
+		375F7C79209C29B2003C50FC /* Pay58Controller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pay58Controller.m; sourceTree = "<group>"; };
+		375F7C7B209C2CE6003C50FC /* sjt_JSTestRun.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sjt_JSTestRun.html; sourceTree = "<group>"; };
+		375F7C7D209C2D34003C50FC /* pay58TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pay58TestViewController.h; sourceTree = "<group>"; };
+		375F7C7E209C2D34003C50FC /* pay58TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pay58TestViewController.m; sourceTree = "<group>"; };
+		375F7C83209C33E2003C50FC /* SJTPayResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJTPayResult.h; sourceTree = "<group>"; };
+		375F7C84209C33E2003C50FC /* SJTPayResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJTPayResult.m; sourceTree = "<group>"; };
+		375F7C88209C3506003C50FC /* sjt_appBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_appBridge.js; sourceTree = "<group>"; };
 		37675DCA2092D01F0049DE07 /* SJTNativeImagePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJTNativeImagePicker.h; sourceTree = "<group>"; };
 		37675DCB2092D01F0049DE07 /* SJTNativeImagePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJTNativeImagePicker.m; sourceTree = "<group>"; };
 		37675DCD2092D2A00049DE07 /* SJTCountEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJTCountEvent.h; sourceTree = "<group>"; };
@@ -219,6 +232,7 @@
 		37135B092090704B0019ADA1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				375F7C82209C31A4003C50FC /* demo */,
 				37BC22D8200C5CAC00AAFB5A /* ViewController.h */,
 				37BC22D9200C5CAC00AAFB5A /* ViewController.m */,
 				37BC230E200DE14400AAFB5A /* TextViewController.h */,
@@ -246,8 +260,23 @@
 				37675DD42092F61D0049DE07 /* SJTOpenWebView.m */,
 				37675DD62092F7460049DE07 /* SJTPostGoods.h */,
 				37675DD72092F7460049DE07 /* SJTPostGoods.m */,
+				375F7C83209C33E2003C50FC /* SJTPayResult.h */,
+				375F7C84209C33E2003C50FC /* SJTPayResult.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		375F7C82209C31A4003C50FC /* demo */ = {
+			isa = PBXGroup;
+			children = (
+				375F7C88209C3506003C50FC /* sjt_appBridge.js */,
+				375F7C7B209C2CE6003C50FC /* sjt_JSTestRun.html */,
+				375F7C78209C29B2003C50FC /* Pay58Controller.h */,
+				375F7C79209C29B2003C50FC /* Pay58Controller.m */,
+				375F7C7D209C2D34003C50FC /* pay58TestViewController.h */,
+				375F7C7E209C2D34003C50FC /* pay58TestViewController.m */,
+			);
+			path = demo;
 			sourceTree = "<group>";
 		};
 		37BC22C6200C5CAC00AAFB5A = {
@@ -458,10 +487,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				375F7C7C209C2CE7003C50FC /* sjt_JSTestRun.html in Resources */,
 				37385867207B6314001D34F4 /* sjt_app.js in Resources */,
 				37BC22E2200C5CAC00AAFB5A /* LaunchScreen.storyboard in Resources */,
 				37BC22DF200C5CAC00AAFB5A /* Assets.xcassets in Resources */,
 				37385869207B88CE001D34F4 /* sjt_JSTestBase.html in Resources */,
+				375F7C89209C3506003C50FC /* sjt_appBridge.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +520,7 @@
 				37DD76EF20807B6500A7ECCA /* NSObject+YYModel.m in Sources */,
 				37135ADE208F04F10019ADA1 /* LXRouterInputValidate.m in Sources */,
 				37135AE2208F06390019ADA1 /* LXParamsInfoTree.m in Sources */,
+				375F7C85209C33E2003C50FC /* SJTPayResult.m in Sources */,
 				37675DD52092F61D0049DE07 /* SJTOpenWebView.m in Sources */,
 				37135AF5208F166B0019ADA1 /* AFURLSessionManager.m in Sources */,
 				37135AF8208F166B0019ADA1 /* AFSecurityPolicy.m in Sources */,
@@ -502,6 +534,7 @@
 				37135B082090703C0019ADA1 /* JSTestWebViewController.m in Sources */,
 				37135AFF208F2E610019ADA1 /* LXJSBridgeAnalysis.m in Sources */,
 				37135AF3208F166B0019ADA1 /* AFURLResponseSerialization.m in Sources */,
+				375F7C7F209C2D34003C50FC /* pay58TestViewController.m in Sources */,
 				37BC22DA200C5CAC00AAFB5A /* ViewController.m in Sources */,
 				37675DCC2092D01F0049DE07 /* SJTNativeImagePicker.m in Sources */,
 				37DD76F52080821800A7ECCA /* TypeAnnotation.m in Sources */,
@@ -511,6 +544,7 @@
 				37BC2310200DE14400AAFB5A /* TextViewController.m in Sources */,
 				37BC2313200DE53100AAFB5A /* PresentViewController.m in Sources */,
 				37BC22D4200C5CAC00AAFB5A /* main.m in Sources */,
+				375F7C7A209C29B2003C50FC /* Pay58Controller.m in Sources */,
 				37DD76F020807B6500A7ECCA /* YYClassInfo.m in Sources */,
 				37675DD22092D3840049DE07 /* SJTOpenNative.m in Sources */,
 				37675DD82092F7460049DE07 /* SJTPostGoods.m in Sources */,

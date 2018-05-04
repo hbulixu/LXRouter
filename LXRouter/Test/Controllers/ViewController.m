@@ -10,7 +10,7 @@
 #import "LXRouterTools.h"
 #import "JSTestWebViewController.h"
 #import <MessageUI/MFMailComposeViewController.h>
-
+#import "pay58TestViewController.h"
 
 @interface ViewController ()<MFMailComposeViewControllerDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,retain)UITableView * tableView;
@@ -67,7 +67,13 @@
         {
             [self sendMailInApp];
         }
-            
+            break;
+        case 3:
+        {
+            pay58TestViewController * vc = [pay58TestViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
         default:
             break;
     }
@@ -147,7 +153,7 @@
 -(NSArray *)dataSource
 {
     if (!_dataSource) {
-        _dataSource = @[@"脚本生成",@"脚本校验",@"脚本发送"];
+        _dataSource = @[@"脚本生成",@"脚本校验",@"脚本发送",@"测试"];
     }
     return _dataSource;
 }
