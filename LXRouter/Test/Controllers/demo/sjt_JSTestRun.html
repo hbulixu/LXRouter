@@ -12,7 +12,9 @@
         
         <h1>脚本测试</h1>
         
-        <button onclick = "test()">开始测试</button>
+        <button onclick = "test()">正常调用</button>
+        
+        <button onclick = "test1()">缺少必输项（orderMoney）</button>
     </body>
 
 <script>
@@ -47,6 +49,20 @@ function test(){
         merId:'merId',
     }
 
+    sjtApp.pay58 (inputParams,function( callBackResponse ){LXLog(callBackResponse.responseObj.payNumber ,callBackResponse.error)});
+}
+
+function test1(){
+    
+    inputParams = {
+        payfrom:'payfrom',
+        productDesc:'productDesc',
+        payType:'payType',
+        balanceType:'balanceType',
+        orderId:'orderId',
+        merId:'merId',
+    }
+    
     sjtApp.pay58 (inputParams,function( callBackResponse ){LXLog(callBackResponse.responseObj.payNumber ,callBackResponse.error)});
 }
 
