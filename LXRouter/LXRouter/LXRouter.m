@@ -64,7 +64,14 @@ static NSString * errorDomain = @"lx.router.error";
     
     LXRouterInfo * routerInfo = [LXRouterInfo new];
     routerInfo.jsonInfo = json;
-    routerInfo.completionBlock = [completion copy];
+    //使用json返回也是json
+    routerInfo.completionBlock = ^(id data, NSError *error) {
+        id json = nil;
+        if (data) {
+            json = [data lx_modelToJSONObject];
+        }
+        completion(json,error);
+    };
     NSError *error = nil;
     
     LXRouterHandler handler = [[LXRouter sharedInstance].routeHandle objectForKey:identify];

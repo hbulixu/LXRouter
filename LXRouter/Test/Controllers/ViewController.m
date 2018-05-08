@@ -97,6 +97,14 @@
             }];
         }
             break;
+        case 5:
+        {
+            NSDictionary * dic = @{@"orderMoney":@"1111111"};
+            [LXRouter openIdentify:@"pay58" withJson:dic completion:^(id result, NSError *error) {
+                NSLog(@"%@",result);
+            }];
+        }
+            break;
         default:
             break;
     }
@@ -176,7 +184,7 @@
 -(NSArray *)dataSource
 {
     if (!_dataSource) {
-        _dataSource = @[@"脚本生成",@"脚本校验",@"脚本发送",@"web端调用",@"native调用"];
+        _dataSource = @[@"脚本生成",@"脚本校验",@"脚本发送",@"web端调用",@"native调用",@"native json调用"];
     }
     return _dataSource;
 }
