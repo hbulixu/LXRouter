@@ -7,7 +7,7 @@
 //
 
 #import "SJTPayModel.h"
-
+NSString  * const kSJT_Common_58Pay = @"sjt.common.pay58";
 @implementation SJTPayModel
 
 @end

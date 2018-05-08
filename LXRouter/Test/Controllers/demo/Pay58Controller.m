@@ -20,10 +20,8 @@
 
 +(void)load
 {
-    [LXRouter registerIdentify:@"pay58" inputClass:[SJTPayModel class] outputClass:[SJTPayResult class] toHandler:^(LXRouterInfo *routerInfo) {
-        
-        
-        
+    [LXRouter registerIdentify:kSJT_Common_58Pay inputClass:[SJTPayModel class] outputClass:[SJTPayResult class] toHandler:^(LXRouterInfo *routerInfo) {
+
         Pay58Controller * vc = [Pay58Controller pay58FinishBlock:^(NSInteger number) {
             SJTPayResult * result =[SJTPayResult new];
             result.payNumber = [NSString stringWithFormat:@"%ld",number];

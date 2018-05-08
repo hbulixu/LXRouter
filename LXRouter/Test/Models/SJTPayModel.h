@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TypeAnnotation.h"
+extern  NSString  * const kSJT_Common_58Pay;
 @interface SJTPayModel : NSObject
 FCComments(调用native支付功能)
 PRComments(订单金额)

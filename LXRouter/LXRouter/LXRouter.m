@@ -39,7 +39,7 @@ static NSString * errorDomain = @"lx.router.error";
     return [LXRouter sharedInstance];
 }
 
-+(void)registerIdentify:(NSString *)identify inputClass:(Class) input outputClass:(Class) output toHandler:(LXRouterHandler) handler;
++(void)registerIdentify:(NSString * const)identify inputClass:(Class) input outputClass:(Class) output toHandler:(LXRouterHandler) handler;
 {
     LXRouter * router =  [LXRouter sharedInstance];
     if (identify && handler) {
@@ -59,7 +59,7 @@ static NSString * errorDomain = @"lx.router.error";
 }
 
 //执行一个路由
-+(void)openIdentify:(NSString *)identify withJson:(id)json completion:(void (^)(id result,NSError *error))completion
++(void)openIdentify:(NSString * const)identify withJson:(id)json completion:(void (^)(id result,NSError *error))completion
 {
     
     LXRouterInfo * routerInfo = [LXRouterInfo new];
@@ -100,7 +100,7 @@ static NSString * errorDomain = @"lx.router.error";
 }
 
 //适用于本地调用
-+(void)openIdentify:(NSString *)identify withModel:(id)model completion:(void (^)(id result,NSError *error))completion
++(void)openIdentify:(NSString * const)identify withModel:(id)model completion:(void (^)(id result,NSError *error))completion
 {
     
     LXRouterInfo * routerInfo = [LXRouterInfo new];

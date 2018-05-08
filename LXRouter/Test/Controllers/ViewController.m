@@ -81,8 +81,8 @@
         case 4:
         {
             SJTPayModel * payModel = [SJTPayModel new];
-            payModel.orderMoney = @"111111";
-            [LXRouter openIdentify:@"pay58" withModel:payModel completion:^(SJTPayResult * result, NSError *error) {
+            payModel.orderMoney = @"5858";
+            [LXRouter openIdentify:kSJT_Common_58Pay withModel:payModel completion:^(SJTPayResult * result, NSError *error) {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     
                     if (error) {
@@ -99,8 +99,8 @@
             break;
         case 5:
         {
-            NSDictionary * dic = @{@"orderMoney":@"1111111"};
-            [LXRouter openIdentify:@"pay58" withJson:dic completion:^(id result, NSError *error) {
+            NSDictionary * dic = @{@"orderMoney":@"5858"};
+            [LXRouter openIdentify:kSJT_Common_58Pay withJson:dic completion:^(id result, NSError *error) {
                 NSLog(@"%@",result);
             }];
         }
