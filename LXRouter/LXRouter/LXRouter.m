@@ -91,7 +91,10 @@ static NSString * errorDomain = @"lx.router.error";
     
     
     if (handler) {
-        handler(routerInfo);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            handler(routerInfo);
+        });
+
     }else
     {
         error = [NSError errorWithDomain:errorDomain code:-2 userInfo:@{NSLocalizedDescriptionKey:@"not find handle"}];
@@ -126,7 +129,11 @@ static NSString * errorDomain = @"lx.router.error";
     }
     
     if (handler) {
-        handler(routerInfo);
+        //主线程调用防止uicrash
+        dispatch_async(dispatch_get_main_queue(), ^{
+            handler(routerInfo);
+        });
+
     }else
     {
         error = [NSError errorWithDomain:errorDomain code:-2 userInfo:@{NSLocalizedDescriptionKey:@"not find handle"}];
