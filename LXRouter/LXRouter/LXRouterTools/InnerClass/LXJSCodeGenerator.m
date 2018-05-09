@@ -58,6 +58,10 @@
     NSString * filePath = [NSString stringWithFormat:@"%@/sjt_appBridge.js",docDir];
     NSString * releaseFilePath =[NSString stringWithFormat:@"%@/sjt_appBridge_release.js",docDir];
     NSString * readPath = [[NSBundle mainBundle]pathForResource:@"sjt_app" ofType:@"js"];
+    
+    //用于对函数的注释
+    NSString * funcCommentsPath = [[NSBundle mainBundle] pathForResource:@"RouterFuncComments" ofType:@"plist"];
+    NSDictionary * commentsDic = [[NSDictionary alloc]initWithContentsOfFile:funcCommentsPath];
     NSFileManager * fileManager = [NSFileManager defaultManager];
     
     [fileManager removeItemAtPath:filePath error:nil];
@@ -107,10 +111,8 @@
         if (inputClz) {
             //根据类生成类的字典校验树，该树是生成注释和组装的基础
             NSDictionary * dic = [LXParamsInfoTree genParamsInfoTreeWithClass:inputClz];
-            NSLog(@"%@",dic.lx_modelToJSONObject);
             //获取当前函数功能说明
             NSString * funcComments = [LXParamsInfoTree genFuncCommentsWithClass:inputClz];
-            
             if (dic && [dic isKindOfClass:[NSDictionary class]]) {
                 
                 //注释头添加开始
@@ -183,6 +185,13 @@
         }else //如果没有入参添加固定格式
         {
             [inputCommentsStr appendFormat:@"%@/**\n",tab];
+            
+            
+            NSString * fcComments =[commentsDic objectForKey:identify];
+            if (fcComments) {
+                
+                [inputCommentsStr appendFormat:@"%@%@ %@\n",tab,star,fcComments];
+            }
             [funcParamsStr appendFormat:@"%@%@:function (callBack) ",tab,identify];
             [funcBody appendString:@"  {\n"];
             [funcBody appendFormat:@"%@%@this._callNative(\"%@\",\"\",callBack);\n",tab,tab,identify];

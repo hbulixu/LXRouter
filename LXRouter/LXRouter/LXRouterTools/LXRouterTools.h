@@ -16,4 +16,5 @@
 +(void)genjsValidateHtml;
 
 +(NSError *)validateJson:(id)json WithClass:(Class)clz;
+
 @end

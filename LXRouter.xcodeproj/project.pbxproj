@@ -23,6 +23,7 @@
 		37385863207B52C4001D34F4 /* LXRouterTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 37385862207B52C4001D34F4 /* LXRouterTools.m */; };
 		37385867207B6314001D34F4 /* sjt_app.js in Resources */ = {isa = PBXBuildFile; fileRef = 37385866207B6314001D34F4 /* sjt_app.js */; };
 		37385869207B88CE001D34F4 /* sjt_JSTestBase.html in Resources */ = {isa = PBXBuildFile; fileRef = 37385868207B88CE001D34F4 /* sjt_JSTestBase.html */; };
+		373FD0E520A2F9060091B468 /* RouterFuncComments.plist in Resources */ = {isa = PBXBuildFile; fileRef = 373FD0E420A2F9060091B468 /* RouterFuncComments.plist */; };
 		375F7C7A209C29B2003C50FC /* Pay58Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 375F7C79209C29B2003C50FC /* Pay58Controller.m */; };
 		375F7C7C209C2CE7003C50FC /* sjt_JSTestRun.html in Resources */ = {isa = PBXBuildFile; fileRef = 375F7C7B209C2CE6003C50FC /* sjt_JSTestRun.html */; };
 		375F7C7F209C2D34003C50FC /* pay58TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 375F7C7E209C2D34003C50FC /* pay58TestViewController.m */; };
@@ -99,6 +100,7 @@
 		37385862207B52C4001D34F4 /* LXRouterTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXRouterTools.m; sourceTree = "<group>"; };
 		37385866207B6314001D34F4 /* sjt_app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjt_app.js; sourceTree = "<group>"; };
 		37385868207B88CE001D34F4 /* sjt_JSTestBase.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sjt_JSTestBase.html; sourceTree = "<group>"; };
+		373FD0E420A2F9060091B468 /* RouterFuncComments.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RouterFuncComments.plist; sourceTree = "<group>"; };
 		375F7C78209C29B2003C50FC /* Pay58Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pay58Controller.h; sourceTree = "<group>"; };
 		375F7C79209C29B2003C50FC /* Pay58Controller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pay58Controller.m; sourceTree = "<group>"; };
 		375F7C7B209C2CE6003C50FC /* sjt_JSTestRun.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sjt_JSTestRun.html; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				37BC2308200C7C0500AAFB5A /* LXRouter.h */,
 				37BC2309200C7C0500AAFB5A /* LXRouter.m */,
 				37135AD42089E78D0019ADA1 /* LXRouterPrivate.h */,
+				373FD0E420A2F9060091B468 /* RouterFuncComments.plist */,
 			);
 			path = LXRouter;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				375F7C7C209C2CE7003C50FC /* sjt_JSTestRun.html in Resources */,
+				373FD0E520A2F9060091B468 /* RouterFuncComments.plist in Resources */,
 				37385867207B6314001D34F4 /* sjt_app.js in Resources */,
 				37BC22E2200C5CAC00AAFB5A /* LaunchScreen.storyboard in Resources */,
 				37BC22DF200C5CAC00AAFB5A /* Assets.xcassets in Resources */,
