@@ -52,7 +52,7 @@ function test(){
         merId:'merId',
     }
 
-    sjtApp.pay58 (inputParams,function( callBackResponse ){LXLog(callBackResponse.responseObj.payNumber ,callBackResponse.error)});
+    sjtApp.sjt_common_pay58 (inputParams,function( callBackResponse ){LXLog(callBackResponse.responseObj.payNumber ,callBackResponse.error)});
 }
 
 function test1(){
@@ -66,11 +66,11 @@ function test1(){
         merId:'merId',
     }
     
-    sjtApp.pay58 (inputParams,function( callBackResponse ){LXLog(callBackResponse.responseObj.payNumber ,callBackResponse.error)});
+    sjtApp.sjt_common_pay58 (inputParams,function( callBackResponse ){LXLog(callBackResponse.responseObj.payNumber ,callBackResponse.error)});
 }
 function test2(){
     
-    sjtApp.extendBtn(function( callBackResponse ){LXLog('extendBtn',callBackResponse.error)}) ;
+    sjtApp.extendBtn(function( callBackResponse ){LXLog(callBackResponse.responseObj.payNumber ,callBackResponse.error);test()}) ;
 }
 
 </script>

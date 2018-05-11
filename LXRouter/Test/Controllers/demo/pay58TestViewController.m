@@ -73,5 +73,9 @@
     return _webView;
 }
 
+-(void)dealloc
+{
+    
+}
 
 @end
