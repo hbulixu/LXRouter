@@ -18,4 +18,5 @@
 
 +(BOOL)debug_wkWebView:(WKWebView *)wkWebView shouldStartLoadAfterTransUriToRouter:(NSString *)uri;
 
++(BOOL)wkWebView:(WKWebView *)wkWebView shouldStartLoadAfterTransUriToRouter:(NSString *)uri;
 @end

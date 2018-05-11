@@ -45,7 +45,7 @@ var sjtApp= {
                     return;
                 }
                 responseCallback(message.responseData);
-                delete that.responseCallbacks[message.responseId];
+                //delete that.responseCallbacks[message.responseId];
             }
         })})(this);
     },
@@ -148,7 +148,7 @@ var sjtApp= {
     * }
     */ 
  
-    pay58:function (inputParams,callBack)  {
+    sjt_common_pay58:function (inputParams,callBack)  {
 
         var params= {
             payfrom: inputParams.payfrom,
@@ -160,7 +160,7 @@ var sjtApp= {
             merId: inputParams.merId,
         }
 
-        this._callNative("pay58",params,callBack);
+        this._callNative("sjt_common_pay58",params,callBack);
     }  , 
     /**
     * 调用native支付功能
@@ -300,6 +300,7 @@ var sjtApp= {
         this._callNative("nativePay",params,callBack);
     }  , 
     /**
+    * 离开当前web容器
     * 
     * ###输出信息如下###:
     * callBackResponse = {
@@ -314,6 +315,22 @@ var sjtApp= {
  
     backNative:function (callBack)   {
         this._callNative("backNative","",callBack);
+    }  , 
+    /**
+    * 
+    * ###输出信息如下###:
+    * callBackResponse = {
+    *     responseObj = {
+    *     }
+    *     error = {
+    *         errorCode      : //String
+    *         errorMsg       : //String
+    *     }
+    * }
+    */ 
+ 
+    extendBtn:function (callBack)   {
+        this._callNative("extendBtn","",callBack);
     }  ,
     
     /**************end*******************/

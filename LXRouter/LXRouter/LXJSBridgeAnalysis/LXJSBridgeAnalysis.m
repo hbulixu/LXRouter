@@ -101,6 +101,52 @@
     return NO;
 }
 
+
++(BOOL)wkWebView:(WKWebView *)wkWebView shouldStartLoadAfterTransUriToRouter:(NSString *)uri
+{
+    NSString *urlString = uri;
+    NSArray *urlCompnents = [urlString componentsSeparatedByString:@"wbbpchannel://"];
+    BOOL needProcess = urlCompnents.count >= 2 ? YES : NO;
+    if (!needProcess) {
+        return YES;
+    }
+    
+    NSString *component = [urlCompnents lastObject];
+    NSString *message = [component stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSData *messageData = [message dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *messageDic = [NSJSONSerialization JSONObjectWithData:messageData options:NSJSONReadingMutableContainers error:NULL];
+    
+    if(!messageDic||![messageDic isKindOfClass:[NSDictionary class]])
+    {
+        return NO;
+    }
+    
+    NSString *funcName = [NSString stringWithFormat:@"%@", messageDic[@"function"]];
+    NSDictionary *paramDic = messageDic[@"params"];
+    NSString * callBackId = messageDic[@"callbackId"];
+    
+    [LXRouter openIdentify:funcName withJson:paramDic completion:^(id result, NSError *error) {
+        
+        if (callBackId) {
+            NSDictionary * responseData = @{@"responseObj":((NSObject*)result).lx_modelToJSONObject?:@"",
+                                            @"error":error?@{
+                                                @"errorMsg":error.userInfo[NSLocalizedDescriptionKey]?:@"",
+                                                @"errorCode":@(error.code)                                                }:[NSNull null]
+                                            };
+            NSDictionary * callBackResponse = @{@"responseId":callBackId,
+                                                @"responseData": responseData
+                                                };
+            
+            NSString * callBack =  [NSString stringWithFormat:@"sjtApp._dispatchMessageFromNative('%@')",callBackResponse.lx_modelToJSONString];
+            NSLog(@"%@",callBack);
+            [wkWebView evaluateJavaScript:callBack completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                
+            }];
+        }
+        
+    }];
+    return NO;
+}
 +(BOOL)debug_wkWebView:(WKWebView *)wkWebView shouldStartLoadAfterTransUriToRouter:(NSString *)uri
 {
     NSString *urlString = uri;

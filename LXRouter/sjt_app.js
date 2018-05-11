@@ -45,7 +45,7 @@ var sjtApp= {
                     return;
                 }
                 responseCallback(message.responseData);
-                delete that.responseCallbacks[message.responseId];
+                //delete that.responseCallbacks[message.responseId];
             }
         })})(this);
     },

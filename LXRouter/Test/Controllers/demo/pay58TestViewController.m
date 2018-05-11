@@ -8,12 +8,40 @@
 
 #import "pay58TestViewController.h"
 #import "LXJSBridgeAnalysis.h"
+#import "LXRouter.h"
 @interface pay58TestViewController ()<UIWebViewDelegate>
-
+@property (nonatomic,copy)LXCompletionBlock navigationCallBack;
 @property (nonatomic,retain)UIWebView * webView;
 @end
 
 @implementation pay58TestViewController
+
+
++(void)load
+{
+    [LXRouter registerIdentify:@"extendBtn" inputClass:nil outputClass:nil toHandler:^(LXRouterInfo *routerInfo) {
+        
+        pay58TestViewController * webViewController = (pay58TestViewController *)routerInfo.topViewController;
+        if ([webViewController isKindOfClass:[pay58TestViewController class] ]) {
+            
+            [webViewController rightBarBtnConfig:routerInfo];
+            
+        }
+        
+    }];
+}
+
+
+-(void)rightBarBtnConfig:(LXRouterInfo *)routerInfo
+{
+    self.navigationCallBack = routerInfo.completionBlock;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(click)];
+}
+
+-(void)click
+{
+    self.navigationCallBack(nil, nil);
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

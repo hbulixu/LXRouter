@@ -15,6 +15,9 @@
         <button onclick = "test()">正常调用</button>
         
         <button onclick = "test1()">缺少必输项（orderMoney）</button>
+        
+        <button onclick = "test2()">自定义rightbaritem</button>
+        
     </body>
 
 <script>
@@ -64,6 +67,10 @@ function test1(){
     }
     
     sjtApp.pay58 (inputParams,function( callBackResponse ){LXLog(callBackResponse.responseObj.payNumber ,callBackResponse.error)});
+}
+function test2(){
+    
+    sjtApp.extendBtn(function( callBackResponse ){LXLog('extendBtn',callBackResponse.error)}) ;
 }
 
 </script>
