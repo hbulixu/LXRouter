@@ -43,7 +43,8 @@ static NSString * errorDomain = @"lx.router.error";
 {
     LXRouter * router =  [LXRouter sharedInstance];
     if (identify && handler) {
-        
+        NSString * noti = [NSString stringWithFormat:@"重复注册%@",identify];
+        NSAssert(![router.routeHandle objectForKey:identify],noti);
         @synchronized (router) {
             if (handler) {
                 [router.routeHandle setObject:[handler copy] forKey:identify];
