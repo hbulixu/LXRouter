@@ -10,7 +10,7 @@
 #import "TypeAnnotation.h"
 extern  NSString  * const kSJT_Common_58Pay;
 @interface SJTPayModel : NSObject
-FCComments(调用native支付功能)
+FCComments(调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能调用native支付功能)
 PRComments(订单金额)
 ParamRequired
 @property (nonatomic,copy)NSString * orderMoney;
