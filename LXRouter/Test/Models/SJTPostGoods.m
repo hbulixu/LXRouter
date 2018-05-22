@@ -10,6 +10,10 @@
 
 @implementation SJTPostGoods
 
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    // value should be Class or Class name.
+    return @{@"imageProperty" : [SJTImageProperty class]};
+}
 @end
 
 
