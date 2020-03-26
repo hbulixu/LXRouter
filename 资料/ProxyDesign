@@ -1,0 +1,177 @@
+
+##########静态代理 
+组合模式 
+public interface IUserController {
+  UserVo login(String telephone, String password);
+  UserVo register(String telephone, String password);
+}
+
+public class UserController implements IUserController {
+  //... 省略其他属性和方法...
+
+  @Override
+  public UserVo login(String telephone, String password) {
+    //... 省略 login 逻辑...
+    //... 返回 UserVo 数据...
+  }
+
+  @Override
+  public UserVo register(String telephone, String password) {
+    //... 省略 register 逻辑...
+    //... 返回 UserVo 数据...
+  }
+}
+
+public class UserControllerProxy implements IUserController {
+  private MetricsCollector metricsCollector;
+  private UserController userController;
+
+  public UserControllerProxy(UserController userController) {
+    this.userController = userController;
+    this.metricsCollector = new MetricsCollector();
+  }
+
+  @Override
+  public UserVo login(String telephone, String password) {
+    long startTimestamp = System.currentTimeMillis();
+
+    // 委托
+    UserVo userVo = userController.login(telephone, password);
+
+    long endTimeStamp = System.currentTimeMillis();
+    long responseTime = endTimeStamp - startTimestamp;
+    RequestInfo requestInfo = new RequestInfo("login", responseTime, startTimestamp);
+    metricsCollector.recordRequest(requestInfo);
+
+    return userVo;
+  }
+
+  @Override
+  public UserVo register(String telephone, String password) {
+    long startTimestamp = System.currentTimeMillis();
+
+    UserVo userVo = userController.register(telephone, password);
+
+    long endTimeStamp = System.currentTimeMillis();
+    long responseTime = endTimeStamp - startTimestamp;
+    RequestInfo requestInfo = new RequestInfo("register", responseTime, startTimestamp);
+    metricsCollector.recordRequest(requestInfo);
+
+    return userVo;
+  }
+}
+
+//UserControllerProxy 使用举例
+// 因为原始类和代理类实现相同的接口，是基于接口而非实现编程
+// 将 UserController 类对象替换为 UserControllerProxy 类对象，不需要改动太多代码
+IUserController userController = new UserControllerProxy(new UserController());
+
+
+
+集成模式
+public class UserControllerProxy extends UserController {
+  private MetricsCollector metricsCollector;
+
+  public UserControllerProxy() {
+    this.metricsCollector = new MetricsCollector();
+  }
+
+  public UserVo login(String telephone, String password) {
+    long startTimestamp = System.currentTimeMillis();
+
+    UserVo userVo = super.login(telephone, password);
+
+    long endTimeStamp = System.currentTimeMillis();
+    long responseTime = endTimeStamp - startTimestamp;
+    RequestInfo requestInfo = new RequestInfo("login", responseTime, startTimestamp);
+    metricsCollector.recordRequest(requestInfo);
+
+    return userVo;
+  }
+
+  public UserVo register(String telephone, String password) {
+    long startTimestamp = System.currentTimeMillis();
+
+    UserVo userVo = super.register(telephone, password);
+
+    long endTimeStamp = System.currentTimeMillis();
+    long responseTime = endTimeStamp - startTimestamp;
+    RequestInfo requestInfo = new RequestInfo("register", responseTime, startTimestamp);
+    metricsCollector.recordRequest(requestInfo);
+
+    return userVo;
+  }
+}
+//UserControllerProxy 使用举例
+UserController userController = new UserControllerProxy();
+
+
+
+
+#########################动态代理 
+
+public interface IUserController {
+  UserVo login(String telephone, String password);
+  UserVo register(String telephone, String password);
+}
+
+public class UserController implements IUserController {
+  //... 省略其他属性和方法...
+
+  @Override
+  public UserVo login(String telephone, String password) {
+    //... 省略 login 逻辑...
+    //... 返回 UserVo 数据...
+  }
+
+  @Override
+  public UserVo register(String telephone, String password) {
+    //... 省略 register 逻辑...
+    //... 返回 UserVo 数据...
+  }
+}
+
+public class UserControllerProxy implements IUserController {
+  private MetricsCollector metricsCollector;
+  private UserController userController;
+
+  public UserControllerProxy(UserController userController) {
+    this.userController = userController;
+    this.metricsCollector = new MetricsCollector();
+  }
+
+  @Override
+  public UserVo login(String telephone, String password) {
+    long startTimestamp = System.currentTimeMillis();
+
+    // 委托
+    UserVo userVo = userController.login(telephone, password);
+
+    long endTimeStamp = System.currentTimeMillis();
+    long responseTime = endTimeStamp - startTimestamp;
+    RequestInfo requestInfo = new RequestInfo("login", responseTime, startTimestamp);
+    metricsCollector.recordRequest(requestInfo);
+
+    return userVo;
+  }
+
+  @Override
+  public UserVo register(String telephone, String password) {
+    long startTimestamp = System.currentTimeMillis();
+
+    UserVo userVo = userController.register(telephone, password);
+
+    long endTimeStamp = System.currentTimeMillis();
+    long responseTime = endTimeStamp - startTimestamp;
+    RequestInfo requestInfo = new RequestInfo("register", responseTime, startTimestamp);
+    metricsCollector.recordRequest(requestInfo);
+
+    return userVo;
+  }
+}
+
+//UserControllerProxy 使用举例
+// 因为原始类和代理类实现相同的接口，是基于接口而非实现编程
+// 将 UserController 类对象替换为 UserControllerProxy 类对象，不需要改动太多代码
+IUserController userController = new UserControllerProxy(new UserController());
+
