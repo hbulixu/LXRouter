@@ -1,0 +1,73 @@
+58lib库业务线解耦方案总结及思考
+
+1.使用场景
+无线 WBListTabViewController 中切换tab需要调用黄页业务线方法。WBListTabViewController属于中台pod，应该与业务线pod隔离。不引用业务线文件。
+
+解决方案：
+1.runtime 动态调用
+  缺陷：（1). 方法和类的会使用字符串常量
+  		(2). 无法表明依赖关系，不利于双方维护
+
+
+2.协议解耦
+中间者   WBIOCServiceFactory （WBProtocolCenter）
+
+		关键方法说明：
+		#define REGISTER_WBIOC_SERVICE(key) \
+		+ (void)load {\
+		[[WBIOCServiceFactory serviceFactoryInstance]registerClass:self\
+		 withKey:key];\
+		}
+		#define IOC_SERVICEFACTORY_INSTANCE [WBIOCServiceFactory serviceFactoryInstance]
+
+		声明协议 WBYPSearchRefreshProtocol
+		声明协议 WBIOCProtocol
+		+(id) wbIOCSharedInstance; 返回实例对象
+
+
+
+
+无线		
+		依赖WBProtocolCenter
+		调用
+ 		Class <WBYPSearchRefreshProtocol> ypSearch = [IOC_SERVICEFACTORY_INSTANCE moduleForKey:WBYPSearchRefreshProtocolKey];
+ 		BOOL isHuangye = [ypSearch ypSearchRefreshWithWBTabVC:self];
+
+业务线
+		依赖  WBProtocolCenter
+		实现  WBYPSearchRefreshProtocol
+			  WBIOCProtocol
+
+
+
+
+协议解耦对于需要初始化参数的方案
+
+中间者  
+	提供			-(id) moduleForKey:(NSString*) key
+      				initSelector:(SEL) selector
+            			params:param0,...NS_REQUIRES_NIL_TERMINATION;
+
+
+中间层 
+				定义协议，并定义moduleKey和初始化方法
+				调用
+		        self.selectDataModule = [IOC_SERVICEFACTORY_INSTANCE moduleForKey:WBHybridSelectDataModule initSelector:WBHybridSelectDataInitSelector params:self,responseDic,nil];
+
+		        if ([self.selectDataModule respondsToSelector:@selector(actionSelectDataWithType:data:withMsg:)]) {
+        			[self.selectDataModule actionSelectDataWithType:type data:data withMsg:errorMsg];
+    			}
+
+业务层			
+			    实现初始化方法和协议
+
+效果：过去由中间层依赖业务层，变成业务层依赖中间层。控制反转。
+
+
+
+
+
+
+
+
+

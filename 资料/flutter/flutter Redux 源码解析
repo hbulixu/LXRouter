@@ -1,0 +1,343 @@
+flutter Redux 源码解析
+
+一.基础概念了解
+
+Redux
+思想：
+	1.应用是个状态机，视图与状态一一对应
+	2.单向数据流，action是修改状态的唯一方式
+
+State：app ViewModel集合，State类中每个子属性是一个viewModel（和一个view对应）
+Action: 改变State的唯一方式，确保了单向数据流
+Reducer: 收到action生成新state的算法,不支持异步
+Store.dispatch() : view发出action的唯一方式。
+Middleware: 可以异步处理action，生成新的State。
+
+store：
+	1.应用唯一
+	2.存储State，Reducer,middleware,提供dispatch接口
+
+StoreProvider: 继承InheritedWidget, 基于flutter一切都是widget，视图由widget树组成的特性，方便widget共享store
+
+StoreConnector:数据清洗，从全局数据中摘取view相关的viewModel，使用Streambuilder让widget具有监听stream的能力。
+
+dart 侧
+Stream资料 https://blog.csdn.net/ZuoYueLiang/article/details/89555546
+Stream:Dart 异步事件流，推模式，通过listener监听事件
+
+StreamController:提供流创建，数据源增加，监听等功能。还提供单播和广播的模式，flutterRedux就是使用广播的模式。
+代码示例：
+	1.单播
+		import 'dart:async';
+
+		void main() {
+		  // 初始化一个单订阅的Stream controller
+		  final StreamController ctrl = StreamController();
+		  // 订阅者
+		  final StreamSubscription subscription = ctrl.stream.listen((data) => print('$data'));
+		  // 发布者
+		  ctrl.sink.add('hello');
+		  // StreamController用完后需要释放
+		  ctrl.close();
+		}
+	2.广播
+		import 'dart:async';
+		void main() {
+		  // 初始化一个int类型的广播Stream controller
+		  final StreamController<int> ctrl = StreamController<int>.broadcast();
+		  
+		  // 初始化一个监听，同时通过transform对数据进行简单处理
+		  final StreamSubscription subscription = ctrl.stream
+		                          .where((value) => (value % 2 == 0))
+		                          .listen((value) => print('$value'));
+
+		  // 往Stream中添加数据
+		  for(int i=1; i<11; i++){
+		    ctrl.sink.add(i);
+		  }
+		  
+		  // StreamController用完后需要释放
+		  ctrl.close();
+		}
+
+
+Streambuilder
+
+		StreamBuilder<T>(
+    		key: ...可选...
+   	 		stream: ...需要监听的stream...
+    		initialData: ...初始数据，尽量不要填null...
+    		builder: (BuildContext context, AsyncSnapshot<T> snapshot){
+        	if (snapshot.hasData){
+            	return ...基于snapshot.hasData返回的控件
+        	}
+        	return ...没有数据的时候返回的控件
+   	 		},
+		)
+
+InheriterdWidget
+	可以通过 context.inheritFromWidgetOfExactType(InheritedContext)在widget树上任意节点获取到 InheriterdWidget
+
+
+二.flutter Redux 结构
+主要涉及的类
+class Store<State> 
+
+Reducer<State> reducer  
+	(是一个入参为state，action 返回新的state的函数 )  typedef State Reducer<State>(State state, dynamic action);
+	
+
+List<Middleware<State>> middleware
+
+List<NextDispatcher> _dispatchers;   typedef void NextDispatcher(dynamic action);
+
+
+自定义State
+
+class StoreProvider<S> extends InheritedWidget  继承InheritedWidget, 基于flutter一切都是widget，视图由widget树组成的特性，方便widget共享store
+
+class StoreConnector<S, ViewModel> extends StatelessWidget:数据清洗，从全局数据中摘取view相关的viewModel，使用Streambuilder让widget具有监听stream的能力。
+
+
+
+三.源码分析 
+
+1.Store
+
+ Store(
+    this.reducer, {
+    State initialState,
+    List<Middleware<State>> middleware = const [],
+    bool syncStream: false,
+    bool distinct: false,
+  })
+      : _changeController = new StreamController.broadcast(sync: syncStream) {
+    _state = initialState;
+    _dispatchers = _createDispatchers(
+      middleware,
+      _createReduceAndNotify(distinct),
+    );
+  }
+
+ 语法说明
+ （1）语法糖 this.reducer 等同于 this.reducer = reducer(入参)
+ （2）{}中的参数是可选参数
+ （3）:的作用是参照c++中的初始化列表的语法。 可以初始化函数和内部属性,这里执行了 _changeController = new StreamController.broadcast(sync: syncStream),初始化了一个广播Stream Controller
+
+ 功能说明
+ （1）存储 middleware,
+ （2）初始化了一个广播Stream Controller
+ （3）将中间件和reducer都加入到事件处理链中
+
+   List<NextDispatcher> _createDispatchers(
+    List<Middleware<State>> middleware,
+    NextDispatcher reduceAndNotify,
+  ) {
+    final dispatchers = <NextDispatcher>[]..add(reduceAndNotify);
+
+    for (var nextMiddleware in middleware.reversed) {
+      final next = dispatchers.last;
+
+      dispatchers.add(
+        (dynamic action) => nextMiddleware(this, action, next),
+      );
+    }
+
+    return dispatchers.reversed.toList();
+  }
+ 语法说明
+ （1） ..级联，减少零时变量
+ 	final dispatchers = <NextDispatcher>[]..add(reduceAndNotify);
+ 	改成普通语法
+ 	var tmepDispatchers = <NextDispatcher>[];
+ 	final dispatchers = tmepDispatchers.add(reduceAndNotify);
+ （2）技巧
+   反转建立链表更优雅
+
+ （3）功能
+   将middleware保存到dispatchers中，前后中间件通过next关联，形成事件链
+
+
+
+ NextDispatcher _createReduceAndNotify(bool distinct) {
+    return (dynamic action) {
+      final state = reducer(_state, action);
+
+      if (distinct && state == _state) return;
+
+      _state = state;
+      _changeController.add(state);
+    };
+  }
+
+（1）功能
+	将reducer生成事件链中的最后一环
+	state改变后发布，等待订阅者处理？
+
+ void dispatch(dynamic action) {
+    _dispatchers[0](action);
+  }
+ (1)功能
+ 	_dispatchers中已经是事件链，通过next action通过了层层处理
+
+2.action发送
+  StoreProvider.of<AppState>(context).dispatch();
+
+3.StoreConnector
+
+	class StoreConnector<S, ViewModel> extends StatelessWidget 
+
+    const StoreConnector({
+    Key key,
+    @required this.builder,
+    @required this.converter,
+    this.distinct = false,
+    this.onInit,
+    this.onDispose,
+    this.rebuildOnChange = true,
+    this.ignoreChange,
+    this.onWillChange,
+    this.onDidChange,
+    this.onInitialBuild,
+  })  : assert(builder != null),
+        assert(converter != null),
+        super(key: key);
+
+   （1）功能
+   		StoreConnector 初始化，const，说明实例不可改变，主要关注builder和converter两个
+
+     @override
+  Widget build(BuildContext context) {
+    return _StoreStreamListener<S, ViewModel>(
+      store: StoreProvider.of<S>(context),
+      builder: builder,
+      converter: converter,
+      distinct: distinct,
+      onInit: onInit,
+      onDispose: onDispose,
+      rebuildOnChange: rebuildOnChange,
+      ignoreChange: ignoreChange,
+      onWillChange: onWillChange,
+      onDidChange: onDidChange,
+      onInitialBuild: onInitialBuild,
+    );
+  }
+  说明：StoreConnector 由内部类_StoreStreamListener实现
+
+4.const _StoreStreamListener 
+
+
+	State<StatefulWidget> createState() {
+    return _StoreStreamListenerState<S, ViewModel>();
+  }
+  说明：_StoreStreamListener 主要功能在  _StoreStreamListenerState中
+
+5._StoreStreamListenerState
+
+ @override
+  void initState() {
+    if (widget.onInit != null) {
+      widget.onInit(widget.store);
+    }
+
+    if (widget.onInitialBuild != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        widget.onInitialBuild(latestValue);
+      });
+    }
+
+    latestValue = widget.converter(widget.store);
+    _createStream();
+
+    super.initState();
+  }
+  （1）功能：latestValue = widget.converter(widget.store); 从全局state中找到当前widget关心的viewModel
+      _createStream();
+
+
+      void _createStream() {
+    stream = widget.store.onChange
+        .where(_ignoreChange)
+        .map(_mapConverter)
+        // Don't use `Stream.distinct` because it cannot capture the initial
+        // ViewModel produced by the `converter`.
+        .where(_whereDistinct)
+        // After each ViewModel is emitted from the Stream, we update the
+        // latestValue. Important: This must be done after all other optional
+        // transformations, such as ignoreChange.
+        .transform(StreamTransformer.fromHandlers(handleData: _handleChange));
+  }
+
+    void _handleChange(ViewModel vm, EventSink<ViewModel> sink) {
+    latestValue = vm;
+
+    if (widget.onWillChange != null) {
+      widget.onWillChange(latestValue);
+    }
+
+    if (widget.onDidChange != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        widget.onDidChange(latestValue);
+      });
+    }
+
+    sink.add(vm);
+  }
+  （1）功能：
+
+
+
+    @override
+  Widget build(BuildContext context) {
+    return widget.rebuildOnChange
+        ? StreamBuilder<ViewModel>(
+            stream: stream,
+            builder: (context, snapshot) => widget.builder(
+              context,
+              latestValue,
+            ),
+          )
+        : widget.builder(context, latestValue);
+  }
+
+
+  _StreamBuilderBaseState
+
+  class _StreamBuilderBaseState<T, S> extends State<StreamBuilderBase<T, S>> {
+  StreamSubscription<T> _subscription;
+  S _summary;
+
+  @override
+  void initState() {
+    super.initState();
+    _summary = widget.initial();
+    _subscribe();
+  }
+   void _subscribe() {
+    if (widget.stream != null) {
+      _subscription = widget.stream.listen((T data) {
+        setState(() {
+          _summary = widget.afterData(_summary, data);
+        });
+      }, onError: (Object error) {
+        setState(() {
+          _summary = widget.afterError(_summary, error);
+        });
+      }, onDone: () {
+        setState(() {
+          _summary = widget.afterDone(_summary);
+        });
+      });
+      _summary = widget.afterConnected(_summary);
+    }
+  }
+
+  功能：StreamBuilder 监听stream 会在父类initState 中进行_subscribe，并调用setState触发build，调用builder；
+
+问题 latestValue 什么时候再赋值，stream 初始化一次，每次消息是否都会都走_handleChange，重新生成latestValue。
+stream.where.map.transform 内部都是listen 然后sink.add 新的流。
+流就想是个管道，监听这个管道就能得到管道中的数据。因为是监听，所以_handleChange会每次都调用。
+整体路径 Store.dispatch->StreamController.add->widget.store.onChange.where...->StreamBuilder.builder
+
+
+
